@@ -9,12 +9,12 @@ import {
   FiCheck,
   FiArrowRight,
 } from "react-icons/fi";
-import Marquee from "@/components/Marquee";
 import ProcessSteps from "@/components/ProcessSteps";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import ProjectsSlider from "@/components/ProjectsSlider";
+import FinalCTA from "@/components/FinalCTA";
 import { btnPrimary, circleArrow } from "@/lib/constants";
 import { services } from "@/lib/site";
 
@@ -25,8 +25,6 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       <Hero />
-      <Marquee />
-     
       <Services />
       <Projects />
       <Stats />
@@ -165,7 +163,7 @@ function Services() {
             <ServiceCard
               title={s.title}
               desc={s.desc}
-              href="/services"
+              href={`/services/${s.slug}`}
               index={i}
               showIndex={false}
             />
@@ -205,12 +203,12 @@ function Stats() {
 
   return (
     <section className="relative border-b border-line">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden sm:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden border border-line bg-line sm:grid-cols-4">
         {stats.map((s, i) => (
           <Reveal
             key={i}
             delay={i * 0.07}
-            className="group relative flex flex-col items-center gap-2 border-r border-line px-6 py-16 text-center last:border-r-0"
+            className="group relative flex flex-col items-center gap-2 bg-background px-6 py-16 text-center"
           >
             <span className="text-4xl font-black tracking-tight sm:text-6xl">
               <span
@@ -331,41 +329,6 @@ function AboutPreview() {
             </Reveal>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function FinalCTA() {
-  return (
-    <section id="contact-cta" className="relative overflow-hidden border-t border-line py-24 sm:py-32">
-      <div className="grid-lines absolute inset-0 opacity-60" aria-hidden />
-      <div
-        className="absolute left-1/2 top-1/2 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/20 blur-[140px]"
-        aria-hidden
-      />
-      <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-        <Reveal>
-          <h2 className="text-4xl font-black leading-[0.95] tracking-tighter sm:text-6xl">
-            Got an idea?
-            <br />
-            <span className="text-outline-accent">Let&apos;s scale it.</span>
-          </h2>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <p className="mx-auto mt-6 max-w-lg text-muted">
-            Tell us where you want to go. We&apos;ll figure out how to get you there faster than
-            you thought possible.
-          </p>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <Link href="/contact" className={`${btnPrimary} mt-9`}>
-            Start the conversation{" "}
-            <span className={circleArrow}>
-              <FiArrowUpRight />
-            </span>
-          </Link>
-        </Reveal>
       </div>
     </section>
   );

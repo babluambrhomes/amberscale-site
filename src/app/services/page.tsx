@@ -7,9 +7,7 @@ import PageHero from "@/components/PageHero";
 import ProcessSteps from "@/components/ProcessSteps";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import Marquee from "@/components/Marquee";
 import ServiceCard from "@/components/ServiceCard";
-import TestimonialsSlider from "@/components/TestimonialsSlider";
 import { btnPrimary, circleArrow } from "@/lib/constants";
 import { services } from "@/lib/site";
 
@@ -29,8 +27,9 @@ export default function ServicesPage() {
         title="Everything you need to"
         highlight="build and grow"
         description="A full stack of digital services under one roof — so you never have to juggle five agencies to get one website done."
+        image="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop"
       />
-      <Marquee />
+   
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
@@ -40,6 +39,7 @@ export default function ServicesPage() {
                 title={s.title}
                 desc={s.desc}
                 tags={s.tags}
+                href={`/services/${s.slug}`}
                 index={i}
               />
             </Reveal>
@@ -125,20 +125,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="border-t border-line bg-surface/40 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            index="01.3"
-            eyebrow="Client love"
-            title="Real words,"
-            highlight="real results"
-            align="center"
-          />
-          <div className="mt-14">
-            <TestimonialsSlider />
-          </div>
-        </div>
-      </section>
+     
 
       <section className="px-4 pb-24 sm:px-6 sm:pb-32">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 rounded-3xl border border-line bg-surface/60 p-10 sm:flex-row lg:px-8">

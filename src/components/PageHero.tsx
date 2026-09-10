@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 type PageHeroProps = {
@@ -9,6 +10,7 @@ type PageHeroProps = {
   title: string;
   highlight?: string;
   description?: string;
+  image: string;
 };
 
 export default function PageHero({
@@ -17,6 +19,7 @@ export default function PageHero({
   title,
   highlight,
   description,
+  image,
 }: PageHeroProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -29,8 +32,17 @@ export default function PageHero({
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden px-4 pb-16 pt-40 sm:px-6 sm:pb-20 sm:pt-48"
+      className="relative overflow-hidden px-4 pb-16 pt-40 sm:px-6 sm:pb-20 "
     >
+      <div className="pointer-events-none absolute inset-x-0 top-28 -z-10 bottom-0" aria-hidden>
+          <Image
+            src={image}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-[0.30] "
+          />
+        </div>
       <motion.div style={{ y: yBg, opacity }} className="relative mx-auto max-w-5xl">
         <div className="grid-lines absolute inset-0 -z-10 opacity-70" aria-hidden />
         <motion.div
@@ -41,7 +53,7 @@ export default function PageHero({
         >
           <span className="font-mono text-sm text-accent">{index}</span>
           <span className="h-px w-10 bg-accent" />
-          <span className="text-xs font-medium uppercase tracking-[0.28em] text-muted">
+          <span className="text-xs font-medium uppercase tracking-[0.28em] text-black ">
             {eyebrow}
           </span>
         </motion.div>
@@ -68,7 +80,7 @@ export default function PageHero({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.25 }}
-            className="mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+            className="mt-7 max-w-xl text-base leading-relaxed text-black sm:text-lg"
           >
             {description}
           </motion.p>

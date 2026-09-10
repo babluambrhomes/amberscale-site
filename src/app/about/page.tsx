@@ -1,15 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { FiArrowUpRight, FiCompass, FiTarget, FiUsers, FiHeart } from "react-icons/fi";
+import { FiCompass, FiTarget, FiUsers, FiHeart } from "react-icons/fi";
 import FeatureCard from "@/components/FeatureCard";
+import FinalCTA from "@/components/FinalCTA";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import TeamSlider from "@/components/TeamSlider";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
-import { btnPrimary, circleArrow } from "@/lib/constants";
 
 const values = [
   {
@@ -57,6 +56,7 @@ export default function AboutPage() {
         title="A small team with a"
         highlight="big obsession"
         description="AmbrScale exists to help ambitious businesses look as good as their ideas. We are builders first, everything else second."
+        image="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1200&auto=format&fit=crop"
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
@@ -197,7 +197,7 @@ export default function AboutPage() {
                 highlight="work by"
               />
             </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
               {values.map((v, i) => (
                 <Reveal key={i} delay={i * 0.08}>
                   <FeatureCard icon={<v.icon />} title={v.title} desc={v.desc} />
@@ -223,23 +223,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="px-4 py-24 sm:px-6 sm:py-32">
-        <div className="mx-auto text-center">
-          <Reveal>
-            <h2 className="mx-auto max-w-3xl text-4xl font-black leading-[0.98] tracking-tighter sm:text-6xl">
-              Come build with us. <span className="text-outline-accent">We don&apos;t bite.</span>
-            </h2>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <Link href="/contact" className={`${btnPrimary} mt-9`}>
-              Get in touch
-              <span className={circleArrow}>
-                <FiArrowUpRight />
-              </span>
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+      <FinalCTA
+        heading="Come build with us."
+        highlight="We don't bite."
+        buttonText="Get in touch"
+      />
     </div>
   );
 }

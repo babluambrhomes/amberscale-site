@@ -2,7 +2,8 @@
 
 import { FormEvent } from "react";
 import Image from "next/image";
-import { FiMail, FiPhone, FiMapPin, FiClock, FiSend } from "react-icons/fi";
+import Link from "next/link";
+import { FiMail, FiPhone, FiMapPin, FiClock, FiSend, FiArrowUpRight } from "react-icons/fi";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -69,44 +70,20 @@ export default function ContactPage() {
         title="Let's make something"
         highlight="worth talking about"
         description="Project, partnership or just a hello — drop us a line. We read everything and reply fast."
+        image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop"
       />
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Reveal>
-          <div className="relative h-64 overflow-hidden rounded-3xl border border-line sm:h-80">
-            <Image
-              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1400&auto=format&fit=crop"
-              alt="Inside the AmbrScale studio"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/30 to-transparent" />
-            <div className="absolute inset-0 flex items-center">
-              <div className="p-8 sm:p-12 max-w-md">
-                <span className="inline-block rounded-full border border-line bg-surface/80 px-4 py-1.5 text-xs font-semibold backdrop-blur">
-                  Mumbai HQ · working worldwide
-                </span>
-                <h2 className="mt-4 text-2xl font-bold tracking-tight sm:text-4xl">
-                  Come say hi —
-                  <br />
-                  coffee&apos;s on us.
-                </h2>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
+     
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {channels.map((c, i) => (
-            <Reveal key={i} delay={i * 0.08}>
+            <Reveal key={i} delay={i * 0.08} className="bg-background">
               <a
                 href={c.href}
-                className="flex h-full items-center gap-4 rounded-3xl border border-line bg-surface/70 p-6 transition-colors hover:border-accent/40"
+                className="flex h-full items-center gap-4 bg-background p-6 transition-colors hover:bg-surface/50"
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xl text-accent">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent/10 text-xl text-accent">
                   <c.icon />
                 </span>
                 <div>
@@ -278,7 +255,24 @@ export default function ContactPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionHeading
+            index="04"
+            eyebrow="Good to know"
+            title="Quick questions,"
+            highlight="quick answers"
+          />
+          <Reveal delay={0.15}>
+            <Link
+              href="/faq"
+              className="group inline-flex items-center gap-2 text-sm font-semibold text-accent"
+            >
+              Browse full FAQ{" "}
+              <FiArrowUpRight className="transition-transform group-hover:rotate-45" />
+            </Link>
+          </Reveal>
+        </div>
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
           {faqs.map((f, i) => (
             <Reveal key={i} delay={i * 0.06}>
               <div className="flex h-full flex-col rounded-3xl border border-line bg-surface/70 p-7 transition-colors hover:border-accent/40">
@@ -288,7 +282,7 @@ export default function ContactPage() {
             </Reveal>
           ))}
         </div>
-       
+        
       </section>
     </div>
   );
