@@ -3,9 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowUpRight, FiCompass, FiTarget, FiUsers, FiHeart } from "react-icons/fi";
+import FeatureCard from "@/components/FeatureCard";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 import TeamSlider from "@/components/TeamSlider";
+import TestimonialsSlider from "@/components/TestimonialsSlider";
+import { btnPrimary, circleArrow } from "@/lib/constants";
 
 const values = [
   {
@@ -34,7 +38,7 @@ const timeline = [
   { year: "2021", title: "The beginning", desc: "AmbrScale starts as a two-person studio in a shared workspace." },
   { year: "2023", title: "The team grows", desc: "Designers and strategists join — we move from projects to products." },
   { year: "2025", title: "Going global", desc: "Clients across three continents, and a roster of services for every stage." },
-  { year: "2026", title: "Scaling with partners", desc: "We open sponsorship to teams and brands who believe in what we build." },
+  { year: "2026", title: "Scaling with partners", desc: "We build alongside brands and teams who believe in what we make." },
 ];
 
 const stats = [
@@ -43,12 +47,6 @@ const stats = [
   { value: "5+", label: "Years of experience" },
   { value: "100%", label: "Team obsession" },
 ];
-
-const btnPrimary =
-  "group inline-flex items-center gap-2 rounded-full bg-accent py-2.5 pl-7 pr-3 text-sm font-semibold text-background transition-all hover:shadow-[0_0_36px_-6px_var(--accent)]";
-
-const circleArrow =
-  "flex h-9 w-9 items-center justify-center rounded-full bg-background/10 transition-colors group-hover:bg-background/25";
 
 export default function AboutPage() {
   return (
@@ -81,22 +79,13 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-2">
           <div>
-            <Reveal>
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-accent">02.1</span>
-                <span className="h-px w-8 bg-accent" />
-                <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted">
-                  Our story
-                </span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-                Why we started
-                <br />
-                <span className="text-outline">AmbrScale</span>
-              </h2>
-            </Reveal>
+            <SectionHeading
+              index="02.1"
+              eyebrow="Our story"
+              title="Why we started"
+              highlight="AmbrScale"
+              br
+            />
             <Reveal delay={0.16}>
               <p className="mt-6 leading-relaxed text-muted">
                 We kept seeing the same pattern: brilliant businesses with average-looking digital
@@ -155,20 +144,12 @@ export default function AboutPage() {
       <section className="border-y border-line bg-surface/40 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl">
-            <Reveal>
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-accent">02.2</span>
-                <span className="h-px w-8 bg-accent" />
-                <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted">
-                  The crew
-                </span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-                Meet the <span className="text-outline">bench</span>
-              </h2>
-            </Reveal>
+            <SectionHeading
+              index="02.2"
+              eyebrow="The crew"
+              title="Meet the"
+              highlight="bench"
+            />
           </div>
           <div className="mt-14">
             <TeamSlider />
@@ -179,21 +160,13 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="space-y-1 lg:grid lg:grid-cols-2 lg:gap-10 lg:space-y-0">
           <div>
-            <div className="max-w-xl">
-              <Reveal>
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs text-accent">02.3</span>
-                  <span className="h-px w-8 bg-accent" />
-                  <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted">
-                    The journey
-                  </span>
-                </div>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl pb-8">
-                  Milestones we <span className="text-outline">hit</span>
-                </h2>
-              </Reveal>
+            <div className="max-w-xl pb-8">
+              <SectionHeading
+                index="02.3"
+                eyebrow="The journey"
+                title="Milestones we"
+                highlight="hit"
+              />
             </div>
             <div className="space-y-1">
               {timeline.map((t, i) => (
@@ -216,35 +189,36 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:pt-28">
-            <div className="max-w-xl">
-              <Reveal>
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs text-accent">02.4</span>
-                  <span className="h-px w-8 bg-accent" />
-                  <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted">
-                    What we believe
-                  </span>
-                </div>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl pb-8">
-                  Values we <span className="text-outline">work by</span>
-                </h2>
-              </Reveal>
+            <div className="max-w-xl pb-8">
+              <SectionHeading
+                index="02.4"
+                eyebrow="What we believe"
+                title="Values we"
+                highlight="work by"
+              />
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {values.map((v, i) => (
                 <Reveal key={i} delay={i * 0.08}>
-                  <div className="group h-full rounded-3xl border border-line bg-surface/50 p-7 transition-colors hover:border-accent/40">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-2xl text-accent transition-colors group-hover:bg-accent group-hover:text-background">
-                      <v.icon />
-                    </span>
-                    <h3 className="mt-6 text-lg font-semibold">{v.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{v.desc}</p>
-                  </div>
+                  <FeatureCard icon={<v.icon />} title={v.title} desc={v.desc} />
                 </Reveal>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-line bg-surface/40 py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            index="02.5"
+            eyebrow="Kind words"
+            title="Clients who"
+            highlight="stuck with us"
+            align="center"
+          />
+          <div className="mt-14">
+            <TestimonialsSlider />
           </div>
         </div>
       </section>

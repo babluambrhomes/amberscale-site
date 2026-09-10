@@ -7,6 +7,8 @@ type SectionHeadingProps = {
   highlight?: string;
   description?: string;
   align?: "left" | "center";
+  br?: boolean;
+  size?: "md" | "lg";
 };
 
 export default function SectionHeading({
@@ -16,6 +18,8 @@ export default function SectionHeading({
   highlight,
   description,
   align = "left",
+  br = false,
+  size = "lg",
 }: SectionHeadingProps) {
   const center = align === "center";
   return (
@@ -32,8 +36,14 @@ export default function SectionHeading({
         </div>
       </Reveal>
       <Reveal delay={0.08}>
-        <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-          {title}{" "}
+        <h2
+          className={`mt-4 text-3xl font-bold tracking-tight ${
+            size === "lg" ? "sm:text-5xl" : "sm:text-4xl"
+          }`}
+        >
+          {title}
+          {br && highlight && <br />}
+          {!br && highlight && " "}
           {highlight && <span className="text-outline">{highlight}</span>}
         </h2>
       </Reveal>

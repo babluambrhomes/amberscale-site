@@ -2,9 +2,10 @@
 
 import { FormEvent } from "react";
 import Image from "next/image";
-import { FiArrowUpRight, FiMail, FiPhone, FiMapPin, FiClock, FiSend } from "react-icons/fi";
+import { FiMail, FiPhone, FiMapPin, FiClock, FiSend } from "react-icons/fi";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 
 const channels = [
   {
@@ -43,8 +44,8 @@ const faqs = [
     a: "A marketing site usually lands in 3–6 weeks. Larger platforms take longer. We share a real timeline up front and hold ourselves to it.",
   },
   {
-    q: "Can you sponsor teams or events?",
-    a: "Yes — check out our sponsor page. We have flexible levels and love shaping custom partnerships around your goals.",
+    q: "Can you back our team or event?",
+    a: "Maybe — we love partnering with teams and events that fit our vibe. Tell us what you're planning and let's see what we can do.",
   },
   {
     q: "Do you offer ongoing support?",
@@ -121,20 +122,13 @@ export default function ContactPage() {
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Reveal>
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-accent">04.1</span>
-                <span className="h-px w-8 bg-accent" />
-                <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted">
-                  Send a message
-                </span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                Tell us about <span className="text-outline">your project</span>
-              </h2>
-            </Reveal>
+            <SectionHeading
+              index="04.1"
+              eyebrow="Send a message"
+              title="Tell us about"
+              highlight="your project"
+              size="md"
+            />
             <Reveal delay={0.16}>
               <p className="mt-5 leading-relaxed text-muted">
                 The more you share, the faster we can help. Budgets, deadlines, references — throw
@@ -183,7 +177,7 @@ export default function ContactPage() {
                   I want to
                 </label>
                 <div className="flex flex-wrap gap-2">
-                  {["Start a project", "Become a sponsor", "Ask something"].map((opt) => (
+                  {["Start a project", "Partner with us", "Ask something"].map((opt) => (
                     <label key={opt} className="cursor-pointer">
                       <input type="radio" name="intent" className="peer sr-only" defaultChecked={opt === "Start a project"} />
                       <span className="inline-block rounded-full border border-line px-5 py-2 text-sm text-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent">
@@ -224,18 +218,13 @@ export default function ContactPage() {
           <Reveal className="lg:col-span-2">
             <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface/70">
               <div className="flex items-center justify-between gap-4 p-6 sm:p-8">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-accent">04.2</span>
-                    <span className="h-px w-8 bg-accent" />
-                    <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted">
-                      Find us
-                    </span>
-                  </div>
-                  <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                    Stroll in, <span className="text-outline">or drop a pin</span>
-                  </h2>
-                </div>
+                <SectionHeading
+                  index="04.2"
+                  eyebrow="Find us"
+                  title="Stroll in,"
+                  highlight="or drop a pin"
+                  size="md"
+                />
                 <span className="hidden rounded-full border border-line bg-accent/5 px-4 py-2 text-xs font-semibold sm:inline-flex">
                   Mumbai, India
                 </span>

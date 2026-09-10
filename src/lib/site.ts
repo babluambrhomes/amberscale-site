@@ -77,6 +77,7 @@ export const testimonials = [
     name: "Ananya Sharma",
     role: "Founder, Nova Commerce",
     img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
+    rating: 5,
   },
   {
     quote:
@@ -84,6 +85,7 @@ export const testimonials = [
     name: "Kabir Singh",
     role: "CEO, Vertex SaaS",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
+    rating: 4,
   },
   {
     quote:
@@ -91,6 +93,7 @@ export const testimonials = [
     name: "Riya Kapoor",
     role: "CMO, Pulse Analytics",
     img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
+    rating: 5,
   },
   {
     quote:
@@ -98,6 +101,7 @@ export const testimonials = [
     name: "Nikhil Agarwal",
     role: "Brand Partner",
     img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff66?q=80&w=200&auto=format&fit=crop",
+    rating: 3,
   },
 ];
 

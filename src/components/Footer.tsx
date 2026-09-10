@@ -4,7 +4,7 @@ import { FiArrowUpRight, FiGithub, FiInstagram, FiLinkedin, FiTwitter } from "re
 const nav = [
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
-  { href: "/sponsor", label: "Sponsor" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 

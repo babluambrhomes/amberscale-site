@@ -6,39 +6,20 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   FiArrowUpRight,
-  FiCode,
-  FiLayout,
-  FiGlobe,
-  FiTrendingUp,
-  FiZap,
-  FiShield,
-  FiAward,
   FiCheck,
   FiArrowRight,
 } from "react-icons/fi";
 import Marquee from "@/components/Marquee";
+import ProcessSteps from "@/components/ProcessSteps";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import ServiceCard from "@/components/ServiceCard";
 import ProjectsSlider from "@/components/ProjectsSlider";
-import TeamSlider from "@/components/TeamSlider";
-import TestimonialsSlider from "@/components/TestimonialsSlider";
-import { services, blog, trustedBy } from "@/lib/site";
+import { btnPrimary, circleArrow } from "@/lib/constants";
+import { services } from "@/lib/site";
 
-const btnPrimary =
-  "group inline-flex items-center gap-2 rounded-full bg-accent py-2.5 pl-7 pr-3 text-sm font-semibold text-background transition-all hover:shadow-[0_0_36px_-6px_var(--accent)]";
 const btnGhost =
   "group inline-flex items-center gap-2 rounded-full border border-line py-2.5 pl-7 pr-3 text-sm font-medium text-foreground/90 transition-colors hover:border-accent/50";
-
-const circleArrow = "flex h-9 w-9 items-center justify-center rounded-full bg-background/10 transition-colors group-hover:bg-background/25";
-
-const serviceIcons: Record<string, typeof FiCode> = {
-  code: FiCode,
-  layout: FiLayout,
-  globe: FiGlobe,
-  trending: FiTrendingUp,
-  zap: FiZap,
-  shield: FiShield,
-};
 
 export default function Home() {
   return (
@@ -51,10 +32,6 @@ export default function Home() {
       <Stats />
       <Process />
       <AboutPreview />
-      <Team />
-      <Testimonials />
-      <SponsorTeaser />
-      <Blog />
       <FinalCTA />
     </div>
   );
@@ -68,7 +45,6 @@ function Hero() {
   });
   const yText = useTransform(scrollYProgress, [0, 1], [0, 160]);
   const yWord = useTransform(scrollYProgress, [0, 1], [0, 260]);
-  const yImg = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
   return (
@@ -183,39 +159,18 @@ function Services() {
         </Reveal>
       </div>
 
-      <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {services.map((s, i) => {
-          const Icon = serviceIcons[s.icon];
-          return (
-            <Reveal key={i} delay={(i % 3) * 0.08}>
-              <Link
-                href="/services"
-                className="group relative flex h-full min-h-[280px] flex-col justify-end overflow-hidden rounded-3xl border border-line"
-              >
-                <Image
-                  src={s.img}
-                  alt={s.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10" />
-                <div className="relative p-7">
-                 
-                  <div className="mt-5 flex items-end justify-between gap-4">
-                    <div>
-                      <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted">{s.desc}</p>
-                    </div>
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-background/50 text-foreground backdrop-blur transition-all group-hover:bg-accent group-hover:text-background">
-                      <FiArrowUpRight />
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            </Reveal>
-          );
-        })}
+      <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+        {services.map((s, i) => (
+          <Reveal key={i} delay={(i % 3) * 0.08} className="bg-background">
+            <ServiceCard
+              title={s.title}
+              desc={s.desc}
+              href="/services"
+              index={i}
+              showIndex={false}
+            />
+          </Reveal>
+        ))}
       </div>
     </section>
   );
@@ -280,10 +235,10 @@ function Stats() {
 
 function Process() {
   const steps = [
-    { num: "01", title: "Discover", desc: "We dig into your goals, audience and market to define what winning looks like." },
-    { num: "02", title: "Design", desc: "We shape strategy into an experience and visual language that is unmistakably yours." },
-    { num: "03", title: "Build", desc: "We engineer with obsessive detail — fast, secure and ready to grow." },
-    { num: "04", title: "Scale", desc: "We launch, measure and iterate, standing beside you well beyond day one." },
+    { step: "01", title: "Discover", desc: "We dig into your goals, audience and market to define what winning looks like." },
+    { step: "02", title: "Design", desc: "We shape strategy into an experience and visual language that is unmistakably yours." },
+    { step: "03", title: "Build", desc: "We engineer with obsessive detail — fast, secure and ready to grow." },
+    { step: "04", title: "Scale", desc: "We launch, measure and iterate, standing beside you well beyond day one." },
   ];
 
   return (
@@ -295,21 +250,8 @@ function Process() {
         highlight="for results"
         align="center"
       />
-      <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step, i) => (
-          <Reveal key={i} delay={i * 0.08}>
-            <div className="group relative h-full rounded-3xl border border-line bg-surface/50 p-7 transition-colors hover:border-accent/40">
-              <span className="text-outline font-mono text-4xl font-black">{step.num}</span>
-              <h3 className="mt-5 text-lg font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{step.desc}</p>
-              {i < steps.length - 1 && (
-                <span className="absolute -right-3 top-1/2 hidden -translate-y-1/2 text-muted lg:block" aria-hidden>
-                  <FiArrowRight className="-rotate-45" />
-                </span>
-              )}
-            </div>
-          </Reveal>
-        ))}
+      <div className="mt-14">
+        <ProcessSteps steps={steps} />
       </div>
     </section>
   );
@@ -388,194 +330,6 @@ function AboutPreview() {
               </Link>
             </Reveal>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Team() {
-  return (
-    <section id="team" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 sm:py-32">
-      <div className="flex flex-wrap items-end justify-between gap-6">
-        <SectionHeading
-          index="05"
-          eyebrow="The crew"
-          title="People behind"
-          highlight="the work"
-          description="Designers, engineers and strategists — the bench that makes AmbrScale what it is."
-        />
-        <Reveal delay={0.2}>
-          <Link href="/about" className="group inline-flex items-center gap-2 text-sm font-semibold text-accent">
-            Meet all of us
-            <FiArrowUpRight className="transition-transform group-hover:rotate-45" />
-          </Link>
-        </Reveal>
-      </div>
-      <div className="mt-14">
-        <TeamSlider />
-      </div>
-    </section>
-  );
-}
-
-function Testimonials() {
-  return (
-    <section id="testimonials" className="border-y border-line bg-surface/40 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          index="06"
-          eyebrow="Kind words"
-          title="Clients who"
-          highlight="stuck with us"
-          align="center"
-        />
-      </div>
-      <div className="mt-14 max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
-        <TestimonialsSlider />
-      </div>
-    </section>
-  );
-}
-
-function SponsorTeaser() {
-  return (
-    <section id="sponsor" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 sm:py-32">
-      <div className="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-surface via-surface to-violet/10 p-10 sm:p-16">
-        <div
-          className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-magenta/20 blur-[100px]"
-          aria-hidden
-        />
-        <div
-          className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-accent/10 blur-[100px]"
-          aria-hidden
-        />
-        <div className="relative grid items-center gap-10 lg:grid-cols-2">
-          <div>
-            <Reveal>
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-accent">07</span>
-                <span className="h-px w-8 bg-accent" />
-                <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted">
-                  Back the team
-                </span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-                We play as a team.
-                <br />
-                <span className="text-outline">Partner with us.</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.16}>
-              <p className="mt-5 max-w-md leading-relaxed text-muted">
-                We&apos;re looking for sponsors to power our creative projects — and to grow
-                alongside us. In return, your brand becomes part of everything we make.
-              </p>
-            </Reveal>
-            <Reveal delay={0.24}>
-              <Link href="/sponsor" className={`${btnPrimary} mt-8 bg-foreground text-background`}>
-                Become a sponsor
-                <span className={circleArrow}>
-                  <FiArrowRight />
-                </span>
-              </Link>
-            </Reveal>
-          </div>
-
-          <Reveal delay={0.2} className="relative">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative h-44 overflow-hidden rounded-3xl border border-line">
-                <Image
-                  src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop"
-                  alt="Esports team"
-                  fill
-                  sizes="(max-width: 1024px) 50vw, 25vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-44 overflow-hidden rounded-3xl border border-line">
-                <Image
-                  src="https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop"
-                  alt="Event fans"
-                  fill
-                  sizes="(max-width: 1024px) 50vw, 25vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="col-span-2 grid grid-cols-4 gap-3">
-                {[FiZap, FiGlobe, FiTrendingUp, FiShield].map((Icon, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col items-center gap-2 rounded-2xl border border-line bg-background/40 p-4 text-center backdrop-blur transition-colors hover:border-accent/30"
-                  >
-                    <Icon className="text-lg text-accent" />
-                    <p className="text-[11px] font-medium leading-tight">
-                      {["Brand reach", "Wide exposure", "Growth partner", "Fast-track your brand"][i]}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Blog() {
-  return (
-    <section id="blog" className="border-t border-line py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading
-            index="08"
-            eyebrow="Insights"
-            title="Latest from"
-            highlight="the journal"
-          />
-          <Reveal delay={0.2}>
-            <Link href="/contact" className="group inline-flex items-center gap-2 text-sm font-semibold text-accent">
-              Read more
-              <FiArrowUpRight className="transition-transform group-hover:rotate-45" />
-            </Link>
-          </Reveal>
-        </div>
-
-        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3">
-          {blog.map((post, i) => (
-            <Reveal key={i} delay={i * 0.08}>
-              <article className="group overflow-hidden rounded-3xl border border-line bg-surface/50 transition-colors hover:border-accent/40">
-                <div className="relative h-52 overflow-hidden">
-                  <Image
-                    src={post.img}
-                    alt={post.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <span className="absolute left-4 top-4 rounded-full border border-line bg-background/70 px-3 py-1 text-[11px] font-semibold backdrop-blur">
-                    {post.cat}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 text-xs text-muted">
-                    <span>{post.date}</span>
-                    <span className="h-1 w-1 rounded-full bg-muted" />
-                    <span>{post.read} read</span>
-                  </div>
-                  <h3 className="mt-3 text-lg font-semibold leading-snug tracking-tight transition-colors group-hover:text-accent">
-                    {post.title}
-                  </h3>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-accent">
-                    Read article <FiArrowUpRight />
-                  </span>
-                </div>
-              </article>
-            </Reveal>
-          ))}
         </div>
       </div>
     </section>
