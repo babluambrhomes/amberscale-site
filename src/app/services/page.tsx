@@ -88,7 +88,7 @@ export default function ServicesPage() {
                   "Radically honest timelines and communication",
                 ].map((li, i) => (
                   <li key={i} className="flex items-center gap-3 text-sm text-foreground/90">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent/15 text-accent">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-2 bg-accent/15 text-accent">
                       <FiCheck className="text-xs" />
                     </span>
                     {li}
@@ -100,7 +100,7 @@ export default function ServicesPage() {
 
           <Reveal delay={0.2} className="relative">
             <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-violet/20 blur-[100px]" aria-hidden />
-            <div className="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-surface to-violet/10 text-center">
+            <div className="relative overflow-hidden rounded-md border border-line bg-gradient-to-br from-surface to-violet/10 text-center">
               <div className="relative h-52">
                 <Image
                   src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=900&auto=format&fit=crop"
@@ -128,7 +128,7 @@ export default function ServicesPage() {
      
 
       <section className="px-4 pb-24 sm:px-6 sm:pb-32">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 rounded-3xl border border-line bg-surface/60 p-10 sm:flex-row lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 rounded-md border border-line bg-surface/60 p-10 sm:flex-row lg:px-8">
           <div>
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
               Ready to build something great?

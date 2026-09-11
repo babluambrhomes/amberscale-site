@@ -37,7 +37,7 @@ export default function ProjectsSlider() {
       >
         {projects.map((p, i) => (
           <SwiperSlide key={i}>
-            <div className="group relative h-72 overflow-hidden rounded-3xl border border-line bg-surface sm:h-80">
+            <div className="group relative h-72 overflow-hidden rounded-md border border-line bg-surface sm:h-80">
               <Image
                 src={p.img}
                 alt={p.title}
@@ -45,20 +45,20 @@ export default function ProjectsSlider() {
                 sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 33vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-              <span className="absolute left-5 top-5 rounded-full border border-line bg-background/60 px-3 py-1 text-[11px] font-semibold text-foreground backdrop-blur">
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent" />
+              <span className="absolute left-5 top-5 rounded-2 bg-foreground px-3 py-1 text-[11px] font-semibold text-white">
                 {p.tag}
               </span>
               <div className="absolute inset-x-5 bottom-5 flex items-end justify-between">
                 <div>
-                  <h3 className="text-xl font-semibold tracking-tight text-foreground">
+                  <h3 className="text-xl font-semibold tracking-tight text-white">
                     {p.title}
                   </h3>
-                  <p className="mt-1 text-xs uppercase tracking-widest text-muted">
+                  <p className="mt-1 text-xs uppercase tracking-widest text-white/60">
                     {p.year}
                   </p>
                 </div>
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-background opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="flex h-10 w-10 items-center justify-center rounded-2 bg-accent text-background opacity-0 transition-opacity group-hover:opacity-100">
                   <FiArrowRight />
                 </span>
               </div>

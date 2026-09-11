@@ -8,6 +8,7 @@ import PageHero from "@/components/PageHero";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import StatsGrid from "@/components/StatsGrid";
 import { btnPrimary, circleArrow } from "@/lib/constants";
 import { projects } from "@/lib/site";
 
@@ -105,23 +106,14 @@ export default function PortfolioPage() {
             </div>
 
             <Reveal delay={0.2}>
-              <div className="grid grid-cols-2 gap-px overflow-hidden border border-line bg-line">
-                {[
+              <StatsGrid
+                items={[
                   { value: "50+", label: "Projects delivered" },
                   { value: "30+", label: "Happy clients" },
                   { value: "3x", label: "Avg. client ROI" },
                   { value: "98%", label: "Client retention" },
-                ].map((s, i) => (
-                  <div key={i} className="bg-background px-6 py-10 text-center">
-                    <span className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-3xl font-black text-transparent">
-                      {s.value}
-                    </span>
-                    <span className="mt-2 block text-[11px] font-medium uppercase tracking-[0.2em] text-muted">
-                      {s.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+                ]}
+              />
             </Reveal>
           </div>
         </div>

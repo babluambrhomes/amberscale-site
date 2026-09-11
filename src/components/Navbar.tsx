@@ -141,13 +141,13 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-background transition-all hover:gap-2.5 hover:shadow-[0_0_24px_-4px_var(--accent)]"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-2 bg-accent px-5 py-2 text-sm font-semibold text-background transition-all hover:gap-2.5 hover:shadow-[0_0_24px_-4px_var(--accent)]"
             >
               Start a project <FiArrowUpRight />
             </Link>
             <button
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-foreground md:hidden"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-2 border border-line text-foreground md:hidden"
               aria-label="Toggle menu"
             >
               {open ? <FiX /> : <FiMenu />}
@@ -159,7 +159,7 @@ export default function Navbar() {
           <motion.nav
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-2 overflow-hidden rounded-3xl border border-line bg-surface/95 p-3 backdrop-blur-xl md:hidden"
+            className="mt-2 overflow-hidden rounded-md border border-line bg-surface/95 p-3 backdrop-blur-xl md:hidden"
           >
             {links.map((link) => {
               const active = pathname === link.href;
@@ -168,7 +168,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`flex items-center justify-between rounded-full px-4 py-3 text-sm font-medium ${
+                  className={`flex items-center justify-between rounded-2 px-4 py-3 text-sm font-medium ${
                     active ? "bg-accent/10 text-accent" : "text-muted"
                   }`}
                 >
@@ -180,7 +180,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 flex items-center justify-center gap-1.5 rounded-full bg-accent px-4 py-3 text-sm font-semibold text-background"
+              className="mt-2 flex items-center justify-center gap-1.5 rounded-2 bg-accent px-4 py-3 text-sm font-semibold text-background"
             >
               Start a project <FiArrowUpRight />
             </Link>

@@ -27,7 +27,7 @@ export default function TeamSlider() {
       >
         {team.map((m, i) => (
           <SwiperSlide key={i}>
-            <div className="group relative overflow-hidden rounded-3xl rounded-tl-none border border-line bg-surface transition-colors duration-300 hover:border-accent/40">
+            <div className="group relative overflow-hidden rounded-md rounded-tl-none border border-line bg-surface transition-colors duration-300 hover:border-accent/40">
               <div className="relative h-60">
                 <Image
                   src={m.img}

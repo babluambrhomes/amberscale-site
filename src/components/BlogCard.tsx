@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
 
+
 type BlogPost = {
   title: string;
   cat: string;
@@ -15,6 +16,8 @@ type BlogPost = {
 
 export default function BlogCard({ post, href }: { post: BlogPost; href?: string }) {
   const target = href ?? `/blog/${post.slug}`;
+  const seed = post.slug.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  const shapePos = ["-right-8 -top-8 rotate-12", "-left-10 -bottom-10 rotate-12", "-right-6 -bottom-6"][seed % 3];
   return (
     <Link
       href={target}
@@ -32,18 +35,21 @@ export default function BlogCard({ post, href }: { post: BlogPost; href?: string
           {post.cat}
         </span>
       </div>
-      <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-center gap-3 text-xs text-muted">
-          <span>{post.date}</span>
-          <span className="h-1 w-1 bg-muted" />
-          <span>{post.read} read</span>
+      <div className="relative flex flex-1 flex-col overflow-hidden p-6">
+       
+        <div className="relative z-10 flex flex-1 flex-col">
+          <div className="flex items-center gap-3 text-xs text-muted">
+            <span>{post.date}</span>
+            <span className="h-1 w-1 bg-muted" />
+            <span>{post.read} read</span>
+          </div>
+          <h3 className="mt-3 text-lg font-semibold leading-snug tracking-tight transition-colors group-hover:text-accent">
+            {post.title}
+          </h3>
+          <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-xs font-semibold text-accent transition-all group-hover:gap-2.5">
+            Read article <FiArrowUpRight />
+          </span>
         </div>
-        <h3 className="mt-3 text-lg font-semibold leading-snug tracking-tight transition-colors group-hover:text-accent">
-          {post.title}
-        </h3>
-        <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-xs font-semibold text-accent transition-all group-hover:gap-2.5">
-          Read article <FiArrowUpRight />
-        </span>
       </div>
     </Link>
   );

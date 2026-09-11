@@ -17,6 +17,7 @@ import ServiceCard from "@/components/ServiceCard";
 import ServiceFaqs from "@/components/ServiceFaqs";
 import { btnPrimary, circleArrow } from "@/lib/constants";
 import { services } from "@/lib/site";
+import StatsGrid from "@/components/StatsGrid";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -89,22 +90,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         ]}
       />
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-4">
-          {service.stats.map((s, i) => (
-            <Reveal key={i} delay={i * 0.07} className="bg-background">
-              <div className="flex flex-col items-center gap-2 px-6 py-12 text-center">
-                <span className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
-                  {s.value}
-                </span>
-                <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted">
-                  {s.label}
-                </span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+   
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
@@ -152,7 +138,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               return (
                 <Reveal key={i} delay={(i % 2) * 0.08} className="bg-background">
                   <div className="group flex h-full flex-col p-7 transition-colors duration-300 hover:bg-surface/50">
-                    <span className="mb-4 flex h-10 w-10 items-center justify-center border border-line bg-surface/50 text-accent transition-colors duration-300 group-hover:border-accent/40 group-hover:bg-accent/10">
+                    <span className="mb-4 flex h-10 w-10 items-center justify-center border border-line bg-surface/50 text-accent transition-colors duration-300 group-hover:border-accent/40 ">
                       <Icon className="text-lg" />
                     </span>
                     <h3 className="text-base font-semibold tracking-tight">{f.title}</h3>
@@ -224,6 +210,11 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+   <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <StatsGrid items={service.stats} />
+      </section>
+
 
       <section className="border-y border-line bg-surface/40 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

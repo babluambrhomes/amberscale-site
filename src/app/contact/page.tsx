@@ -55,7 +55,7 @@ const faqs = [
 ];
 
 const inputClass =
-  "w-full rounded-full border border-line bg-background/60 px-5 py-2.5 text-sm text-foreground placeholder:text-muted/70 focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors";
+  "w-full rounded-2 border border-line bg-background/60 px-5 py-2.5 text-sm text-foreground placeholder:text-muted/70 focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors";
 
 export default function ContactPage() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 href={c.href}
                 className="flex h-full items-center gap-4 bg-background p-6 transition-colors hover:bg-surface/50"
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent/10 text-xl text-accent">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center  text-xl text-accent">
                   <c.icon />
                 </span>
                 <div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <SectionHeading
@@ -113,7 +113,7 @@ export default function ContactPage() {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="relative mt-8 hidden h-80 overflow-hidden rounded-3xl border border-line lg:block">
+              <div className="relative mt-8 hidden h-80 overflow-hidden rounded-md border border-line lg:block">
                 <Image
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
                   alt="The AmbrScale team at work"
@@ -133,7 +133,7 @@ export default function ContactPage() {
           <Reveal delay={0.15} className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
-              className="rounded-3xl border border-line bg-surface/70 p-8 sm:p-10"
+              className="rounded-md border border-line bg-surface/70 p-8 sm:p-10"
             >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
@@ -157,7 +157,7 @@ export default function ContactPage() {
                   {["Start a project", "Partner with us", "Ask something"].map((opt) => (
                     <label key={opt} className="cursor-pointer">
                       <input type="radio" name="intent" className="peer sr-only" defaultChecked={opt === "Start a project"} />
-                      <span className="inline-block rounded-full border border-line px-5 py-2 text-sm text-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent">
+                      <span className="inline-block rounded-2 border border-line px-5 py-2 text-sm text-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent">
                         {opt}
                       </span>
                     </label>
@@ -178,10 +178,10 @@ export default function ContactPage() {
               </div>
               <button
                 type="submit"
-                className="group mt-7 inline-flex items-center gap-2 rounded-full bg-accent py-2.5 pl-7 pr-3 text-sm font-semibold text-white transition-all hover:shadow-[0_0_36px_-6px_var(--accent)]"
+                className="group mt-7 inline-flex items-center gap-2 rounded-2 bg-accent py-2.5 pl-7 pr-3 text-sm font-semibold text-white transition-all hover:shadow-[0_0_36px_-6px_var(--accent)]"
               >
                 Send message
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/30">
+                <span className="flex h-9 w-9 items-center justify-center rounded-2 transition-colors ">
                   <FiSend className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </button>
@@ -193,7 +193,7 @@ export default function ContactPage() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-3">
           <Reveal className="lg:col-span-2">
-            <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface/70">
+            <div className="flex h-full flex-col overflow-hidden rounded-md border border-line bg-surface/70">
               <div className="flex items-center justify-between gap-4 p-6 sm:p-8">
                 <SectionHeading
                   index="04.2"
@@ -202,7 +202,7 @@ export default function ContactPage() {
                   highlight="or drop a pin"
                   size="md"
                 />
-                <span className="hidden rounded-full border border-line bg-accent/5 px-4 py-2 text-xs font-semibold sm:inline-flex">
+                <span className="hidden rounded-2 border border-line bg-accent/5 px-4 py-2 text-xs font-semibold sm:inline-flex">
                   Mumbai, India
                 </span>
               </div>
@@ -221,7 +221,7 @@ export default function ContactPage() {
 
           <div className="flex flex-col gap-6">
             <Reveal delay={0.1}>
-              <div className="relative h-48 overflow-hidden rounded-3xl border border-line">
+              <div className="relative h-48 overflow-hidden rounded-md border border-line">
                 <Image
                   src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=700&auto=format&fit=crop"
                   alt="Office space"
@@ -236,7 +236,7 @@ export default function ContactPage() {
               </div>
             </Reveal>
             <Reveal delay={0.18}>
-              <div className="relative h-48 overflow-hidden rounded-3xl border border-line">
+              <div className="relative h-48 overflow-hidden rounded-md border border-line">
                 <Image
                   src="https://images.unsplash.com/photo-1416331108676-a22ccb276e35?q=80&w=700&auto=format&fit=crop"
                   alt="Desk setup"
@@ -275,7 +275,7 @@ export default function ContactPage() {
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
           {faqs.map((f, i) => (
             <Reveal key={i} delay={i * 0.06}>
-              <div className="flex h-full flex-col rounded-3xl border border-line bg-surface/70 p-7 transition-colors hover:border-accent/40">
+              <div className="flex h-full flex-col rounded-md border border-line bg-surface/70 p-7 transition-colors hover:border-accent/40">
                 <h3 className="text-sm font-semibold">{f.q}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{f.a}</p>
               </div>

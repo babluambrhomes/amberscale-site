@@ -9,6 +9,7 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { btnPrimary, circleArrow } from "@/lib/constants";
 import { projects } from "@/lib/site";
+import StatsGrid from "@/components/StatsGrid";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -53,20 +54,8 @@ export default async function ProjectDetailPage({ params }: Props) {
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-4">
-          {project.results.map((r, i) => (
-            <Reveal key={i} delay={i * 0.07} className="bg-background">
-              <div className="flex flex-col items-center gap-2 px-6 py-12 text-center">
-                <span className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
-                  {r.value}
-                </span>
-                <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted">
-                  {r.label}
-                </span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <StatsGrid items={project.results} />
+        
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">

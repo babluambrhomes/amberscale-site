@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
 
+
 type ServiceCardProps = {
   title: string;
   desc: string;
@@ -29,7 +30,7 @@ export default function ServiceCard({
           </span>
         )}
         {href && (
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-foreground transition-all duration-300 group-hover:bg-accent group-hover:text-background">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground transition-all duration-300 group-hover:bg-accent group-hover:text-background">
             <FiArrowUpRight />
           </span>
         )}
@@ -41,7 +42,7 @@ export default function ServiceCard({
           {tags.map((t, j) => (
             <span
               key={j}
-              className="rounded-full border border-line px-3 py-1 text-[11px] font-medium text-muted transition-colors duration-300 group-hover:border-accent/40 group-hover:text-foreground"
+              className="rounded-2 border border-line px-3 py-1 text-[11px] font-medium text-muted transition-colors duration-300 group-hover:border-accent/40 group-hover:text-foreground"
             >
               {t}
             </span>
@@ -52,13 +53,23 @@ export default function ServiceCard({
   );
 
   const cardClass =
-    "group relative flex h-full flex-col bg-background p-7 transition-colors duration-300 hover:bg-surface/50";
+    "group relative flex h-full flex-col overflow-hidden bg-background p-7 transition-colors duration-300 hover:bg-surface/50";
+
+  const shapePositions = [
+    "-right-8 -top-8 rotate-12",
+    "-left-10 -bottom-10 -rotate-12",
+    "-right-6 -bottom-6",
+  ];
 
   return href ? (
     <Link href={href} className={cardClass}>
-      {content}
+     
+      <div className="relative z-10">{content}</div>
     </Link>
   ) : (
-    <div className={cardClass}>{content}</div>
+    <div className={cardClass}>
+      
+      <div className="relative z-10">{content}</div>
+    </div>
   );
 }

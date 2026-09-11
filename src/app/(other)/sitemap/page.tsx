@@ -34,7 +34,7 @@ export default function SitemapPage() {
         image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
       />
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="grid grid-cols-1 gap-px border border-line bg-line lg:grid-cols-2">
           <Link
             href="/"

@@ -44,7 +44,11 @@ export default function SectionHeading({
           {title}
           {br && highlight && <br />}
           {!br && highlight && " "}
-          {highlight && <span className="text-outline">{highlight}</span>}
+          {highlight && (
+            <span className="relative inline-block bg-gradient-to-r from-accent to-green-500 bg-clip-text text-transparent text-[1.15em]">
+              {highlight}
+            </span>
+          )}
         </h2>
       </Reveal>
       {description && (

@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
         image="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1200&auto=format&fit=crop"
       />
 
-      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
         <div className="space-y-14">
           {sections.map((s, i) => (
             <div key={i}>

@@ -180,7 +180,7 @@ export default function FaqPage() {
         )}
       </section>
 
-      <section className="border-t border-line py-20 sm:py-24">
+      <section className="border-t border-line py-20 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl">
             <SectionHeading

@@ -15,18 +15,18 @@ export default function ProcessSteps({ steps }: { steps: ProcessStep[] }) {
   return (
     <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
       {steps.map((p, i) => {
-        const fill = fills[i % fills.length];
+        
         return (
           <Reveal key={i} delay={i * 0.08} className="bg-background">
             <div className="group relative flex h-full flex-col overflow-hidden bg-background p-7 transition-colors duration-300 hover:bg-surface/50">
               <div className="absolute inset-x-0 top-0 h-0.5 bg-foreground/5">
                 <div
                   className="h-full bg-gradient-to-r from-[#23cb6b] via-[#10b4af] to-[#1378ef] transition-all duration-500"
-                  style={{ width: `${fill}%` }}
+                  
                 />
               </div>
 
-              <span className="pointer-events-none absolute -right-2 -top-4 font-mono text-6xl font-black leading-none text-foreground/[0.05] transition-colors duration-300 group-hover:text-foreground/[0.09]">
+              <span className="pointer-events-none absolute right-2 top-2 font-mono text-6xl font-black leading-none text-foreground/[0.05] transition-colors duration-300 group-hover:text-foreground/[0.09]">
                 {p.step}
               </span>
 

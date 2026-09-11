@@ -5,6 +5,7 @@ import { FiCompass, FiTarget, FiUsers, FiHeart } from "react-icons/fi";
 import FeatureCard from "@/components/FeatureCard";
 import FinalCTA from "@/components/FinalCTA";
 import PageHero from "@/components/PageHero";
+import StatsGrid from "@/components/StatsGrid";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import TeamSlider from "@/components/TeamSlider";
@@ -59,22 +60,7 @@ export default function AboutPage() {
         image="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1200&auto=format&fit=crop"
       />
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-4">
-          {stats.map((s, i) => (
-            <Reveal key={i} delay={i * 0.07} className="bg-background">
-              <div className="flex flex-col items-center gap-2 px-6 py-12 text-center">
-                <span className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
-                  {s.value}
-                </span>
-                <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted">
-                  {s.label}
-                </span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+     
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-2">
@@ -101,60 +87,54 @@ export default function AboutPage() {
             </Reveal>
           </div>
 
-          <div className="relative order-first lg:order-none">
-            <Reveal>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="relative h-64 overflow-hidden rounded-3xl border border-line">
-                  <Image
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&auto=format&fit=crop"
-                    alt="Team working together"
-                    fill
-                    sizes="(max-width: 1024px) 50vw, 25vw"
-                    className="object-cover"
-                  />
-                </div>
-                <Reveal delay={0.12}>
-                  <div className="relative h-64 overflow-hidden rounded-3xl border border-line">
-                    <Image
-                      src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=600&auto=format&fit=crop"
-                      alt="Studio space"
-                      fill
-                      sizes="(max-width: 1024px) 50vw, 25vw"
-                      className="object-cover"
-                    />
-                  </div>
-                </Reveal>
-                <Reveal delay={0.2} className="col-span-2">
-                  <div className="relative h-56 overflow-hidden rounded-3xl border border-line">
-                    <Image
-                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=900&auto=format&fit=crop"
-                      alt="Strategy session"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover"
-                    />
-                  </div>
-                </Reveal>
+          <div className="relative order-first lg:order-none h-[520px]">
+            <Reveal className="absolute left-0 top-0 z-30 w-[58%] -rotate-2 transition-all duration-300 hover:-translate-y-4 hover:scale-105 hover:z-50 hover:shadow-2xl">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+                <Image
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop"
+                  alt="Team collaborating"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={0.1} className="absolute right-0 top-[26%] z-20 w-[55%] rotate-3 transition-all duration-300 hover:-translate-y-6 hover:scale-105 hover:z-50 hover:shadow-2xl">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+                <Image
+                  src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop"
+                  alt="Workspace"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={0.2} className="absolute left-[12%] bottom-0 z-10 w-[50%] -rotate-1 transition-all duration-300 hover:-translate-y-8 hover:scale-105 hover:z-50 hover:shadow-2xl">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+                <Image
+                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=600&auto=format&fit=crop"
+                  alt="Meeting"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={0.3} className="absolute -bottom-6 left-4 sm:left-8 z-40">
+              <div className="flex items-center gap-3 rounded-2 border border-line bg-background/80 px-6 py-4 backdrop-blur glow-accent">
+                <span className="text-2xl font-black text-accent">5+</span>
+                <span className="text-xs uppercase tracking-widest text-muted">years of<br />craft</span>
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-line bg-surface/40 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl">
-            <SectionHeading
-              index="02.2"
-              eyebrow="The crew"
-              title="Meet the"
-              highlight="bench"
-            />
-          </div>
-          <div className="mt-14">
-            <TeamSlider />
-          </div>
-        </div>
+      
+
+ <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <StatsGrid items={stats} />
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
@@ -171,7 +151,7 @@ export default function AboutPage() {
             <div className="space-y-1">
               {timeline.map((t, i) => (
                 <Reveal key={i} delay={i * 0.08}>
-                  <div className="group relative flex gap-6 rounded-3xl border border-transparent p-6 transition-all duration-300 hover:border-line hover:bg-surface/60">
+                  <div className="group relative flex gap-6 rounded-md border border-transparent p-6 transition-all duration-300 hover:border-line hover:bg-surface/60">
                     <div className="flex flex-col items-center">
                       <span className="font-mono text-sm font-bold text-accent">{t.year}</span>
                       {i < timeline.length - 1 && (
@@ -219,6 +199,22 @@ export default function AboutPage() {
           />
           <div className="mt-14">
             <TestimonialsSlider />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-line bg-surface/40 py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl">
+            <SectionHeading
+              index="02.2"
+              eyebrow="The crew"
+              title="Meet the"
+              highlight="bench"
+            />
+          </div>
+          <div className="mt-14">
+            <TeamSlider />
           </div>
         </div>
       </section>

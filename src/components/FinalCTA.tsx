@@ -17,51 +17,46 @@ export default function FinalCTA({
 } = {}) {
   return (
     <section id="contact-cta" className="relative overflow-hidden border-t border-line">
-      <div className="relative bg-accent px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div
-          className="absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
-            backgroundSize: "32px 32px",
-          }}
-          aria-hidden
-        />
+      <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-36 lg:px-8">
+        <Reveal>
+          <div className="relative overflow-hidden">
+           
 
-        <span
-          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[18vw] font-black leading-none text-background/10 whitespace-nowrap"
-          aria-hidden
-        >
-          SCALE
-        </span>
+            <div className="relative grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+              <div>
+                <span className="flex items-center gap-3">
+                  <span className="font-mono text-xs text-accent">05</span>
+                  <span className="h-px w-10 bg-accent" />
+                  <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-muted">
+                    Contact
+                  </span>
+                </span>
 
-        <div className="relative mx-auto max-w-4xl text-center">
-          <Reveal>
-            <h2 className="text-4xl font-black leading-[0.95] tracking-tighter text-background sm:text-6xl lg:text-7xl">
-              {heading}
-              <br />
-              <span className="text-background/50">{highlight}</span>
-            </h2>
-          </Reveal>
+                <h2 className="mt-8 text-5xl font-black leading-[0.92] tracking-tighter text-foreground sm:text-5xl lg:text-7xl">
+                  {heading}
+                  <br />
+                  <span className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">
+                    {highlight}
+                  </span>
+                </h2>
+              </div>
 
-          <Reveal delay={0.1}>
-            <p className="mx-auto mt-7 max-w-lg text-base leading-relaxed text-background/60 sm:text-lg">
-              {description}
-            </p>
-          </Reveal>
+              <div className="lg:pb-2">
+                <p className="max-w-sm text-base leading-relaxed text-muted">
+                  {description}
+                </p>
 
-          <Reveal delay={0.2}>
-            <Link
-              href={href}
-              className="group mt-11 inline-flex items-center gap-2 rounded-full border-2 border-background/20 bg-background px-8 py-3.5 text-sm font-semibold text-accent transition-all hover:border-background/40 hover:bg-foreground"
-            >
-              {buttonText}
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/10 transition-colors group-hover:bg-accent/20">
-                <FiArrowUpRight />
-              </span>
-            </Link>
-          </Reveal>
-        </div>
+                <Link
+                  href={href}
+                  className="group mt-8 inline-flex items-center gap-3  pb-2 text-base font-semibold text-foreground transition-colors hover:text-accent"
+                >
+                  {buttonText}
+                  <FiArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:rotate-45" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
