@@ -53,7 +53,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         ]}
       />
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <StatsGrid items={project.results} />
         
       </section>
@@ -135,7 +135,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="border-y border-line bg-surface/40 py-20 sm:py-28">
+      <section className="border-y border-line bg-surface/40 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             index="02"
@@ -159,7 +159,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       </section>
 
       {project.testimonial && (
-        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
           <SectionHeading
             index="03"
             eyebrow="Client words"
@@ -168,7 +168,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             align="center"
           />
           <Reveal delay={0.15}>
-            <div className="mx-auto mt-14 max-w-3xl text-center">
+            <div className="mx-auto mt-6 max-w-3xl text-center">
               <span className="text-5xl font-black leading-none text-accent/20">&ldquo;</span>
               <blockquote className="mt-6 text-xl font-semibold leading-snug tracking-tight text-foreground/90 sm:text-2xl">
                 &ldquo;{project.testimonial.quote}&rdquo;
@@ -197,7 +197,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             </Link>
           </Reveal>
         </div>
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {others.map((p, i) => (
             <Reveal key={p.slug} delay={(i % 3) * 0.08}>
               <ProjectCard project={p} />

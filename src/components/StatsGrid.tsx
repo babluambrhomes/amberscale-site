@@ -25,7 +25,6 @@ function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }
 
   useEffect(() => {
     if (!inView) return;
-    let start = 0;
     const startTime = performance.now();
 
     function tick(now: number) {

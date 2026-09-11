@@ -17,7 +17,7 @@ export default function FinalCTA({
 } = {}) {
   return (
     <section id="contact-cta" className="relative overflow-hidden border-t border-line">
-      <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-36 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <Reveal>
           <div className="relative overflow-hidden">
            

@@ -21,7 +21,7 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import TestimonialCard from "@/components/TestimonialCard";
-import TrustedBy from "@/components/TrustedBy";
+
 import { testimonials } from "@/lib/site";
 
 const channels = [
@@ -90,28 +90,46 @@ export default function ContactPage() {
       <PageHero
         index="04"
         eyebrow="Contact"
-        title="Let's make something"
-        highlight="worth talking about"
-        description="Project, partnership or just a hello — drop us a line. We read everything and reply fast."
+        title="Pitch a"
+        highlight="product idea"
+        description="Brand, team or event — we power ideas we believe in. Tell us yours, and we'll take it seriously."
         image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop"
       />
 
-      <TrustedBy />
+    
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="border-y border-line bg-surface/40 py-10">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { label: "Apna product launch", value: "We built it", accent: true },
+            { label: "Brand ya team", value: "We power it", accent: true },
+            { label: "Ambitious idea", value: "Pitch us", accent: true },
+          ].map((item) => (
+            <div key={item.label} className="bg-background p-6 text-center">
+              <div className={`text-xl font-black tracking-tight ${item.accent ? "text-accent" : ""}`}>
+                {item.value}
+              </div>
+              <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-muted">
+                {item.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-2">
           <div>
             <SectionHeading
               index="04.1"
-              eyebrow="Send a message"
-              title="Tell us about"
-              highlight="your project"
+              eyebrow="Send a pitch"
+              title="Tell us what you're"
+              highlight="building"
               size="md"
             />
             <Reveal delay={0.16}>
               <p className="mt-5 leading-relaxed text-muted">
-                The more you share, the faster we can help. Budgets, deadlines, references — throw
-                it all at us. Every inquiry gets a real human, not a bot.
+                The more you share, the easier the build. Product, audience, scope, budget, timeline — throw everything at us. Every inquiry gets a real human, not a bot.
               </p>
             </Reveal>
 
@@ -135,8 +153,7 @@ export default function ContactPage() {
             <Reveal delay={0.3}>
               <figure className="mt-8 rounded-md border-l-2 border-accent bg-surface/60 p-6">
                 <blockquote className="text-sm leading-relaxed text-foreground/90">
-                  &ldquo;The more context you give us, the sharper the first call. Budget, deadline,
-                  references — everything helps us hit the ground running.&rdquo;
+                  &ldquo;The more context you give us, the sharper the first build. Product, budget, timeline — everything helps us hit the ground running.&rdquo;
                 </blockquote>
                 <figcaption className="mt-3 text-xs font-semibold text-accent">
                   — Aarav Mehta, Founder
@@ -173,7 +190,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="grid gap-6 grid-cols-3">
           <Reveal className="col-span-1">
             <div className="flex h-full flex-col overflow-hidden rounded-md border border-line bg-surface/70">
@@ -214,9 +231,9 @@ export default function ContactPage() {
                   I want to
                 </label>
                 <div className="flex flex-wrap gap-2">
-                  {["Start a project", "Partner with us", "Ask something"].map((opt) => (
+                  {["Launch a product", "Partner with us", "Sponsorship / idea"].map((opt) => (
                     <label key={opt} className="cursor-pointer rounded-2xl">
-                      <input type="radio" name="intent" className="peer sr-only" defaultChecked={opt === "Start a project"} />
+                      <input type="radio" name="intent" className="peer sr-only" defaultChecked={opt === "Launch a product"} />
                       <span className="inline-block  border border-line px-5 py-2 text-sm text-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent">
                         {opt}
                       </span>
@@ -232,7 +249,7 @@ export default function ContactPage() {
                   rows={6}
                   required
                   style={{ borderRadius: "20px" }}
-                  placeholder="We build... I have a question about..."
+                  placeholder="Product idea, partnership, pitch..."
                   className={`${inputClass}   resize-none`}
                 />
               </div>
@@ -240,7 +257,7 @@ export default function ContactPage() {
                 type="submit"
                 className="group mt-7 inline-flex items-center gap-2 rounded-2 bg-accent py-2.5 pl-7 pr-3 text-sm font-semibold text-white transition-all hover:shadow-[0_0_36px_-6px_var(--accent)]"
               >
-                Send message
+                Submit pitch
                 <span className="flex h-9 w-9 items-center justify-center rounded-2 transition-colors ">
                   <FiSend className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
@@ -254,7 +271,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             index="04"
@@ -284,7 +301,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <SectionHeading
           index="04"
           eyebrow="What clients say"
@@ -306,7 +323,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {channels.map((c, i) => (
             <Reveal key={c.label} delay={i * 0.08} className="bg-background">

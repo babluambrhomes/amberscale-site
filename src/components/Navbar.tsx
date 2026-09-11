@@ -5,12 +5,12 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowUpRight, FiChevronDown, FiMenu, FiX } from "react-icons/fi";
-import { services, projects } from "@/lib/site";
+import { services, projects, products } from "@/lib/site";
 
 const links = [
- 
-  { href: "/about", label: "About" },
+  { href: "/products", label: "Products" },
   { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/contact", label: "Contact" },
 ];
@@ -18,6 +18,7 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [productsOpen, setproductsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const pathname = usePathname();
@@ -33,6 +34,7 @@ export default function Navbar() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
+        setproductsOpen(false);
         setServicesOpen(false);
         setPortfolioOpen(false);
       }
@@ -66,12 +68,38 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center gap-1">
             {links.map((link) => {
               const active = pathname === link.href;
+              if (link.href === "/products") {
+                return (
+                  <button
+                    key={link.href}
+                    type="button"
+                    onMouseEnter={() => { setproductsOpen(true); setServicesOpen(false); setPortfolioOpen(false); }}
+                    onClick={() => router.push("/products")}
+                    className={`relative flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                      active ? "text-accent" : "text-muted hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
+                    <FiChevronDown
+                      className={`mt-0.5 transition-transform duration-300 ${
+                        productsOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                    {active && (
+                      <motion.span
+                        layoutId="nav-active"
+                        className="absolute inset-x-3 -bottom-0.5 h-px bg-accent"
+                      />
+                    )}
+                  </button>
+                );
+              }
               if (link.href === "/services") {
                 return (
                   <button
                     key={link.href}
                     type="button"
-                    onMouseEnter={() => { setServicesOpen(true); setPortfolioOpen(false); }}
+                    onMouseEnter={() => { setServicesOpen(true); setproductsOpen(false); setPortfolioOpen(false); }}
                     onClick={() => router.push("/services")}
                     className={`relative flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                       active ? "text-accent" : "text-muted hover:text-foreground"
@@ -97,7 +125,7 @@ export default function Navbar() {
                   <button
                     key={link.href}
                     type="button"
-                    onMouseEnter={() => { setPortfolioOpen(true); setServicesOpen(false); }}
+                    onMouseEnter={() => { setPortfolioOpen(true); setproductsOpen(false); setServicesOpen(false); }}
                     onClick={() => router.push("/portfolio")}
                     className={`relative flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                       active ? "text-accent" : "text-muted hover:text-foreground"
@@ -143,7 +171,7 @@ export default function Navbar() {
               href="/contact"
               className="hidden sm:inline-flex items-center gap-1.5 rounded-2 bg-accent px-5 py-2 text-sm font-semibold text-background transition-all hover:gap-2.5 hover:shadow-[0_0_24px_-4px_var(--accent)]"
             >
-              Start a project <FiArrowUpRight />
+              Pitch us <FiArrowUpRight />
             </Link>
             <button
               onClick={() => setOpen((v) => !v)}
@@ -182,11 +210,99 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="mt-2 flex items-center justify-center gap-1.5 rounded-2 bg-accent px-4 py-3 text-sm font-semibold text-background"
             >
-              Start a project <FiArrowUpRight />
+              Start a pitch <FiArrowUpRight />
             </Link>
           </motion.nav>
         )}
       </div>
+
+      <AnimatePresence>
+        {productsOpen && (
+          <motion.div
+            key="services-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-x-0 top-0 z-40"
+            onMouseLeave={() => setproductsOpen(false)}
+          >
+            <div
+              className="absolute inset-0 bg-background/60 backdrop-blur-[2px]"
+              onClick={() => setproductsOpen(false)}
+              aria-hidden
+            />
+            <motion.div
+              initial={{ y: -12 }}
+              animate={{ y: 0 }}
+              exit={{ y: -12 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="relative border-b border-line bg-background/95 backdrop-blur-xl"
+            >
+              <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+                <div className="mb-8 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-accent">01</span>
+                    <span className="h-px w-8 bg-accent" />
+                    <span className="text-xs font-medium uppercase tracking-[0.28em] text-muted">
+                      Owned &amp; operated
+                    </span>
+                  </div>
+                  <Link
+                    href="/products"
+                    onClick={() => setproductsOpen(false)}
+                    className="group inline-flex items-center gap-1.5 text-sm font-semibold text-accent"
+                  >
+                    View all products{" "}
+                    <FiArrowUpRight className="transition-transform group-hover:rotate-45" />
+                  </Link>
+                </div>
+
+                <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                  {products.map((p, i) => (
+                    <div
+                      key={i}
+                      className="group bg-background p-6 transition-colors duration-300 hover:bg-surface/50"
+                    >
+                      <span className="font-mono text-sm font-bold text-accent">
+                        /0{i + 1}
+                      </span>
+                      <h4 className="mt-3 flex items-center gap-2 text-base font-semibold tracking-tight">
+                        {p.name}
+                        <span className="rounded-2 border border-line px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-muted">
+                          {p.status}
+                        </span>
+                      </h4>
+                      <p className="mt-1 text-sm leading-relaxed text-muted line-clamp-2">
+                        {p.tagline}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href="/contact"
+                  onClick={() => setproductsOpen(false)}
+                  className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-2 border border-accent/30 bg-foreground px-6 py-5 text-left transition-colors duration-300 hover:border-accent/60"
+                >
+                  <div>
+                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+                      CODENAME · IN DEVELOPMENT
+                    </div>
+                    <div className="mt-1 text-lg font-bold tracking-tight text-background">
+                      Project Aurora — the big one.
+                    </div>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-background">
+                    Get early access{" "}
+                    <FiArrowUpRight className="transition-transform group-hover:rotate-45" />
+                  </span>
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {servicesOpen && (
@@ -214,10 +330,10 @@ export default function Navbar() {
               <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
                 <div className="mb-8 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-accent">01</span>
+                    <span className="font-mono text-xs text-accent">02</span>
                     <span className="h-px w-8 bg-accent" />
                     <span className="text-xs font-medium uppercase tracking-[0.28em] text-muted">
-                      What we do
+                      Capabilities
                     </span>
                   </div>
                   <Link
@@ -236,19 +352,16 @@ export default function Navbar() {
                       key={i}
                       href={`/services/${s.slug}`}
                       onClick={() => setServicesOpen(false)}
-                      className="group flex items-start gap-4 bg-background p-6 transition-colors duration-300 hover:bg-surface/50"
+                      className="group flex items-start gap-3 bg-background p-5 transition-colors duration-300 hover:bg-surface/50"
                     >
-                      <span className="font-mono text-sm font-bold text-accent">
+                      <span className="font-mono text-xs font-bold text-accent">
                         /0{i + 1}
                       </span>
                       <div>
-                        <h4 className="flex items-center gap-2 text-base font-semibold tracking-tight">
+                        <h4 className="flex items-center gap-2 text-sm font-semibold tracking-tight">
                           {s.title}
-                          <span className="text-accent opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-1">
-                            <FiArrowUpRight />
-                          </span>
                         </h4>
-                        <p className="mt-1 text-sm leading-relaxed text-muted line-clamp-2">
+                        <p className="mt-1 text-xs leading-relaxed text-muted line-clamp-2">
                           {s.desc}
                         </p>
                       </div>
@@ -287,7 +400,7 @@ export default function Navbar() {
               <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
                 <div className="mb-8 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-accent">02</span>
+                    <span className="font-mono text-xs text-accent">03</span>
                     <span className="h-px w-8 bg-accent" />
                     <span className="text-xs font-medium uppercase tracking-[0.28em] text-muted">
                       Our work

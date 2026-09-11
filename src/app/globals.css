@@ -188,3 +188,55 @@ h6 {
   background: linear-gradient(90deg, var(--logo-mid), var(--logo-end));
   opacity: 1;
 }
+
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  width: max-content;
+}
+
+
+.marquee-forward {
+  animation: marquee-forward 90s linear infinite;
+}
+
+
+.marquee-reverse {
+  animation: marquee-reverse 90s linear infinite;
+}
+
+/* Hover = pause */
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-forward {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}

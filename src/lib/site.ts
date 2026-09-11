@@ -6,6 +6,7 @@ export const projects = [
     category: "E-commerce",
     year: "2026",
     client: "Nova Retail",
+    backed: true,
     img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop",
@@ -38,6 +39,7 @@ export const projects = [
     category: "SaaS",
     year: "2026",
     client: "Pulse Data Co.",
+    backed: true,
     img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
@@ -70,6 +72,7 @@ export const projects = [
     category: "Branding",
     year: "2025",
     client: "Lumen Creative",
+    backed: true,
     img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop",
@@ -166,6 +169,7 @@ export const projects = [
     category: "Marketing",
     year: "2024",
     client: "Contour & Partners",
+    backed: true,
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
@@ -192,6 +196,57 @@ export const projects = [
     services: ["Digital Marketing", "SEO & Performance", "Brand & Strategy"],
   },
 ];
+
+export const products = [
+  {
+    slug: "fluxboard",
+    name: "Fluxboard",
+    tagline: "Real-time analytics for product teams",
+    status: "LIVE",
+    stat: { value: "2M+", label: "events / day" },
+    desc: "A live analytics dashboard that turns raw product events into decisions your whole team can act on.",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=900&auto=format&fit=crop",
+  },
+  {
+    slug: "payreach",
+    name: "PayReach",
+    tagline: "Borderless billing & payouts",
+    status: "LIVE",
+    stat: { value: "$12M+", label: "processed" },
+    desc: "Subscription billing, invoicing and payouts engineered for startups that sell across borders.",
+    img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=900&auto=format&fit=crop",
+  },
+  {
+    slug: "mailflow",
+    name: "Mailflow",
+    tagline: "Email the way product teams want it",
+    status: "BETA",
+    stat: { value: "18k", label: "activations" },
+    desc: "Timed, triggered and transactional email sequences that actually look like your brand.",
+    img: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=900&auto=format&fit=crop",
+  },
+  {
+    slug: "orbit-cms",
+    name: "Orbit CMS",
+    tagline: "A surprisingly fast content engine",
+    status: "IN DEV",
+    stat: { value: "Q1 '27", label: "public launch" },
+    desc: "The content layer behind our flagship stack — versioned, headless and absurdly quick.",
+    img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=900&auto=format&fit=crop",
+  },
+];
+
+export const flagship = {
+  codename: "Project Aurora",
+  status: "In development",
+  target: "Q1 2027",
+  stream:
+    "The biggest thing we've ever built — a commerce network that helps creators, teams and brands ship, fund and scale products in weeks, never months.",
+  progress: 62,
+  team: 14,
+  phase: "Build · Phase 2 of 3",
+  img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+};
 
 export const team = [
   {

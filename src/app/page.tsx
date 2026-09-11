@@ -12,26 +12,30 @@ import {
 import ProcessSteps from "@/components/ProcessSteps";
 import StatsGrid from "@/components/StatsGrid";
 import Reveal from "@/components/Reveal";
+import ScrollText from "@/components/ScrollText";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import ProjectsSlider from "@/components/ProjectsSlider";
+import ProductCard from "@/components/ProductCard";
+import SponsoredMarquee from "@/components/SponsoredMarquee";
+
 import FinalCTA from "@/components/FinalCTA";
 import ShowcaseSection from "@/components/ShowcaseSection";
-import TrustedBy from "@/components/TrustedBy";
+
 import { btnPrimary, circleArrow } from "@/lib/constants";
-import { services } from "@/lib/site";
+import { services, products } from "@/lib/site";
 
 const stats = [
-  { value: "50+", label: "Projects delivered" },
-  { value: "30+", label: "Happy clients" },
-  { value: "5+", label: "Years of experience" },
-  { value: "24/7", label: "Support & care" },
+  { value: "1.2M+", label: "Users powered" },
+  { value: "$40M+", label: "GMV processed" },
+  { value: "99.99%", label: "Avg. uptime" },
+  { value: "4", label: "Products live" },
 ];
 
 const points = [
-  "Strategy, design and build — all in-house",
-  "Radically honest timelines and pricing",
-  "Projects treated like they carry our name",
+  "Every product ships with our name on it",
+  "We risk our own money before yours",
+  "One team — strategy, design and engineering",
 ];
 const steps = [
   { step: "01", title: "Discover", desc: "We dig into your goals, audience and market to define what winning looks like." },
@@ -47,24 +51,53 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       <Hero />
-      <TrustedBy />
-      <section id="services" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 sm:py-32">
+     
+      <section id="products" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 sm:py-32">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             index="01"
-            eyebrow="What we do"
-            title="Services engineered"
-            highlight="to perform"
+            eyebrow="Owned & operated"
+            title="Products we"
+            highlight="ship & sponsor"
+            description="Everything below is built by us, for us — live in production, earning on our own name. This is what a product company actually ships."
           />
           <Reveal delay={0.2}>
-            <Link href="/services" className="group inline-flex items-center gap-2 text-sm font-semibold text-accent">
-              View all services{" "}
+            <Link href="/contact" className="group inline-flex items-center gap-2 text-sm font-semibold text-accent">
+              Pitch us your idea{" "}
               <FiArrowUpRight className="transition-transform group-hover:rotate-45" />
             </Link>
           </Reveal>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {products.map((p, i) => (
+            <Reveal key={p.slug} delay={(i % 4) * 0.08}>
+              <ProductCard product={p} />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <SponsoredMarquee />
+
+      <section id="services" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 sm:py-32">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionHeading
+            index="02"
+            eyebrow="Services"
+            title="The services"
+            highlight="behind the products"
+            description="The same in-house team that runs our own stack builds for partners. No agencies, no hand-offs — one team, end to end."
+          />
+          <Reveal delay={0.2}>
+            <Link href="/services" className="group inline-flex items-center gap-2 text-sm font-semibold text-accent">
+              View services{" "}
+              <FiArrowUpRight className="transition-transform group-hover:rotate-45" />
+            </Link>
+          </Reveal>
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={i} delay={(i % 3) * 0.08} className="bg-background">
               <ServiceCard
@@ -131,11 +164,11 @@ export default function Home() {
 
             <div className="order-1 lg:order-2">
               <SectionHeading
-                index="04"
+                index="03"
                 eyebrow="About us"
-                title="A small team with"
+                title="A small company with"
                 highlight="a big obsession"
-                description="AmbrScale exists to make ambitious businesses look as good as their ideas. Creators, engineers and strategists who win as one."
+                description="AmbrScale exists to make ambitious ideas look as good as they deserve. Builders, engineers and strategists who win as one."
               />
               <Reveal delay={0.2}>
                 <ul className="mt-8 space-y-3">
@@ -163,22 +196,23 @@ export default function Home() {
       </section>
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 sm:py-32">
         <SectionHeading
-          index="03"
-          eyebrow="How we work"
-          title="A process built"
-          highlight="for results"
+          index="04"
+          eyebrow="How we build"
+          title="A pipeline built"
+          highlight="for shipping"
           align="center"
         />
-        <div className="mt-14">
+        <div className="mt-8">
           <ProcessSteps steps={steps} />
         </div>
       </section>
+      <Manifesto />
       <ShowcaseSection
-        eyebrow="Our approach"
-        title="Built different"
-        description="We don't just ship pixels. Every project gets strategy, craft and engineering fused into one sharp delivery."
+        eyebrow="The build"
+        title="Made in-house"
+        description="From first commit to first customer, everything rolls through one sharp team. That's how the products get out the door."
         link="/about"
-        linkLabel="See how we work"
+        linkLabel="See how we build"
         bg={{
           src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop",
           alt: "Team at work",
@@ -192,19 +226,37 @@ export default function Home() {
       <section id="work" className="border-y border-line bg-surface/40 py-20 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            index="02"
-            eyebrow="Selected work"
-            title="Projects we're"
-            highlight="proud of"
-            description="Drag, click or just watch it roll — a few highlights from recent engagements, the way we like to show them."
+            index="05"
+            eyebrow="Powered by us"
+            title="Products we"
+            highlight="back"
+            description="A few of the brands and products running on AmbrScale today — built with the same team that ships our own stack."
           />
         </div>
-        <div className="mt-14 pl-4 sm:pl-6 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
+        <div className="mt-8 pl-4 sm:pl-6 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
           <ProjectsSlider />
         </div>
       </section>
-      <FinalCTA />
+
+      <FinalCTA
+        heading="Built something in"
+        highlight="your head?"
+        description="We build our own products, and we power ideas we believe in. Pitch yours — if it's bold, we'll take it seriously."
+        buttonText="Pitch us"
+      />
     </div>
+  );
+}
+
+function Manifesto() {
+  return (
+    <section className="relative overflow-hidden border-y border-line bg-surface/40">
+      <div className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 sm:py-20">
+        <p className="mx-auto mt-7 text-base leading-relaxed text-muted sm:text-lg">
+          <ScrollText text="ouse team, funded by our own revenue. If it ships under AmbrScale, we own it — the same way we'd own yours. lor One in - house team, funded by our own revenue. If it ships under AmbrScale, we own it — the same way we'd own yours. lora" />
+        </p>
+      </div>
+    </section>
   );
 }
 
@@ -254,7 +306,7 @@ function Hero() {
           className="inline-flex items-center gap-2 rounded-2 border border-line bg-surface/70 px-4 py-1.5 text-xs font-medium text-muted backdrop-blur"
         >
           <span className="h-1.5 w-1.5 rounded-2 bg-accent animate-pulse" />
-          Available for new projects — 2026
+          Shipping products since 2021 — 4 live &amp; counting
         </motion.div>
 
         <motion.h1
@@ -263,7 +315,7 @@ function Hero() {
           transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 text-[11vw] font-black leading-[0.92] tracking-tighter sm:text-7xl"
         >
-          We build digital services that
+          We ship products that
           <br />
           <span className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">
             help you scale.
@@ -276,8 +328,9 @@ function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
         >
-          AmbrScale is a crew of designers, developers and strategists. We craft websites,
-          brands and campaigns that make ambitious businesses impossible to ignore.
+          AmbrScale is a product company. We launch and sponsor software that earns,
+          and we build bold ideas for brands that pitch us. Right now we&apos;re
+          deep inside Project Aurora — the biggest thing we&apos;ve ever shipped.
         </motion.p>
 
         <motion.div
@@ -286,14 +339,14 @@ function Hero() {
           transition={{ duration: 0.7, delay: 0.45 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Link href="/services" className={btnPrimary}>
-            Explore services
+          <Link href="/products" className={btnPrimary}>
+            Explore products
             <span className={circleArrow}>
               <FiArrowRight />
             </span>
           </Link>
           <Link href="/about" className={btnGhost}>
-            Meet the team
+            Meet the builders
             <span className={circleArrow}>
               <FiArrowUpRight />
             </span>

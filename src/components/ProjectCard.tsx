@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
+import PowerBadge from "@/components/PowerBadge";
 
 type Project = {
   slug: string;
@@ -11,6 +12,7 @@ type Project = {
   category: string;
   year: string;
   img: string;
+  backed?: boolean;
 };
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -29,10 +31,13 @@ export default function ProjectCard({ project }: { project: Project }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-        <div className="absolute left-0 right-0 top-0 flex items-center justify-between p-5">
-          <span className="border border-white/20 bg-background/60 px-3 py-1 text-[11px] font-semibold backdrop-blur-md">
-            {project.category}
-          </span>
+        <div className="absolute left-0 right-0 top-0 flex items-start justify-between gap-3 p-5">
+          <div className="flex flex-col items-start gap-2">
+            {project.backed && <PowerBadge />}
+            <span className="border border-white/20 bg-background/60 px-3 py-1 text-[11px] font-semibold backdrop-blur-md">
+              {project.category}
+            </span>
+          </div>
           <span className="font-mono text-xs text-white/70">{project.year}</span>
         </div>
 

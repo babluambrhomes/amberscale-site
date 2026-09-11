@@ -1,14 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { FiArrowUpRight, FiCheck } from "react-icons/fi";
+import { FiArrowUpRight, FiLayers, FiShield, FiMessageCircle, FiStar } from "react-icons/fi";
 import PageHero from "@/components/PageHero";
 import ProcessSteps from "@/components/ProcessSteps";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
-import { btnPrimary, circleArrow } from "@/lib/constants";
 import { services } from "@/lib/site";
 
 const process = [
@@ -24,12 +22,11 @@ export default function ServicesPage() {
       <PageHero
         index="01"
         eyebrow="Services"
-        title="Everything you need to"
-        highlight="build and grow"
-        description="A full stack of digital services under one roof — so you never have to juggle five agencies to get one website done."
+        title="What we can"
+        highlight="build for you"
+        description="The same in-house team that runs our own products works on partner projects — engineering, design, strategy and growth, end to end."
         image="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop"
       />
-   
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
@@ -58,14 +55,15 @@ export default function ServicesPage() {
             />
           </div>
 
-          <div className="mt-14">
+          <div className="mt-8">
             <ProcessSteps steps={process} />
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+      <section className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-2 bg-violet/15 blur-[140px]" aria-hidden />
+        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <SectionHeading
               index="01.2"
@@ -81,17 +79,21 @@ export default function ServicesPage() {
               </p>
             </Reveal>
             <Reveal delay={0.24}>
-              <ul className="mt-8 space-y-3">
+              <ul className="mt-10 space-y-3">
                 {[
-                  "Strategy, design and build in-house",
-                  "Transparent pricing — no surprise invoices",
-                  "Radically honest timelines and communication",
-                ].map((li, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-foreground/90">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-2 bg-accent/15 text-accent">
-                      <FiCheck className="text-xs" />
+                  { icon: FiLayers, label: "Strategy, design and build in-house" },
+                  { icon: FiShield, label: "Transparent pricing — no surprise invoices" },
+                  { icon: FiMessageCircle, label: "Radically honest timelines and communication" },
+                ].map((r, i) => (
+                  <li
+                    key={i}
+                    className="group flex items-center gap-4 rounded-2 border border-line bg-surface/40 px-5 py-4 transition-all duration-300 hover:border-accent/40 hover:bg-surface/70"
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2 bg-accent/15 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-background">
+                      <r.icon className="text-lg" />
                     </span>
-                    {li}
+                    <span className="text-sm font-medium text-foreground/90">{r.label}</span>
+                    <FiArrowUpRight className="ml-auto shrink-0 text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
                   </li>
                 ))}
               </ul>
@@ -99,50 +101,55 @@ export default function ServicesPage() {
           </div>
 
           <Reveal delay={0.2} className="relative">
-            <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-violet/20 blur-[100px]" aria-hidden />
-            <div className="relative overflow-hidden rounded-md border border-line bg-gradient-to-br from-surface to-violet/10 text-center">
-              <div className="relative h-52">
-                <Image
-                  src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=900&auto=format&fit=crop"
-                  alt="AmbrScale team"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent" />
+            <div className="pointer-events-none absolute -inset-10 rounded-[2.5rem] bg-violet/20 blur-[120px]" aria-hidden />
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-2 border border-line bg-gradient-to-br from-surface to-violet/10 text-center">
+                <div className="relative h-60 sm:h-72">
+                  <Image
+                    src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=900&auto=format&fit=crop"
+                    alt="AmbrScale team"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/10 to-transparent" />
+                  <div className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-2 border border-line bg-background/70 px-3 py-1.5 text-[11px] font-semibold backdrop-blur">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-2 bg-accent" />
+                    Est. 2021
+                  </div>
+                </div>
+
+                <div className="px-7 pb-9 pt-11 sm:px-10">
+                  <div className="flex flex-col items-center gap-1">
+                    <div className="flex gap-0.5" aria-label="5 out of 5 star rating">
+                      {Array.from({ length: 5 }).map((_, j) => (
+                        <FiStar key={j} className="h-4 w-4 fill-current text-accent" />
+                      ))}
+                    </div>
+                    <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-muted">
+                      5.0 from 30+ clients
+                    </span>
+                  </div>
+                  <p className="mt-5 text-lg font-semibold leading-snug">
+                    &quot;They didn&apos;t just build us a website — they built us a brand people
+                    remember.&quot;
+                  </p>
+                  <p className="mt-4 text-xs uppercase tracking-widest text-muted">
+                    — Founder, SaaS startup
+                  </p>
+                </div>
               </div>
-              <div className="p-10">
-                <p className="text-lg font-semibold leading-snug">
-                  &quot;They didn&apos;t just build us a website — they built us a brand people
-                  remember.&quot;
-                </p>
-                <p className="mt-4 text-xs uppercase tracking-widest text-muted">
-                  — Founder, SaaS startup
-                </p>
+
+              <div className="absolute -right-4 -top-4 z-20 hidden sm:block">
+                <div className="flex h-[4.5rem] w-[4.5rem] rotate-6 items-center justify-center rounded-full border border-line bg-background/85 shadow-[0_0_30px_-6px_var(--accent)] backdrop-blur">
+                  <div className="-rotate-6">
+                    <span className="block text-center text-xl font-black leading-none text-accent">5+</span>
+                    <span className="mt-1 block text-center text-[8px] font-medium uppercase tracking-[0.2em] text-muted">years</span>
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-     
-
-      <section className="px-4 pb-24 sm:px-6 sm:pb-32">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 rounded-md border border-line bg-surface/60 p-10 sm:flex-row lg:px-8">
-          <div>
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-              Ready to build something great?
-            </h2>
-            <p className="mt-2 text-sm text-muted">
-              Tell us about your project — we&apos;ll come back with ideas within 48 hours.
-            </p>
-          </div>
-          <Link href="/contact" className={`${btnPrimary} shrink-0`}>
-            Start a project
-            <span className={circleArrow}>
-              <FiArrowUpRight />
-            </span>
-          </Link>
         </div>
       </section>
     </div>

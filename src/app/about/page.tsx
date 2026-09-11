@@ -42,10 +42,10 @@ const timeline = [
 ];
 
 const stats = [
-  { value: "50+", label: "Projects delivered" },
-  { value: "30+", label: "Happy clients" },
-  { value: "5+", label: "Years of experience" },
-  { value: "100%", label: "Team obsession" },
+  { value: "1.2M+", label: "Users powered" },
+  { value: "$40M+", label: "GMV processed" },
+  { value: "4", label: "Products live" },
+  { value: "100%", label: "Build obsession" },
 ];
 
 export default function AboutPage() {
@@ -54,13 +54,11 @@ export default function AboutPage() {
       <PageHero
         index="02"
         eyebrow="About"
-        title="A small team with a"
+        title="A product company with a"
         highlight="big obsession"
-        description="AmbrScale exists to help ambitious businesses look as good as their ideas. We are builders first, everything else second."
+        description="AmbrScale ships its own software and powers ideas we believe in. Builders first, everything else second."
         image="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1200&auto=format&fit=crop"
       />
-
-     
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-2">
@@ -80,8 +78,8 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={0.24}>
               <p className="mt-4 leading-relaxed text-muted">
-                So we built the studio we wished existed. A place where strategy, design and
-                engineering work as one — and where every project is treated like it&apos;s our own
+                So we built the company we wished existed. A place where strategy, design and
+                engineering work as one — and where every product is treated like it&apos;s our own
                 name on the line.
               </p>
             </Reveal>
@@ -131,9 +129,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      
-
- <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <StatsGrid items={stats} />
       </section>
 
@@ -188,7 +184,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-line bg-surface/40 py-20 sm:py-28">
+      <section className="border-y border-line bg-surface/40 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             index="02.5"
@@ -197,13 +193,13 @@ export default function AboutPage() {
             highlight="stuck with us"
             align="center"
           />
-          <div className="mt-14">
+          <div className="mt-8">
             <TestimonialsSlider />
           </div>
         </div>
       </section>
 
-      <section className="border-y border-line bg-surface/40 py-20 sm:py-28">
+      <section className="border-y border-line bg-surface/40 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl">
             <SectionHeading
@@ -213,7 +209,7 @@ export default function AboutPage() {
               highlight="bench"
             />
           </div>
-          <div className="mt-14">
+          <div className="mt-8">
             <TeamSlider />
           </div>
         </div>
@@ -224,6 +220,7 @@ export default function AboutPage() {
         highlight="We don't bite."
         buttonText="Get in touch"
       />
+      
     </div>
   );
 }

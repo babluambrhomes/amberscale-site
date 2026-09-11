@@ -20,7 +20,7 @@ export default function BlogPage() {
   
 
       <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 sm:pb-32 lg:px-8">
-        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
           {blog.map((post, i) => (
             <Reveal key={i} delay={(i % 3) * 0.08}>
               <BlogCard post={post} />

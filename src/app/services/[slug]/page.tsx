@@ -86,11 +86,9 @@ export default async function ServiceDetailPage({ params }: Props) {
         ]}
         meta={[
           { label: "", value: `0${position + 1}` },
-          { label: "service", value: "Our" },
+          { label: "service", value: "Fixed scope" },
         ]}
       />
-
-   
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
@@ -116,7 +114,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <Reveal delay={0.2}>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link href="/contact" className={btnPrimary}>
-                  Start a project
+                  Pitch this project
                   <span className={circleArrow}>
                     <FiArrowUpRight />
                   </span>
@@ -211,12 +209,12 @@ export default async function ServiceDetailPage({ params }: Props) {
         </div>
       </section>
 
-   <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <StatsGrid items={service.stats} />
       </section>
 
 
-      <section className="border-y border-line bg-surface/40 py-20 sm:py-28">
+      <section className="border-y border-line bg-surface/40 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             index="04"
@@ -224,7 +222,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             title="A process built"
             highlight="for results"
           />
-          <div className="mt-14">
+          <div className="mt-8">
             <ProcessSteps steps={process} />
           </div>
         </div>
@@ -245,7 +243,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </Link>
           </Reveal>
         </div>
-        <div className="mt-14 grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
           {others.map((o, i) => (
             <Reveal key={o.slug} delay={(i % 3) * 0.08} className="bg-background">
               <ServiceCard
@@ -261,10 +259,10 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       <FinalCTA
-        heading={`Need ${service.title.toLowerCase()}?`}
-        highlight="Let's talk."
-        description="Tell us what you want to achieve. We'll scope it honestly and show you how we'd get there."
-        buttonText="Start the conversation"
+        heading="Building something"
+        highlight="of your own?"
+        description="We build our products, and we power ideas we believe in. Pitch yours and we'll take it seriously."
+        buttonText="Pitch us"
       />
     </div>
   );

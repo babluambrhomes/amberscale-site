@@ -20,7 +20,7 @@ export default function ServiceFaqs({ faqs }: { faqs: Faq[] }) {
         highlight="questions"
         align="center"
       />
-      <div className="mt-14 border-t border-line">
+      <div className="mt-8 border-t border-line">
         {faqs.map((f, i) => {
           const open = openIndex === i;
           return (
