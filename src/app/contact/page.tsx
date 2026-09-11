@@ -3,10 +3,26 @@
 import { FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FiMail, FiPhone, FiMapPin, FiClock, FiSend, FiArrowUpRight } from "react-icons/fi";
+import {
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiClock,
+  FiSend,
+  FiArrowUpRight,
+  FiGithub,
+  FiInstagram,
+  FiLinkedin,
+  FiTwitter,
+  FiShield,
+  FiZap,
+} from "react-icons/fi";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import TestimonialCard from "@/components/TestimonialCard";
+import TrustedBy from "@/components/TrustedBy";
+import { testimonials } from "@/lib/site";
 
 const channels = [
   {
@@ -16,23 +32,30 @@ const channels = [
     href: "mailto:hello@ambrscale.com",
   },
   {
-    icon: FiPhone,
-    label: "Phone",
-    value: "+00 0000 0000",
-    href: "tel:+0000000000",
-  },
-  {
     icon: FiMapPin,
     label: "Location",
     value: "Mumbai, India",
     href: "#",
   },
   {
-    icon: FiClock,
-    label: "Response time",
-    value: "Within 48 hours",
-    href: "#",
+    icon: FiPhone,
+    label: "Phone",
+    value: "+91 98200 00000",
+    href: "tel:+919820000000",
   },
+];
+
+const hours = [
+  { day: "Monday – Friday", time: "9:00 AM – 7:00 PM" },
+  { day: "Saturday", time: "10:00 AM – 2:00 PM" },
+  { day: "Sunday", time: "Closed" },
+];
+
+const socials = [
+  { href: "#", icon: FiTwitter, label: "Twitter" },
+  { href: "#", icon: FiInstagram, label: "Instagram" },
+  { href: "#", icon: FiLinkedin, label: "LinkedIn" },
+  { href: "#", icon: FiGithub, label: "GitHub" },
 ];
 
 const faqs = [
@@ -73,32 +96,11 @@ export default function ContactPage() {
         image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop"
       />
 
-     
-
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-          {channels.map((c, i) => (
-            <Reveal key={i} delay={i * 0.08} className="bg-background">
-              <a
-                href={c.href}
-                className="flex h-full items-center gap-4 bg-background p-6 transition-colors hover:bg-surface/50"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center  text-xl text-accent">
-                  <c.icon />
-                </span>
-                <div>
-                  <div className="text-xs uppercase tracking-widest text-muted">{c.label}</div>
-                  <div className="mt-1 text-sm font-semibold">{c.value}</div>
-                </div>
-              </a>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <TrustedBy />
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-5">
-          <div className="lg:col-span-2">
+        <div className="grid items-center gap-14 lg:grid-cols-2">
+          <div>
             <SectionHeading
               index="04.1"
               eyebrow="Send a message"
@@ -109,28 +111,86 @@ export default function ContactPage() {
             <Reveal delay={0.16}>
               <p className="mt-5 leading-relaxed text-muted">
                 The more you share, the faster we can help. Budgets, deadlines, references — throw
-                it all at us.
+                it all at us. Every inquiry gets a real human, not a bot.
               </p>
             </Reveal>
-            <Reveal delay={0.2}>
-              <div className="relative mt-8 hidden h-80 overflow-hidden rounded-md border border-line lg:block">
-                <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
-                  alt="The AmbrScale team at work"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                <div className="absolute inset-x-6 bottom-6">
-                  <p className="text-sm font-semibold">hello@ambrscale.com</p>
-                  <p className="mt-1 text-xs text-muted">We reply within 48 hours — usually faster.</p>
+
+            <Reveal delay={0.22}>
+              <div className="mt-8 grid grid-cols-2 overflow-hidden border border-line bg-line">
+                <div className="bg-background p-6">
+                  <div className="font-mono text-3xl font-black text-accent sm:text-4xl">48h</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-muted">
+                    Avg. first reply
+                  </div>
+                </div>
+                <div className="bg-background p-6">
+                  <div className="font-mono text-3xl font-black text-accent sm:text-4xl">3–6</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-muted">
+                    Weeks to launch
+                  </div>
                 </div>
               </div>
             </Reveal>
+
+            <Reveal delay={0.3}>
+              <figure className="mt-8 rounded-md border-l-2 border-accent bg-surface/60 p-6">
+                <blockquote className="text-sm leading-relaxed text-foreground/90">
+                  &ldquo;The more context you give us, the sharper the first call. Budget, deadline,
+                  references — everything helps us hit the ground running.&rdquo;
+                </blockquote>
+                <figcaption className="mt-3 text-xs font-semibold text-accent">
+                  — Aarav Mehta, Founder
+                </figcaption>
+              </figure>
+            </Reveal>
           </div>
 
-          <Reveal delay={0.15} className="lg:col-span-3">
+          <div className="relative hidden h-[420px] sm:block md:h-[520px]">
+            <Reveal className="absolute left-0 top-0 z-30 w-[60%] -rotate-2 transition-all duration-300 hover:-translate-y-4 hover:scale-105 hover:z-50 hover:shadow-2xl">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+                <Image
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=700&auto=format&fit=crop"
+                  alt="The AmbrScale team collaborating"
+                  fill
+                  sizes="(min-width: 1024px) 30vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={0.12} className="absolute bottom-0 right-0 z-20 w-[55%] rotate-3 transition-all duration-300 hover:-translate-y-6 hover:scale-105 hover:z-50 hover:shadow-2xl">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+                <Image
+                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=700&auto=format&fit=crop"
+                  alt="Planning a build"
+                  fill
+                  sizes="(min-width: 1024px) 28vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+           
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="grid gap-6 grid-cols-3">
+          <Reveal className="col-span-1">
+            <div className="flex h-full flex-col overflow-hidden rounded-md border border-line bg-surface/70">
+              <div className="relative min-h-[320px] flex-1">
+                <iframe
+                  title="AmbrScale location map"
+                  src="https://maps.google.com/maps?q=Mumbai,%20Maharashtra,%20India&z=12&output=embed"
+                  className="absolute inset-0 h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.15} className="col-span-2">
             <form
               onSubmit={handleSubmit}
               className="rounded-md border border-line bg-surface/70 p-8 sm:p-10"
@@ -155,9 +215,9 @@ export default function ContactPage() {
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {["Start a project", "Partner with us", "Ask something"].map((opt) => (
-                    <label key={opt} className="cursor-pointer">
+                    <label key={opt} className="cursor-pointer rounded-2xl">
                       <input type="radio" name="intent" className="peer sr-only" defaultChecked={opt === "Start a project"} />
-                      <span className="inline-block rounded-2 border border-line px-5 py-2 text-sm text-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent">
+                      <span className="inline-block  border border-line px-5 py-2 text-sm text-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent">
                         {opt}
                       </span>
                     </label>
@@ -185,72 +245,12 @@ export default function ContactPage() {
                   <FiSend className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </button>
+              <p className="mt-5 flex items-center gap-2 text-xs text-muted">
+                <FiShield className="shrink-0 text-accent" />
+                We only use your details to reply. No spam, no data-selling — ever.
+              </p>
             </form>
           </Reveal>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-3">
-          <Reveal className="lg:col-span-2">
-            <div className="flex h-full flex-col overflow-hidden rounded-md border border-line bg-surface/70">
-              <div className="flex items-center justify-between gap-4 p-6 sm:p-8">
-                <SectionHeading
-                  index="04.2"
-                  eyebrow="Find us"
-                  title="Stroll in,"
-                  highlight="or drop a pin"
-                  size="md"
-                />
-                <span className="hidden rounded-2 border border-line bg-accent/5 px-4 py-2 text-xs font-semibold sm:inline-flex">
-                  Mumbai, India
-                </span>
-              </div>
-              <div className="relative min-h-[320px] flex-1">
-                <iframe
-                  title="AmbrScale location map"
-                  src="https://maps.google.com/maps?q=Mumbai,%20Maharashtra,%20India&z=12&output=embed"
-                  className="absolute inset-0 h-full w-full border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="flex flex-col gap-6">
-            <Reveal delay={0.1}>
-              <div className="relative h-48 overflow-hidden rounded-md border border-line">
-                <Image
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=700&auto=format&fit=crop"
-                  alt="Office space"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                <span className="absolute bottom-4 left-5 text-sm font-semibold">
-                  BKC, Mumbai
-                </span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.18}>
-              <div className="relative h-48 overflow-hidden rounded-md border border-line">
-                <Image
-                  src="https://images.unsplash.com/photo-1416331108676-a22ccb276e35?q=80&w=700&auto=format&fit=crop"
-                  alt="Desk setup"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                <span className="absolute bottom-4 left-5 text-sm font-semibold">
-                  The desks we build from
-                </span>
-              </div>
-            </Reveal>
-          </div>
         </div>
       </section>
 
@@ -282,7 +282,52 @@ export default function ContactPage() {
             </Reveal>
           ))}
         </div>
-        
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <SectionHeading
+          index="04"
+          eyebrow="What clients say"
+          title="People like"
+          highlight="working with us"
+        />
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {testimonials.slice(0, 3).map((t, i) => (
+            <Reveal key={t.name} delay={i * 0.08}>
+              <TestimonialCard
+                quote={t.quote}
+                name={t.name}
+                role={t.role}
+                img={t.img}
+                rating={t.rating}
+              />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          {channels.map((c, i) => (
+            <Reveal key={c.label} delay={i * 0.08} className="bg-background">
+              <a
+                href={c.href}
+                className="flex h-full items-center gap-4 bg-background p-6 transition-colors hover:bg-surface/50"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center  text-xl text-accent">
+                  <c.icon />
+                </span>
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-muted">{c.label}</div>
+                  <div className="mt-1 text-sm font-semibold">{c.value}</div>
+                </div>
+              </a>
+            </Reveal>
+          ))}
+
+         
+         
+        </div>
       </section>
     </div>
   );

@@ -17,6 +17,7 @@ import ServiceCard from "@/components/ServiceCard";
 import ProjectsSlider from "@/components/ProjectsSlider";
 import FinalCTA from "@/components/FinalCTA";
 import ShowcaseSection from "@/components/ShowcaseSection";
+import TrustedBy from "@/components/TrustedBy";
 import { btnPrimary, circleArrow } from "@/lib/constants";
 import { services } from "@/lib/site";
 
@@ -46,6 +47,7 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       <Hero />
+      <TrustedBy />
       <section id="services" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 sm:py-32">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
