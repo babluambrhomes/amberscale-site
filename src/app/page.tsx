@@ -353,6 +353,7 @@ function Hero() {
   });
   const yText = useTransform(scrollYProgress, [0, 1], [0, 160]);
   const yWord = useTransform(scrollYProgress, [0, 1], [0, 260]);
+  const yImg = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
   return (
@@ -361,16 +362,58 @@ function Hero() {
       className="relative flex min-h-screen items-center justify-center overflow-hidden pt-24"
     >
       <div className="grid-lines absolute inset-0 opacity-50 " aria-hidden />
-      <div
+      {/* <div
         className="absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-2 bg-violet/25 blur-[140px]"
         aria-hidden
       />
       <div
         className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-2 bg-accent/10 blur-[120px]"
         aria-hidden
-      />
+      /> */}
 
+      {/* Left decorative image */}
       <motion.div
+        style={{ y: yImg, opacity }}
+        className="absolute -left-20 top-1/2 z-0 hidden -translate-y-1/2 lg:block"
+      >
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="fade-right h-[64vh] w-[34vw] overflow-hidden rotate-1 "
+        >
+          <Image
+            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
+            alt=""
+            fill
+            sizes="34vw"
+            className="object-cover"
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Right decorative image */}
+      <motion.div
+        style={{ y: yImg, opacity }}
+        className="absolute -right-20 top-1/2 z-0 hidden -translate-y-1/2 lg:block"
+      >
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="fade-left h-[64vh] w-[34vw] overflow-hidden -rotate-1 "
+        >
+          <Image
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+            alt=""
+            fill
+            sizes="34vw"
+            className="object-cover"
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* <motion.div
         style={{ y: yWord, opacity }}
         className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none"
         aria-hidden
@@ -378,7 +421,7 @@ function Hero() {
         <span className="text-outline block whitespace-nowrap text-center text-[22vw] font-black leading-none tracking-tighter opacity-30">
           SCALE
         </span>
-      </motion.div>
+      </motion.div> */}
 
       <motion.div
         style={{ y: yText, opacity }}
@@ -413,9 +456,13 @@ function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
         >
-          AmbrScale is a product company. We launch and sponsor software that earns,
-          and we build bold ideas for brands that pitch us. Right now we&apos;re
-          deep inside Project Aurora — the biggest thing we&apos;ve ever shipped.
+          AmbrScale is a <strong className="font-bold text-foreground">product company</strong>.
+          
+          We launch and sponsor software that <strong className="font-bold text-foreground">earns</strong>,
+          
+          and we build bold <span className="underline bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">ideas for brands</span> that pitch us.
+          
+          Right now we&apos;re deep inside <strong className="font-bold text-foreground">Project Aurora</strong> — the biggest thing we&apos;ve ever shipped.
         </motion.p>
 
         <motion.div
