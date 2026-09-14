@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiCheck } from "react-icons/fi";
 import DetailHero from "@/components/DetailHero";
 import FinalCTA from "@/components/FinalCTA";
 import ProjectCard from "@/components/ProjectCard";
@@ -159,27 +159,71 @@ export default async function ProjectDetailPage({ params }: Props) {
       </section>
 
       {project.testimonial && (
-        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-          <SectionHeading
-            index="03"
-            eyebrow="Client words"
-            title="What they"
-            highlight="said"
-            align="center"
-          />
-          <Reveal delay={0.15}>
-            <div className="mx-auto mt-6 max-w-3xl text-center">
-              <span className="text-5xl font-black leading-none text-accent/20">&ldquo;</span>
-              <blockquote className="mt-6 text-xl font-semibold leading-snug tracking-tight text-foreground/90 sm:text-2xl">
-                &ldquo;{project.testimonial.quote}&rdquo;
-              </blockquote>
-              <div className="mt-8 flex items-center justify-center gap-4">
-                <div>
-                  <p className="text-sm font-semibold">{project.testimonial.name}</p>
-                  <p className="text-xs text-muted">{project.testimonial.role}</p>
+        <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+          <Reveal>
+            <figure className="relative overflow-hidden border border-line bg-surface">
+              <div
+                className="grid-lines pointer-events-none absolute inset-0 opacity-25"
+                aria-hidden
+              />
+              <div className="relative grid lg:grid-cols-[minmax(0,1fr)_320px]">
+                <div className="p-8 sm:p-12 lg:p-14">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-accent">03</span>
+                    <span className="h-px w-8 bg-accent" />
+                    <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted">
+                      Client words
+                    </span>
+                  </div>
+                  <blockquote className="mt-8 max-w-3xl text-2xl font-bold leading-snug tracking-tight text-foreground/95 sm:text-3xl">
+                    <span className="mr-2 align-middle text-accent">&ldquo;</span>
+                    {project.testimonial.quote}
+                  </blockquote>
+                  <figcaption className="mt-10 flex items-center gap-4">
+                    <span className="grid h-12 w-12 place-items-center rounded-md border border-line bg-surface-2 text-sm font-bold text-accent">
+                      {project.testimonial.name
+                        .split(" ")
+                        .map((n) => n.charAt(0))
+                        .slice(0, 2)
+                        .join("")}
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold">{project.testimonial.name}</p>
+                      <p className="text-xs text-muted">{project.testimonial.role}</p>
+                    </div>
+                  </figcaption>
+                </div>
+
+                <div className="flex flex-col justify-between gap-10 border-t border-line bg-surface-2/50 p-8 sm:p-12 lg:border-l lg:border-t-0 lg:p-14">
+                  <div className="flex items-center gap-2">
+                    <FiCheck className="h-4 w-4 text-accent" />
+                    <span className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">
+                      Verified client
+                    </span>
+                  </div>
+                  <dl className="space-y-6">
+                    <div>
+                      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
+                        Client
+                      </dt>
+                      <dd className="mt-1.5 text-sm font-semibold">{project.client}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
+                        Engagement
+                      </dt>
+                      <dd className="mt-1.5 text-sm font-semibold">{project.category}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
+                        Year
+                      </dt>
+                      <dd className="mt-1.5 text-sm font-semibold">{project.year}</dd>
+                    </div>
+                  </dl>
                 </div>
               </div>
-            </div>
+            </figure>
           </Reveal>
         </section>
       )}

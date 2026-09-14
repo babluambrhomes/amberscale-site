@@ -97,9 +97,10 @@ export default function ContactPage() {
       />
 
     
+<div className="px-8 mx-auto max-w-7xl">
 
-      <section className="border-y border-line bg-surface/40 py-10">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+ <div className="border-y border-line bg-surface/40 py-10 ">
+        <div className=" grid  grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {[
             { label: "Apna product launch", value: "We built it", accent: true },
             { label: "Brand ya team", value: "We power it", accent: true },
@@ -115,7 +116,10 @@ export default function ContactPage() {
             </div>
           ))}
         </div>
-      </section>
+      </div>
+</div>
+
+     
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-2">

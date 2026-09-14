@@ -36,8 +36,15 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-line bg-surface/40">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+    <footer className="relative overflow-hidden border-t border-line bg-surface/40">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/footer-bg.jpg')" }}
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-surface/95 via-background/90 to-background/95" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         <div className="border-b border-line pb-12">
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <div>

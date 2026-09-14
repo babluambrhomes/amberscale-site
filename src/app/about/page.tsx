@@ -8,7 +8,7 @@ import PageHero from "@/components/PageHero";
 import StatsGrid from "@/components/StatsGrid";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import TeamSlider from "@/components/TeamSlider";
+
 import TestimonialsSlider from "@/components/TestimonialsSlider";
 
 const values = [
@@ -199,22 +199,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-line bg-surface/40 py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl">
-            <SectionHeading
-              index="02.2"
-              eyebrow="The crew"
-              title="Meet the"
-              highlight="bench"
-            />
-          </div>
-          <div className="mt-8">
-            <TeamSlider />
-          </div>
-        </div>
-      </section>
-
+     
       <FinalCTA
         heading="Come build with us."
         highlight="We don't bite."

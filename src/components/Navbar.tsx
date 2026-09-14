@@ -61,7 +61,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2.5 group">
             
             <span className="font-semibold tracking-tight text-sm sm:text-base text-logo-gradient">
-              AmbrScale
+              AmbrScale<span className="text-red-600 text-md">.</span>
             </span>
           </Link>
 
@@ -260,8 +260,10 @@ export default function Navbar() {
 
                 <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
                   {products.map((p, i) => (
-                    <div
+                    <Link
                       key={i}
+                      href={`/products/${p.slug}`}
+                      onClick={() => setproductsOpen(false)}
                       className="group bg-background p-6 transition-colors duration-300 hover:bg-surface/50"
                     >
                       <span className="font-mono text-sm font-bold text-accent">
@@ -276,24 +278,24 @@ export default function Navbar() {
                       <p className="mt-1 text-sm leading-relaxed text-muted line-clamp-2">
                         {p.tagline}
                       </p>
-                    </div>
+                    </Link>
                   ))}
                 </div>
 
                 <Link
                   href="/contact"
                   onClick={() => setproductsOpen(false)}
-                  className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-2 border border-accent/30 bg-foreground px-6 py-5 text-left transition-colors duration-300 hover:border-accent/60"
+                  className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-2  bg-accent/5 px-6 py-5 text-left transition-colors duration-300 "
                 >
                   <div>
                     <div className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
                       CODENAME · IN DEVELOPMENT
                     </div>
-                    <div className="mt-1 text-lg font-bold tracking-tight text-background">
+                    <div className="mt-1 text-lg font-bold tracking-tight text-foreground">
                       Project Aurora — the big one.
                     </div>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-background">
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
                     Get early access{" "}
                     <FiArrowUpRight className="transition-transform group-hover:rotate-45" />
                   </span>

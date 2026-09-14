@@ -21,6 +21,7 @@ import SponsoredMarquee from "@/components/SponsoredMarquee";
 
 import FinalCTA from "@/components/FinalCTA";
 import ShowcaseSection from "@/components/ShowcaseSection";
+import WorkSlider from "@/components/WorkSlider";
 
 import { btnPrimary, circleArrow } from "@/lib/constants";
 import { services, products } from "@/lib/site";
@@ -42,6 +43,24 @@ const steps = [
   { step: "02", title: "Design", desc: "We shape strategy into an experience and visual language that is unmistakably yours." },
   { step: "03", title: "Build", desc: "We engineer with obsessive detail — fast, secure and ready to grow." },
   { step: "04", title: "Scale", desc: "We launch, measure and iterate, standing beside you well beyond day one." },
+];
+
+const impacts = [
+  {
+    num: "01",
+    title: "People First",
+    desc: "We design for humans first — products that feel effortless, respectful and worth coming back to.",
+  },
+  {
+    num: "02",
+    title: "Real world impact",
+    desc: "We measure success by real outcomes: revenue, retention and lives made easier.",
+  },
+  {
+    num: "03",
+    title: "Long term Value",
+    desc: "We build compounding assets — systems and brands that grow stronger every year.",
+  },
 ];
 
 const btnGhost =
@@ -206,7 +225,83 @@ export default function Home() {
           <ProcessSteps steps={steps} />
         </div>
       </section>
-      <Manifesto />
+
+      <section className="relative bg-accent/5">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <SectionHeading
+            index="04"
+            eyebrow="How we Work"
+            title="From Insight to"
+            highlight="Impact"
+            description="We ship products that earn, and we build bold ideas for brands that pitch us. Right now we&apos;re deep inside Project Aurora — the biggest thing we&apos;ve ever shipped."
+          />
+          <div className="mt-12">
+            <WorkSlider />
+          </div>
+        </div>
+      </section>
+
+<section className="relative overflow-hidden bg-accent/5">
+        <Image
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop"
+          alt=""
+          fill
+          priority={false}
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-background/60" />
+        <div className="absolute inset-0 bg-accent/15 mix-blend-multiply" />
+
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-20 sm:px-6 lg:grid-cols-5 lg:gap-16 lg:px-8">
+          <div className="col-span-2">
+            <SectionHeading
+              index="04"
+              eyebrow="Our Impact"
+              title="Building for a "
+              highlight="Better tomorrow"
+              description="We ship products that earn, and we build bold ideas for brands that pitch us. Right now we&apos;re deep inside Project Aurora — the biggest thing we&apos;ve ever shipped."
+            />
+          </div>
+
+        <div className="col-span-3 grid  grid-cols-3 items-end gap-5 ">
+  {impacts.map((p, i) => (
+    <Reveal key={p.num} delay={i * 0.1}>
+      <div
+        className={`group pr-5 sm:pr-8 ${
+          i !== impacts.length - 1 ? "border-r" : ""
+        }`}
+      >
+        <span className="font-mono text-sm font-bold text-accent">
+          {p.num}
+        </span>
+
+        <div>
+          <h3 className="text-lg font-semibold tracking-tight sm:text-xl">
+            {p.title}
+          </h3>
+
+          <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-muted">
+            {p.desc}
+          </p>
+        </div>
+      </div>
+    </Reveal>
+  ))}
+</div>
+        </div>
+      </section>
+
+
+     <section className="relative overflow-hidden border-y border-line bg-surface/40">
+      <div className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 sm:py-20">
+        <p className="mx-auto mt-7 text-base leading-relaxed text-muted sm:text-lg">
+          <ScrollText text="ouse team, funded by our own revenue. If it ships under AmbrScale, we own it — the same way we'd own yours. lor One in - house team, funded by our own revenue. If it ships under AmbrScale, we own it — the same way we'd own yours. lora" />
+        </p>
+      </div>
+    </section>
+
+
+
       <ShowcaseSection
         eyebrow="The build"
         title="Made in-house"
@@ -248,17 +343,7 @@ export default function Home() {
   );
 }
 
-function Manifesto() {
-  return (
-    <section className="relative overflow-hidden border-y border-line bg-surface/40">
-      <div className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 sm:py-20">
-        <p className="mx-auto mt-7 text-base leading-relaxed text-muted sm:text-lg">
-          <ScrollText text="ouse team, funded by our own revenue. If it ships under AmbrScale, we own it — the same way we'd own yours. lor One in - house team, funded by our own revenue. If it ships under AmbrScale, we own it — the same way we'd own yours. lora" />
-        </p>
-      </div>
-    </section>
-  );
-}
+
 
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
