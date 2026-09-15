@@ -22,6 +22,11 @@ import SponsoredMarquee from "@/components/SponsoredMarquee";
 import FinalCTA from "@/components/FinalCTA";
 import ShowcaseSection from "@/components/ShowcaseSection";
 import WorkSlider from "@/components/WorkSlider";
+import GiantBrand from "@/components/GiantBrand";
+
+import SplitWords from "@/components/interactions/SplitWords";
+import Magnetic from "@/components/interactions/Magnetic";
+import StaggerReveal from "@/components/interactions/StaggerReveal";
 
 import { btnPrimary, circleArrow } from "@/lib/constants";
 import { services, products } from "@/lib/site";
@@ -88,13 +93,11 @@ export default function Home() {
           </Reveal>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {products.map((p, i) => (
-            <Reveal key={p.slug} delay={(i % 4) * 0.08}>
-              <ProductCard product={p} />
-            </Reveal>
+        <StaggerReveal className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {products.map((p) => (
+            <ProductCard key={p.slug} product={p} />
           ))}
-        </div>
+        </StaggerReveal>
       </section>
 
       <SponsoredMarquee />
@@ -116,19 +119,18 @@ export default function Home() {
           </Reveal>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+        <StaggerReveal className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
-            <Reveal key={i} delay={(i % 3) * 0.08} className="bg-background">
-              <ServiceCard
-                title={s.title}
-                desc={s.desc}
-                href={`/services/${s.slug}`}
-                index={i}
-                showIndex={false}
-              />
-            </Reveal>
+            <ServiceCard
+              key={i}
+              title={s.title}
+              desc={s.desc}
+              href={`/services/${s.slug}`}
+              index={i}
+              showIndex={false}
+            />
           ))}
-        </div>
+        </StaggerReveal>
       </section>
 
 
@@ -222,7 +224,7 @@ export default function Home() {
           align="center"
         />
         <div className="mt-8">
-          <ProcessSteps steps={steps} />
+          <ProcessSteps steps={steps} horizontal />
         </div>
       </section>
 
@@ -265,7 +267,7 @@ export default function Home() {
 
         <div className="col-span-3 grid  grid-cols-3 items-end gap-5 ">
   {impacts.map((p, i) => (
-    <Reveal key={p.num} delay={i * 0.1}>
+    <StaggerReveal key={p.num} className="h-full">
       <div
         className={`group pr-5 sm:pr-8 ${
           i !== impacts.length - 1 ? "border-r" : ""
@@ -285,7 +287,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-    </Reveal>
+    </StaggerReveal>
   ))}
 </div>
         </div>
@@ -339,6 +341,7 @@ export default function Home() {
         description="We build our own products, and we power ideas we believe in. Pitch yours — if it's bold, we'll take it seriously."
         buttonText="Pitch us"
       />
+      <GiantBrand />
     </div>
   );
 }
@@ -437,52 +440,55 @@ function Hero() {
           Shipping products since 2021 — 4 live &amp; counting
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 34 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 text-[11vw] font-black leading-[0.92] tracking-tighter sm:text-7xl"
-        >
-          We ship products that
+        <h1 className="mt-8 text-[11vw] font-black leading-[0.92] tracking-tighter sm:text-7xl">
+          <SplitWords
+            text="We ship products that"
+            delay={0.2}
+            stagger={0.05}
+            y={40}
+          />
           <br />
-          <span className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">
-            help you scale.
-          </span>
-        </motion.h1>
+          <SplitWords
+            text="help you scale."
+            delay={0.42}
+            stagger={0.05}
+            y={40}
+            className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent"
+          />
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
-        >
+        <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
           AmbrScale is a <strong className="font-bold text-foreground">product company</strong>.
-          
+
           We launch and sponsor software that <strong className="font-bold text-foreground">earns</strong>,
-          
+
           and we build bold <span className="underline bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">ideas for brands</span> that pitch us.
-          
+
           Right now we&apos;re deep inside <strong className="font-bold text-foreground">Project Aurora</strong> — the biggest thing we&apos;ve ever shipped.
-        </motion.p>
+        </p>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45 }}
+          transition={{ duration: 0.7, delay: 0.85 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Link href="/products" className={btnPrimary}>
-            Explore products
-            <span className={circleArrow}>
-              <FiArrowRight />
-            </span>
-          </Link>
-          <Link href="/about" className={btnGhost}>
-            Meet the builders
-            <span className={circleArrow}>
-              <FiArrowUpRight />
-            </span>
-          </Link>
+          <Magnetic>
+            <Link href="/products" className={btnPrimary}>
+              Explore products
+              <span className={circleArrow}>
+                <FiArrowRight />
+              </span>
+            </Link>
+          </Magnetic>
+          <Magnetic>
+            <Link href="/about" className={btnGhost}>
+              Meet the builders
+              <span className={circleArrow}>
+                <FiArrowUpRight />
+              </span>
+            </Link>
+          </Magnetic>
         </motion.div>
 
 

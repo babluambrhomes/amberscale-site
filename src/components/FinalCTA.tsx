@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
 import Reveal from "@/components/Reveal";
+import Magnetic from "@/components/interactions/Magnetic";
 
 export default function FinalCTA({
   heading = "Got an idea?",
@@ -20,7 +23,7 @@ export default function FinalCTA({
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <Reveal>
           <div className="relative overflow-hidden">
-           
+            
 
             <div className="relative grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr]">
               <div>
@@ -46,13 +49,15 @@ export default function FinalCTA({
                   {description}
                 </p>
 
-                <Link
-                  href={href}
-                  className="group mt-8 inline-flex items-center gap-3  pb-2 text-base font-semibold text-foreground transition-colors hover:text-accent"
-                >
-                  {buttonText}
-                  <FiArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:rotate-45" />
-                </Link>
+                <Magnetic>
+                  <Link
+                    href={href}
+                    className="group mt-8 inline-flex items-center gap-3  pb-2 text-base font-semibold text-foreground transition-colors hover:text-accent"
+                  >
+                    {buttonText}
+                    <FiArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:rotate-45" />
+                  </Link>
+                </Magnetic>
               </div>
             </div>
           </div>

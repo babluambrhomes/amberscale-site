@@ -1,4 +1,7 @@
+"use client";
+
 import Reveal from "./Reveal";
+import SplitWords from "@/components/interactions/SplitWords";
 
 type SectionHeadingProps = {
   index: string;
@@ -35,22 +38,22 @@ export default function SectionHeading({
           </span>
         </div>
       </Reveal>
-      <Reveal delay={0.08}>
-        <h2
-          className={`mt-4 text-3xl font-bold tracking-tight ${
-            size === "lg" ? "sm:text-5xl" : "sm:text-4xl"
-          }`}
-        >
-          {title}
-          {br && highlight && <br />}
-          {!br && highlight && " "}
-          {highlight && (
-            <span className="relative inline-block bg-gradient-to-r from-accent to-green-500 bg-clip-text text-transparent text-[1.15em]">
-              {highlight}
-            </span>
-          )}
-        </h2>
-      </Reveal>
+      <h2
+        className={`mt-4 text-3xl font-bold tracking-tight ${
+          size === "lg" ? "sm:text-5xl" : "sm:text-4xl"
+        }`}
+      >
+        <SplitWords text={title} y={20} />
+        {br && highlight && <br />}
+        {!br && highlight && " "}
+        {highlight && (
+          <SplitWords
+            text={highlight}
+            y={20}
+            className="relative inline-block bg-gradient-to-r from-accent to-green-500 bg-clip-text text-transparent text-[1.15em]"
+          />
+        )}
+      </h2>
       {description && (
         <Reveal delay={0.16}>
           <p className="mt-5 leading-relaxed text-muted">{description}</p>

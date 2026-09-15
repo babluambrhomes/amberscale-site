@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
 import PowerBadge from "@/components/PowerBadge";
 import StatusChip from "@/components/StatusChip";
+import TiltCard from "@/components/interactions/TiltCard";
 
 type Product = {
   slug: string;
@@ -16,6 +17,7 @@ type Product = {
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
+    <TiltCard maxRotate={3.5} lift={6} className="h-full">
     <Link
       href={`/products/${product.slug}`}
       className="group relative block h-full overflow-hidden border border-line bg-background transition-all duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-30px_rgba(79,70,229,0.35)]"
@@ -50,5 +52,6 @@ export default function ProductCard({ product }: { product: Product }) {
         
       </div>
     </Link>
+    </TiltCard>
   );
 }

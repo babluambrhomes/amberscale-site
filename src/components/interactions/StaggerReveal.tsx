@@ -4,14 +4,21 @@ import { useLayoutEffect, useRef, type ReactNode, type Ref } from "react";
 import { gsap, prefersReducedMotion, registerGsap } from "@/lib/gsap";
 import { useEffect } from "react";
 
-type RevealProps = {
+type StaggerRevealProps = {
   children: ReactNode;
-  delay?: number;
-  y?: number;
   className?: string;
+  stagger?: number;
+  y?: number;
+  once?: boolean;
 };
 
-export default function Reveal({ children, delay = 0, y = 32, className }: RevealProps) {
+export default function StaggerReveal({
+  children,
+  className,
+  stagger = 0.08,
+  y = 36,
+  once = true,
+}: StaggerRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,20 +30,22 @@ export default function Reveal({ children, delay = 0, y = 32, className }: Revea
     if (!el) return;
     if (prefersReducedMotion()) return;
 
+    const targets = el.children;
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        el,
+        targets,
         { opacity: 0, y },
         {
           opacity: 1,
           y: 0,
           duration: 0.75,
-          delay,
           ease: "power3.out",
+          stagger,
           scrollTrigger: {
             trigger: el,
-            start: "top 88%",
-            once: true,
+            start: "top 85%",
+            once,
           },
         }
       );
@@ -45,7 +54,7 @@ export default function Reveal({ children, delay = 0, y = 32, className }: Revea
     return () => {
       ctx.revert();
     };
-  }, [delay, y]);
+  }, [stagger, y, once]);
 
   return (
     <div ref={ref as Ref<HTMLDivElement>} className={className}>

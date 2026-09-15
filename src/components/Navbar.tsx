@@ -6,6 +6,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowUpRight, FiChevronDown, FiMenu, FiX } from "react-icons/fi";
 import { services, projects, products } from "@/lib/site";
+import ScrollProgress from "@/components/interactions/ScrollProgress";
+import Magnetic from "@/components/interactions/Magnetic";
 
 const links = [
   { href: "/products", label: "Products" },
@@ -50,6 +52,7 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 inset-x-0 z-50"
     >
+      <ScrollProgress className="absolute top-0 left-0 right-0 h-[2px] origin-left z-50" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           className={`relative z-50 mt-4 flex items-center justify-between px-4 sm:px-6 h-14 backdrop-blur-xl transition-all duration-300 ${
@@ -167,12 +170,14 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="hidden sm:inline-flex items-center gap-1.5 rounded-2 bg-accent px-5 py-2 text-sm font-semibold text-background transition-all hover:gap-2.5 hover:shadow-[0_0_24px_-4px_var(--accent)]"
-            >
-              Pitch us <FiArrowUpRight />
-            </Link>
+            <Magnetic strength={0.15}>
+              <Link
+                href="/contact"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-2 bg-accent px-5 py-2 text-sm font-semibold text-background transition-all hover:gap-2.5 hover:shadow-[0_0_24px_-4px_var(--accent)]"
+              >
+                Pitch us <FiArrowUpRight />
+              </Link>
+            </Magnetic>
             <button
               onClick={() => setOpen((v) => !v)}
               className="inline-flex h-9 w-9 items-center justify-center rounded-2 border border-line text-foreground md:hidden"

@@ -10,6 +10,7 @@ import {
   FiTwitter,
 } from "react-icons/fi";
 import { products, services } from "@/lib/site";
+import Magnetic from "@/components/interactions/Magnetic";
 
 const company = [
   { href: "/about", label: "About us" },
@@ -93,14 +94,15 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex items-center gap-3">
               {socials.map((s, i) => (
-                <a
-                  key={i}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="flex h-9 w-9 items-center justify-center border border-line text-muted transition-colors hover:border-accent hover:text-accent"
-                >
-                  <s.icon className="text-sm" />
-                </a>
+                <Magnetic key={i} strength={0.35}>
+                  <a
+                    href={s.href}
+                    aria-label={s.label}
+                    className="flex h-9 w-9 items-center justify-center border border-line text-muted transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <s.icon className="text-sm" />
+                  </a>
+                </Magnetic>
               ))}
             </div>
           </div>
@@ -178,12 +180,14 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+            <Magnetic strength={0.2}>
             <Link
               href="/contact"
               className="mt-6 inline-flex items-center gap-1.5 border border-accent/30 bg-accent px-5 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-accent"
             >
               Start a pitch <FiArrowUpRight />
             </Link>
+            </Magnetic>
           </div>
 
         </div>
