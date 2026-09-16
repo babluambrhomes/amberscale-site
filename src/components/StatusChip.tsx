@@ -14,7 +14,7 @@ export default function StatusChip({ status }: { status: string }) {
   const key = status === "IN DEV" ? "IN DEV" : status;
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-2 border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] ${styles[key as keyof typeof styles]}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] ${styles[key as keyof typeof styles]}`}
     >
       <span className={`h-1.5 w-1.5 rounded-full ${dots[key as keyof typeof dots]}`} aria-hidden />
       {status}

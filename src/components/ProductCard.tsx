@@ -20,7 +20,7 @@ export default function ProductCard({ product }: { product: Product }) {
     <TiltCard maxRotate={3.5} lift={6} className="h-full">
     <Link
       href={`/products/${product.slug}`}
-      className="group relative block h-full overflow-hidden border border-line bg-background transition-all duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-30px_rgba(79,70,229,0.35)]"
+      className="group relative block h-full overflow-hidden rounded-[1.5rem] border border-line bg-background transition-all duration-300 hover:border-accent/40 hover:shadow-[0_20px_60px_-30px_rgba(79,70,229,0.35)]"
     >
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
@@ -44,7 +44,7 @@ export default function ProductCard({ product }: { product: Product }) {
             <h3 className="text-xl font-bold tracking-tight">{product.name}</h3>
             <p className="mt-1 text-sm text-muted">{product.tagline}</p>
           </div>
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-line text-foreground transition-all duration-300 group-hover:bg-accent group-hover:text-background">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line text-foreground transition-all duration-300 group-hover:bg-accent group-hover:text-background">
             <FiArrowUpRight />
           </span>
         </div>

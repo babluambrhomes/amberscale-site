@@ -30,7 +30,7 @@ export default function ServiceCard({
           </span>
         )}
         {href && (
-          <span className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground transition-all duration-300 group-hover:bg-accent group-hover:text-background">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-foreground transition-all duration-300 group-hover:bg-accent group-hover:text-background">
             <FiArrowUpRight />
           </span>
         )}
@@ -42,7 +42,7 @@ export default function ServiceCard({
           {tags.map((t, j) => (
             <span
               key={j}
-              className="rounded-2 border border-line px-3 py-1 text-[11px] font-medium text-muted transition-colors duration-300 group-hover:border-accent/40 group-hover:text-foreground"
+              className="rounded-full border border-line px-3 py-1 text-[11px] font-medium text-muted transition-colors duration-300 group-hover:border-accent/40 group-hover:text-foreground"
             >
               {t}
             </span>

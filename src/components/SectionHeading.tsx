@@ -33,9 +33,7 @@ export default function SectionHeading({
         >
           <span className="font-mono text-xs text-accent">{index}</span>
           <span className="h-px w-8 bg-accent" />
-          <span className="text-xs font-medium uppercase tracking-[0.25em] text-muted">
-            {eyebrow}
-          </span>
+          <span className="font-hand text-xl text-muted -rotate-1">{eyebrow}</span>
         </div>
       </Reveal>
       <h2
@@ -47,11 +45,9 @@ export default function SectionHeading({
         {br && highlight && <br />}
         {!br && highlight && " "}
         {highlight && (
-          <SplitWords
-            text={highlight}
-            y={20}
-            className="relative inline-block bg-gradient-to-r from-accent to-green-500 bg-clip-text text-transparent text-[1.15em]"
-          />
+          <span className="hand-underline inline-block text-accent">
+            <SplitWords text={highlight} y={20} className="text-[1.15em]" />
+          </span>
         )}
       </h2>
       {description && (

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type ReactNode, type Ref } from "react";
-import { gsap, prefersReducedMotion } from "@/lib/gsap";
+import { motion, useReducedMotion, useSpring } from "framer-motion";
 
 type MagneticProps = {
   children: ReactNode;
@@ -12,47 +12,39 @@ type MagneticProps = {
 
 export default function Magnetic({
   children,
-  strength = 0.3,
+  strength = 0.1,
   className,
   disabled = false,
 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = Boolean(useReducedMotion());
+  const x = useSpring(0, { stiffness: 150, damping: 15, mass: 0.1 });
+  const y = useSpring(0, { stiffness: 150, damping: 15, mass: 0.1 });
 
   const onMouseMove = (e: React.MouseEvent) => {
-    if (disabled || prefersReducedMotion()) return;
+    if (disabled || reduceMotion) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const relX = e.clientX - rect.left - rect.width / 2;
-    const relY = e.clientY - rect.top - rect.height / 2;
-    gsap.to(el, {
-      x: relX * strength,
-      y: relY * strength,
-      duration: 0.5,
-      ease: "power2.out",
-    });
+    x.set((e.clientX - rect.left - rect.width / 2) * strength);
+    y.set((e.clientY - rect.top - rect.height / 2) * strength);
   };
 
   const onMouseLeave = () => {
-    if (disabled || prefersReducedMotion()) return;
-    const el = ref.current;
-    if (!el) return;
-    gsap.to(el, {
-      x: 0,
-      y: 0,
-      duration: 0.6,
-      ease: "elastic.out(1, 0.4)",
-    });
+    if (disabled) return;
+    x.set(0);
+    y.set(0);
   };
 
   return (
-    <div
+    <motion.div
       ref={ref as Ref<HTMLDivElement>}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       className={className}
+      style={{ x, y }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

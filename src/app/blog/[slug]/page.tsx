@@ -164,7 +164,7 @@ export default async function BlogPostPage({ params }: Props) {
                 </Link>
               </Reveal>
             </div>
-            <div className="mt-8 grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line md:grid-cols-2">
               {more.map((p, i) => (
                 <Reveal key={p.slug} delay={i * 0.08} className="bg-background">
                   <BlogCard post={p} />

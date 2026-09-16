@@ -87,7 +87,7 @@ export default function AboutPage() {
 
           <div className="relative order-first lg:order-none h-[520px]">
             <Reveal className="absolute left-0 top-0 z-30 w-[58%] -rotate-2 transition-all duration-300 hover:-translate-y-4 hover:scale-105 hover:z-50 hover:shadow-2xl">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+              <div className="relative aspect-[4/3] overflow-hidden hand-radius border border-line">
                 <Image
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop"
                   alt="Team collaborating"
@@ -98,7 +98,7 @@ export default function AboutPage() {
               </div>
             </Reveal>
             <Reveal delay={0.1} className="absolute right-0 top-[26%] z-20 w-[55%] rotate-3 transition-all duration-300 hover:-translate-y-6 hover:scale-105 hover:z-50 hover:shadow-2xl">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+              <div className="relative aspect-[4/3] overflow-hidden hand-radius border border-line">
                 <Image
                   src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop"
                   alt="Workspace"
@@ -109,7 +109,7 @@ export default function AboutPage() {
               </div>
             </Reveal>
             <Reveal delay={0.2} className="absolute left-[12%] bottom-0 z-10 w-[50%] -rotate-1 transition-all duration-300 hover:-translate-y-8 hover:scale-105 hover:z-50 hover:shadow-2xl">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+              <div className="relative aspect-[4/3] overflow-hidden hand-radius border border-line">
                 <Image
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=600&auto=format&fit=crop"
                   alt="Meeting"
@@ -120,7 +120,7 @@ export default function AboutPage() {
               </div>
             </Reveal>
             <Reveal delay={0.3} className="absolute -bottom-6 left-4 sm:left-8 z-40">
-              <div className="flex items-center gap-3 rounded-2 border border-line bg-background/80 px-6 py-4 backdrop-blur glow-accent">
+              <div className="flex items-center gap-3 hand-radius border border-line bg-background/80 px-6 py-4 backdrop-blur glow-accent">
                 <span className="text-2xl font-black text-accent">5+</span>
                 <span className="text-xs uppercase tracking-widest text-muted">years of<br />craft</span>
               </div>
@@ -147,7 +147,7 @@ export default function AboutPage() {
             <div className="space-y-1">
               {timeline.map((t, i) => (
                 <Reveal key={i} delay={i * 0.08}>
-                  <div className="group relative flex gap-6 rounded-md border border-transparent p-6 transition-all duration-300 hover:border-line hover:bg-surface/60">
+                  <div className="group relative flex gap-6 rounded-2xl border border-transparent p-6 transition-all duration-300 hover:border-line hover:bg-surface/60">
                     <div className="flex flex-col items-center">
                       <span className="font-mono text-sm font-bold text-accent">{t.year}</span>
                       {i < timeline.length - 1 && (
@@ -173,7 +173,7 @@ export default function AboutPage() {
                 highlight="work by"
               />
             </div>
-            <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2">
               {values.map((v, i) => (
                 <Reveal key={i} delay={i * 0.08}>
                   <FeatureCard icon={<v.icon />} title={v.title} desc={v.desc} />

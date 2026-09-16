@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useLayoutEffect,
-  useRef,
-  type RefObject,
-} from "react";
-import { gsap, prefersReducedMotion, registerGsap } from "@/lib/gsap";
-import { useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 type SplitWordsProps = {
   text: string;
@@ -27,56 +21,34 @@ export default function SplitWords({
   y = 28,
   once = true,
 }: SplitWordsProps) {
-  const ref = useRef<HTMLSpanElement>(null);
+  const reduceMotion = Boolean(useReducedMotion());
   const words = text.split(" ").filter(Boolean);
 
-  useEffect(() => {
-    registerGsap();
-  }, []);
-
-  useLayoutEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (prefersReducedMotion()) return;
-
-    const targets = el.querySelectorAll<HTMLElement>(".gsap-reveal-word");
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        targets,
-        { y, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration,
-          ease: "power3.out",
-          delay,
-          stagger,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 88%",
-            once,
-          },
-        }
-      );
-    }, el);
-
-    return () => {
-      ctx.revert();
-    };
-  }, [text, delay, stagger, duration, y, once]);
-
   return (
-    <span ref={ref as RefObject<HTMLSpanElement>}>
+    <motion.span
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once, margin: "-12% 0px" }}
+      variants={{
+        hidden: {},
+        show: { transition: { staggerChildren: stagger, delayChildren: delay } },
+      }}
+    >
       {words.map((word, i) => (
-        <span
+        <motion.span
           key={i}
-          className={className ? `gsap-reveal-word ${className}` : "gsap-reveal-word"}
+          className={className ? `split-word ${className}` : "split-word"}
+          variants={{
+            hidden: reduceMotion ? {} : { y, opacity: 0 },
+            show: reduceMotion
+              ? {}
+              : { y: 0, opacity: 1, transition: { duration, ease: [0.16, 1, 0.3, 1] } },
+          }}
         >
           {word}
           {i < words.length - 1 ? "\u00A0" : ""}
-        </span>
+        </motion.span>
       ))}
-    </span>
+    </motion.span>
   );
 }

@@ -21,7 +21,7 @@ export default function BlogCard({ post, href }: { post: BlogPost; href?: string
   return (
     <Link
       href={target}
-      className="group flex h-full flex-col overflow-hidden bg-background transition-colors duration-300 hover:bg-surface/50"
+      className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] bg-background transition-colors duration-300 hover:bg-surface/50"
     >
       <div className="relative h-52 overflow-hidden">
         <Image
@@ -31,7 +31,7 @@ export default function BlogCard({ post, href }: { post: BlogPost; href?: string
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <span className="absolute left-4 top-4 border border-line bg-background/70 px-3 py-1 text-[11px] font-semibold backdrop-blur">
+        <span className="absolute left-4 top-4 rounded-full border border-line bg-background/70 px-3 py-1 text-[11px] font-semibold backdrop-blur">
           {post.cat}
         </span>
       </div>

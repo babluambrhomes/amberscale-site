@@ -130,7 +130,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2">
             {service.features.map((f, i) => {
               const Icon = featureIcons[i % featureIcons.length];
               return (
@@ -243,7 +243,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </Link>
           </Reveal>
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
           {others.map((o, i) => (
             <Reveal key={o.slug} delay={(i % 3) * 0.08} className="bg-background">
               <ServiceCard

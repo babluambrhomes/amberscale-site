@@ -36,7 +36,7 @@ export default function SitemapPage() {
       />
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-        <div className="grid grid-cols-1 gap-px border border-line bg-line lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line lg:grid-cols-2">
           <Link
             href="/"
             className="group flex items-center justify-between bg-background p-8"

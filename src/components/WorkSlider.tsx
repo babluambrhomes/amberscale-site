@@ -65,7 +65,7 @@ export default function WorkSlider() {
                 </span>
               <h5 className="text-lg font-semibold tracking-tight">{s.title}</h5>
 
-              <figure className="relative mt-4 aspect-[16/9] overflow-hidden rounded-md border border-line">
+              <figure className="relative mt-4 aspect-[16/9] overflow-hidden rounded-[1.5rem] border border-line">
                 <Image
                   src={s.img}
                   alt={s.title}
@@ -84,13 +84,13 @@ export default function WorkSlider() {
       <div className="absolute -top-24 right-0 z-10 flex items-center gap-3">
         <button
           aria-label="Previous step"
-          className="work-prev flex h-11 w-11 items-center justify-center rounded-2 border border-line bg-surface text-foreground/80 transition-colors hover:border-accent/50 hover:text-accent"
+          className="work-prev flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-foreground/80 transition-colors hover:border-accent/50 hover:text-accent"
         >
           <FiArrowLeft />
         </button>
         <button
           aria-label="Next step"
-          className="work-next flex h-11 w-11 items-center justify-center rounded-2 border border-line bg-surface text-foreground/80 transition-colors hover:border-accent/50 hover:text-accent"
+          className="work-next flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-foreground/80 transition-colors hover:border-accent/50 hover:text-accent"
         >
           <FiArrowRight />
         </button>

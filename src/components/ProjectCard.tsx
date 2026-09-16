@@ -21,7 +21,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       href={`/portfolio/${project.slug}`}
       className="group relative block overflow-hidden"
     >
-      <div className="relative aspect-[4/3] overflow-hidden border border-line">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-line">
         <Image
           src={project.img}
           alt={project.title}
@@ -34,7 +34,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         <div className="absolute left-0 right-0 top-0 flex items-start justify-between gap-3 p-5">
           <div className="flex flex-col items-start gap-2">
             {project.backed && <PowerBadge />}
-            <span className="border border-white/20 bg-background/60 px-3 py-1 text-[11px] font-semibold backdrop-blur-md">
+            <span className="rounded-full border border-white/20 bg-background/60 px-3 py-1 text-[11px] font-semibold backdrop-blur-md">
               {project.category}
             </span>
           </div>
@@ -48,7 +48,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             </h3>
             <p className="mt-1 text-sm text-white/70">{project.tag}</p>
           </div>
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/30 bg-white/10 text-white backdrop-blur transition-all duration-300 group-hover:bg-accent group-hover:border-accent">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur transition-all duration-300 group-hover:bg-accent group-hover:border-accent">
             <FiArrowUpRight className="text-lg" />
           </span>
         </div>

@@ -91,7 +91,7 @@ export default function DetailHero({
             className="mb-4 flex items-center gap-3"
           >
             <span className="h-px w-8 bg-accent" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white">
+            <span className="font-hand text-2xl text-white -rotate-1">
               {eyebrow}
             </span>
           </motion.div>
@@ -125,7 +125,7 @@ export default function DetailHero({
             >
               {meta.map((m, i) => (
                 <span key={i} className="flex items-center gap-2 text-sm text-white/60">
-                  {i > 0 && <span className="h-1 w-1 rounded-2 bg-white/30" />}
+                  {i > 0 && <span className="h-1 w-1 rounded-full bg-white/30" />}
                   <span className="font-medium text-white/80">{m.value}</span>
                   <span>{m.label}</span>
                 </span>

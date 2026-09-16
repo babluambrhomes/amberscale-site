@@ -68,9 +68,6 @@ const impacts = [
   },
 ];
 
-const btnGhost =
-  "group inline-flex items-center gap-2 rounded-2 border border-line py-2.5 pl-7 pr-3 text-sm font-medium text-foreground/90 transition-colors hover:border-accent/50";
-
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
@@ -119,7 +116,7 @@ export default function Home() {
           </Reveal>
         </div>
 
-        <StaggerReveal className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+        <StaggerReveal className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <ServiceCard
               key={i}
@@ -143,7 +140,7 @@ export default function Home() {
           <div className="grid items-center gap-14 lg:grid-cols-2">
             <div className="relative order-2 lg:order-1 h-[520px]">
               <Reveal className="absolute left-0 top-0 z-30 w-[58%] -rotate-2 transition-all duration-300 hover:-translate-y-4 hover:scale-105 hover:z-50 hover:shadow-2xl">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+                <div className="relative aspect-[4/3] overflow-hidden hand-radius border border-line">
                   <Image
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop"
                     alt="Team collaborating"
@@ -154,7 +151,7 @@ export default function Home() {
                 </div>
               </Reveal>
               <Reveal delay={0.1} className="absolute right-0 top-[26%] z-20 w-[55%] rotate-3 transition-all duration-300 hover:-translate-y-6 hover:scale-105 hover:z-50 hover:shadow-2xl">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+                <div className="relative aspect-[4/3] overflow-hidden hand-radius border border-line">
                   <Image
                     src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop"
                     alt="Workspace"
@@ -165,7 +162,7 @@ export default function Home() {
                 </div>
               </Reveal>
               <Reveal delay={0.2} className="absolute left-[12%] bottom-0 z-10 w-[50%] -rotate-1 transition-all duration-300 hover:-translate-y-8 hover:scale-105 hover:z-50 hover:shadow-2xl">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+                <div className="relative aspect-[4/3] overflow-hidden hand-radius border border-line">
                   <Image
                     src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=600&auto=format&fit=crop"
                     alt="Meeting"
@@ -176,7 +173,7 @@ export default function Home() {
                 </div>
               </Reveal>
               <Reveal delay={0.3} className="absolute -bottom-6 left-4 sm:left-8 z-40">
-                <div className="flex items-center gap-3 rounded-2 border border-line bg-background/80 px-6 py-4 backdrop-blur glow-accent">
+                <div className="flex items-center gap-3 hand-radius border border-line bg-background/80 px-6 py-4 backdrop-blur glow-accent">
                   <span className="text-2xl font-black text-accent">5+</span>
                   <span className="text-xs uppercase tracking-widest text-muted">years of<br />craft</span>
                 </div>
@@ -195,7 +192,7 @@ export default function Home() {
                 <ul className="mt-8 space-y-3">
                   {points.map((p, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm text-foreground/90">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-2 bg-accent/15 text-accent">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
                         <FiCheck className="text-xs" />
                       </span>
                       {p}
@@ -224,7 +221,7 @@ export default function Home() {
           align="center"
         />
         <div className="mt-8">
-          <ProcessSteps steps={steps} horizontal />
+          <ProcessSteps steps={steps} />
         </div>
       </section>
 
@@ -354,117 +351,103 @@ function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const yText = useTransform(scrollYProgress, [0, 1], [0, 160]);
-  const yWord = useTransform(scrollYProgress, [0, 1], [0, 260]);
-  const yImg = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const yBg = useTransform(scrollYProgress, [0, 1], [0, 160]);
+  const yText = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
   return (
     <section
       ref={ref}
-      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-24"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background pt-24 pb-16"
     >
-      <div className="grid-lines absolute inset-0 opacity-50 " aria-hidden />
+      {/* Background image — parallax */}
+      <motion.div
+        style={{ y: yBg }}
+        className="absolute inset-x-0 -top-16 -bottom-16 z-0"
+      >
+        <Image
+          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+        />
+      </motion.div>
+
+      {/* Overlays for readability */}
+      <div className="absolute inset-0 z-10 bg-black/55" aria-hidden />
       {/* <div
-        className="absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-2 bg-violet/25 blur-[140px]"
-        aria-hidden
-      />
-      <div
-        className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-2 bg-accent/10 blur-[120px]"
+        className="absolute inset-0 z-10 bg-gradient-to-t from-background via-transparent to-black/60"
         aria-hidden
       /> */}
 
-      {/* Left decorative image */}
-      <motion.div
-        style={{ y: yImg, opacity }}
-        className="absolute -left-20 top-1/2 z-0 hidden -translate-y-1/2 lg:block"
-      >
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="fade-right h-[64vh] w-[34vw] overflow-hidden rotate-1 "
-        >
-          <Image
-            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
-            alt=""
-            fill
-            sizes="34vw"
-            className="object-cover"
-          />
-        </motion.div>
-      </motion.div>
-
-      {/* Right decorative image */}
-      <motion.div
-        style={{ y: yImg, opacity }}
-        className="absolute -right-20 top-1/2 z-0 hidden -translate-y-1/2 lg:block"
-      >
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="fade-left h-[64vh] w-[34vw] overflow-hidden -rotate-1 "
-        >
-          <Image
-            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-            alt=""
-            fill
-            sizes="34vw"
-            className="object-cover"
-          />
-        </motion.div>
-      </motion.div>
-
-      {/* <motion.div
-        style={{ y: yWord, opacity }}
-        className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none"
+      {/* Hand-drawn corner marks */}
+      <svg
+        className="absolute left-8 top-24 z-20 hidden text-white/30 md:block"
+        width="90"
+        height="90"
+        viewBox="0 0 110 110"
+        fill="none"
         aria-hidden
       >
-        <span className="text-outline block whitespace-nowrap text-center text-[22vw] font-black leading-none tracking-tighter opacity-30">
-          SCALE
-        </span>
-      </motion.div> */}
+        <path
+          d="M55 55 C 55 37 67 30 77 38 C 86 45 84 60 69 66 C 55 72 44 60 48 47 C 51 36 64 33 71 41"
+          className="stroke-current"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+      </svg>
+      <svg
+        className="absolute right-8 top-24 z-20 hidden text-white/25 md:block"
+        width="110"
+        height="110"
+        viewBox="0 0 110 110"
+        fill="none"
+        aria-hidden
+      >
+        <path
+          d="M55 55 C 55 37 67 30 77 38 C 86 45 84 60 69 66 C 55 72 44 60 48 47 C 51 36 64 33 71 41"
+          className="stroke-current"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+      </svg>
 
+      {/* Centered content */}
       <motion.div
         style={{ y: yText, opacity }}
-        className="relative mx-auto max-w-5xl px-4 text-center sm:px-6"
+        className="relative z-20 mx-auto w-full max-w-4xl px-4 text-center sm:px-6"
       >
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 rounded-2 border border-line bg-surface/70 px-4 py-1.5 text-xs font-medium text-muted backdrop-blur"
+          className="inline-flex items-center gap-2.5 hand-radius -rotate-1 border border-white/20 bg-white/10 px-5 py-2 font-hand text-lg text-white backdrop-blur"
         >
-          <span className="h-1.5 w-1.5 rounded-2 bg-accent animate-pulse" />
-          Shipping products since 2021 — 4 live &amp; counting
+          <span className="h-2 w-2 rounded-full bg-accent-2 animate-pulse" />
+          Shipping since 2021 — 4 live &amp; counting
         </motion.div>
 
-        <h1 className="mt-8 text-[11vw] font-black leading-[0.92] tracking-tighter sm:text-7xl">
-          <SplitWords
-            text="We ship products that"
-            delay={0.2}
-            stagger={0.05}
-            y={40}
-          />
+        <h1 className="mt-8 text-7xl font-black leading-[0.95] tracking-tighter text-white">
+          <SplitWords text="We ship products that" delay={0.15} stagger={0.05} y={40} />
           <br />
-          <SplitWords
-            text="help you scale."
-            delay={0.42}
-            stagger={0.05}
-            y={40}
-            className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent"
-          />
+          <span className="hand-underline inline-block">
+            <SplitWords
+              text="help you scale."
+              delay={0.35}
+              stagger={0.05}
+              y={40}
+              className="text-[1.08em]"
+            />
+          </span>
         </h1>
 
-        <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-          AmbrScale is a <strong className="font-bold text-foreground">product company</strong>.
-
-          We launch and sponsor software that <strong className="font-bold text-foreground">earns</strong>,
-
-          and we build bold <span className="underline bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">ideas for brands</span> that pitch us.
-
-          Right now we&apos;re deep inside <strong className="font-bold text-foreground">Project Aurora</strong> — the biggest thing we&apos;ve ever shipped.
+        <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+          AmbrScale is a <strong className="font-bold text-white">product company</strong>.
+          We launch and sponsor software that <strong className="font-bold text-white">earns</strong>,
+          and we build bold <span className="hand-underline font-semibold text-white">ideas for brands</span> that pitch us.
+          Right now we&apos;re deep inside <strong className="font-bold text-white">Project Aurora</strong> — the biggest thing we&apos;ve ever shipped.
         </p>
 
         <motion.div
@@ -474,7 +457,10 @@ function Hero() {
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Magnetic>
-            <Link href="/products" className={btnPrimary}>
+            <Link
+              href="/products"
+              className="group inline-flex items-center gap-2 rounded-full bg-white py-2.5 pl-7 pr-3 text-sm font-semibold text-accent shadow-lg transition-all duration-300 hover:bg-accent hover:text-white"
+            >
               Explore products
               <span className={circleArrow}>
                 <FiArrowRight />
@@ -482,19 +468,58 @@ function Hero() {
             </Link>
           </Magnetic>
           <Magnetic>
-            <Link href="/about" className={btnGhost}>
+            <Link
+              href="/about"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 py-2.5 pl-7 pr-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-white/20"
+            >
               Meet the builders
               <span className={circleArrow}>
                 <FiArrowUpRight />
               </span>
             </Link>
           </Magnetic>
+          <div className="flex items-center gap-1.5 pt-1">
+            <svg width="34" height="30" viewBox="0 0 40 34" fill="none" aria-hidden>
+              <path
+                d="M6 6 C 14 8, 16 18, 14 24 C 12 30, 22 30, 28 26"
+                className="stroke-accent-2"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M22 20 L 28 26 L 24 30"
+                className="stroke-accent-2"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className="font-hand text-xl text-accent-2 -rotate-2">
+              start here →
+            </span>
+          </div>
         </motion.div>
-
-
       </motion.div>
 
-
+      {/* Scroll hint — hand-written */}
+      <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-1 text-white/60">
+        <span className="font-hand text-lg -rotate-2">scroll</span>
+        <svg
+          className="h-5 w-5 animate-bounce stroke-white/60"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden
+        >
+          <path
+            d="M6 9l6 6 6-6"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
     </section>
   );
 }

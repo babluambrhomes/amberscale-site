@@ -45,14 +45,32 @@ export default function Footer() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-surface/95 via-background/90 to-background/95" aria-hidden />
 
+      <svg
+        className="absolute bottom-24 right-6 hidden text-accent/15 lg:block"
+        width="120"
+        height="120"
+        viewBox="0 0 110 110"
+        fill="none"
+        aria-hidden
+      >
+        <path
+          d="M55 55 C 55 37 67 30 77 38 C 86 45 84 60 69 66 C 55 72 44 60 48 47 C 51 36 64 33 71 41"
+          className="stroke-current"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+      </svg>
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         <div className="border-b border-line pb-12">
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <div>
-              <span className="text-xs font-medium uppercase tracking-[0.28em] text-muted">
+              <span className="font-hand text-xl text-foreground/80 -rotate-1">
                 Newsletter
               </span>
-              <h3 className="mt-2 text-2xl font-bold tracking-tight">Notes worth opening.</h3>
+              <h3 className="mt-2 text-2xl font-bold tracking-tight">
+                Notes <span className="hand-underline text-accent">worth opening.</span>
+              </h3>
 
             </div>
             <form onSubmit={onSubscribe} className="flex w-full items-center gap-3 sm:w-auto">
@@ -63,7 +81,7 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@company.com"
-                className="flex-1 border border-line bg-background/60 px-5 py-3 text-sm text-foreground placeholder:text-muted/70 focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors sm:w-72"
+                className="flex-1 rounded-full border border-line bg-background/60 px-5 py-3 text-sm text-foreground placeholder:text-muted/70 focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors sm:w-72"
               />
               {submitted ? (
                 <p className="text-sm font-semibold text-accent whitespace-nowrap">
@@ -72,7 +90,7 @@ export default function Footer() {
               ) : (
                 <button
                   type="submit"
-                  className="inline-flex shrink-0 items-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-background transition-all hover:shadow-[0_0_28px_-6px_var(--accent)]"
+                  className="inline-flex shrink-0 items-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.05] px-5 py-3 text-sm font-semibold text-foreground backdrop-blur-md transition-all duration-300 hover:border-foreground/30 hover:bg-foreground/[0.1] hover:shadow-[0_8px_24px_-14px_rgba(0,0,0,0.35)]"
                 >
                   Subscribe
                 </button>
@@ -87,6 +105,16 @@ export default function Footer() {
               <span className="text-lg font-semibold tracking-tight text-logo-gradient">
                 AmbrScale
               </span>
+              <svg
+                className="h-3.5 w-3.5 -rotate-6 text-accent-2"
+                viewBox="0 0 24 24"
+                aria-hidden
+              >
+                <path
+                  d="M12 1c1 5 2.5 8 11 11-8.5 3-10 6-11 11-1-5-2.5-8-11-11 8.5-3 10-6 11-11z"
+                  className="fill-current"
+                />
+              </svg>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
               A product company from Bengaluru. We ship our own products, power
@@ -94,11 +122,11 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex items-center gap-3">
               {socials.map((s, i) => (
-                <Magnetic key={i} strength={0.35}>
+                <Magnetic key={i} strength={0.12}>
                   <a
                     href={s.href}
                     aria-label={s.label}
-                    className="flex h-9 w-9 items-center justify-center border border-line text-muted transition-colors hover:border-accent hover:text-accent"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-accent"
                   >
                     <s.icon className="text-sm" />
                   </a>
@@ -108,7 +136,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-muted">
+            <h4 className="font-hand text-xl text-foreground/90 -rotate-1">
               Products
             </h4>
             <ul className="mt-5 space-y-3">
@@ -126,7 +154,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-muted">
+            <h4 className="font-hand text-xl text-foreground/90 -rotate-1">
               Services
             </h4>
             <ul className="mt-5 space-y-3">
@@ -144,7 +172,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-muted">
+            <h4 className="font-hand text-xl text-foreground/90 -rotate-1">
               Company
             </h4>
             <ul className="mt-5 space-y-3">
@@ -163,7 +191,7 @@ export default function Footer() {
 
 
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-muted">
+            <h4 className="font-hand text-xl text-foreground/90 -rotate-1">
               Conect
             </h4>
             <ul className="mt-5 space-y-3 text-sm text-foreground/90">
@@ -180,10 +208,10 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-            <Magnetic strength={0.2}>
+            <Magnetic strength={0.1}>
             <Link
               href="/contact"
-              className="mt-6 inline-flex items-center gap-1.5 border border-accent/30 bg-accent px-5 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-accent"
+              className="mt-6 inline-flex items-center gap-1.5 rounded-full border border-foreground/15 bg-foreground/[0.05] px-5 py-2.5 text-sm font-semibold text-foreground backdrop-blur-md transition-all duration-300 hover:border-foreground/30 hover:bg-foreground/[0.1]"
             >
               Start a pitch <FiArrowUpRight />
             </Link>
@@ -207,7 +235,9 @@ export default function Footer() {
               Sitemap
             </Link>
           </div>
-          <p className="text-xs text-muted">Designed &amp; built with obsession.</p>
+          <p className="font-hand text-base text-muted/80 -rotate-1">
+            Designed &amp; built with obsession.
+          </p>
         </div>
       </div>
     </footer>

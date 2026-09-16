@@ -180,7 +180,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     {project.testimonial.quote}
                   </blockquote>
                   <figcaption className="mt-10 flex items-center gap-4">
-                    <span className="grid h-12 w-12 place-items-center rounded-md border border-line bg-surface-2 text-sm font-bold text-accent">
+                    <span className="grid h-12 w-12 place-items-center rounded-2xl border border-line bg-surface-2 text-sm font-bold text-accent">
                       {project.testimonial.name
                         .split(" ")
                         .map((n) => n.charAt(0))

@@ -106,7 +106,7 @@ export default async function ProductDetailPage({ params }: Props) {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2">
             {stats.map((s, i) => (
               <Reveal key={i} delay={(i % 2) * 0.08} className="bg-background">
                 <div className="group flex h-full flex-col justify-between p-7 transition-colors duration-300 hover:bg-surface/50">

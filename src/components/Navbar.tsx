@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowUpRight, FiChevronDown, FiMenu, FiX } from "react-icons/fi";
 import { services, projects, products } from "@/lib/site";
-import ScrollProgress from "@/components/interactions/ScrollProgress";
+
 import Magnetic from "@/components/interactions/Magnetic";
 
 const links = [
@@ -52,10 +52,10 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 inset-x-0 z-50"
     >
-      <ScrollProgress className="absolute top-0 left-0 right-0 h-[2px] origin-left z-50" />
+     
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
-          className={`relative z-50 mt-4 flex items-center justify-between px-4 sm:px-6 h-14 backdrop-blur-xl transition-all duration-300 ${
+          className={`relative z-50 mt-4 flex items-center justify-between rounded-full px-4 sm:px-6 h-14 backdrop-blur-xl transition-all duration-300 ${
             scrolled
               ? "border border-line bg-surface/80 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.15)]"
               : "border border-transparent bg-surface/40"
@@ -78,7 +78,7 @@ export default function Navbar() {
                     type="button"
                     onMouseEnter={() => { setproductsOpen(true); setServicesOpen(false); setPortfolioOpen(false); }}
                     onClick={() => router.push("/products")}
-                    className={`relative flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                    className={`relative flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                       active ? "text-accent" : "text-muted hover:text-foreground"
                     }`}
                   >
@@ -104,7 +104,7 @@ export default function Navbar() {
                     type="button"
                     onMouseEnter={() => { setServicesOpen(true); setproductsOpen(false); setPortfolioOpen(false); }}
                     onClick={() => router.push("/services")}
-                    className={`relative flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                    className={`relative flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                       active ? "text-accent" : "text-muted hover:text-foreground"
                     }`}
                   >
@@ -130,7 +130,7 @@ export default function Navbar() {
                     type="button"
                     onMouseEnter={() => { setPortfolioOpen(true); setproductsOpen(false); setServicesOpen(false); }}
                     onClick={() => router.push("/portfolio")}
-                    className={`relative flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                    className={`relative flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                       active ? "text-accent" : "text-muted hover:text-foreground"
                     }`}
                   >
@@ -153,7 +153,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     active ? "text-accent" : "text-muted hover:text-foreground"
                   }`}
                 >
@@ -170,17 +170,17 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Magnetic strength={0.15}>
+            <Magnetic strength={0.1}>
               <Link
                 href="/contact"
-                className="hidden sm:inline-flex items-center gap-1.5 rounded-2 bg-accent px-5 py-2 text-sm font-semibold text-background transition-all hover:gap-2.5 hover:shadow-[0_0_24px_-4px_var(--accent)]"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-foreground/15 bg-foreground/[0.05] px-5 py-2 text-sm font-semibold text-foreground backdrop-blur-md transition-all duration-300 hover:border-foreground/30 hover:bg-foreground/[0.1] hover:gap-2.5 hover:shadow-[0_8px_24px_-14px_rgba(0,0,0,0.35)]"
               >
                 Pitch us <FiArrowUpRight />
               </Link>
             </Magnetic>
             <button
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-2 border border-line text-foreground md:hidden"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-foreground md:hidden"
               aria-label="Toggle menu"
             >
               {open ? <FiX /> : <FiMenu />}
@@ -192,7 +192,7 @@ export default function Navbar() {
           <motion.nav
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-2 overflow-hidden rounded-md border border-line bg-surface/95 p-3 backdrop-blur-xl md:hidden"
+            className="mt-2 overflow-hidden rounded-3xl border border-line bg-surface/95 p-3 backdrop-blur-xl md:hidden"
           >
             {links.map((link) => {
               const active = pathname === link.href;
@@ -201,7 +201,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`flex items-center justify-between rounded-2 px-4 py-3 text-sm font-medium ${
+                  className={`flex items-center justify-between rounded-full px-4 py-3 text-sm font-medium ${
                     active ? "bg-accent/10 text-accent" : "text-muted"
                   }`}
                 >
@@ -213,7 +213,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 flex items-center justify-center gap-1.5 rounded-2 bg-accent px-4 py-3 text-sm font-semibold text-background"
+              className="mt-2 flex items-center justify-center gap-1.5 rounded-full border border-foreground/15 bg-foreground/[0.05] px-4 py-3 text-sm font-semibold text-foreground backdrop-blur-md transition-colors"
             >
               Start a pitch <FiArrowUpRight />
             </Link>
@@ -249,7 +249,7 @@ export default function Navbar() {
                   <div className="flex items-center gap-3">
                     <span className="font-mono text-xs text-accent">01</span>
                     <span className="h-px w-8 bg-accent" />
-                    <span className="text-xs font-medium uppercase tracking-[0.28em] text-muted">
+                    <span className="font-hand text-xl text-foreground -rotate-1">
                       Owned &amp; operated
                     </span>
                   </div>
@@ -263,7 +263,7 @@ export default function Navbar() {
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
                   {products.map((p, i) => (
                     <Link
                       key={i}
@@ -276,7 +276,7 @@ export default function Navbar() {
                       </span>
                       <h4 className="mt-3 flex items-center gap-2 text-base font-semibold tracking-tight">
                         {p.name}
-                        <span className="rounded-2 border border-line px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-muted">
+                        <span className="rounded-full border border-line px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-muted">
                           {p.status}
                         </span>
                       </h4>
@@ -290,7 +290,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setproductsOpen(false)}
-                  className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-2  bg-accent/5 px-6 py-5 text-left transition-colors duration-300 "
+                  className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-accent/5 px-6 py-5 text-left transition-colors duration-300 "
                 >
                   <div>
                     <div className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
@@ -339,7 +339,7 @@ export default function Navbar() {
                   <div className="flex items-center gap-3">
                     <span className="font-mono text-xs text-accent">02</span>
                     <span className="h-px w-8 bg-accent" />
-                    <span className="text-xs font-medium uppercase tracking-[0.28em] text-muted">
+                    <span className="font-hand text-xl text-foreground -rotate-1">
                       Capabilities
                     </span>
                   </div>
@@ -353,7 +353,7 @@ export default function Navbar() {
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
                   {services.map((s, i) => (
                     <Link
                       key={i}
@@ -409,7 +409,7 @@ export default function Navbar() {
                   <div className="flex items-center gap-3">
                     <span className="font-mono text-xs text-accent">03</span>
                     <span className="h-px w-8 bg-accent" />
-                    <span className="text-xs font-medium uppercase tracking-[0.28em] text-muted">
+                    <span className="font-hand text-xl text-foreground -rotate-1">
                       Our work
                     </span>
                   </div>
@@ -423,7 +423,7 @@ export default function Navbar() {
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
                   {projects.map((p, i) => (
                     <Link
                       key={i}

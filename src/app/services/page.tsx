@@ -29,7 +29,7 @@ export default function ServicesPage() {
       />
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
-        <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={i} delay={(i % 3) * 0.08} className="bg-background">
               <ServiceCard
@@ -87,9 +87,9 @@ export default function ServicesPage() {
                 ].map((r, i) => (
                   <li
                     key={i}
-                    className="group flex items-center gap-4 rounded-2 border border-line bg-surface/40 px-5 py-4 transition-all duration-300 hover:border-accent/40 hover:bg-surface/70"
+                    className="group flex items-center gap-4 rounded-2xl border border-line bg-surface/40 px-5 py-4 transition-all duration-300 hover:border-accent/40 hover:bg-surface/70"
                   >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2 bg-accent/15 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-background">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-background">
                       <r.icon className="text-lg" />
                     </span>
                     <span className="text-sm font-medium text-foreground/90">{r.label}</span>
@@ -103,7 +103,7 @@ export default function ServicesPage() {
           <Reveal delay={0.2} className="relative">
             <div className="pointer-events-none absolute -inset-10 rounded-[2.5rem] bg-violet/20 blur-[120px]" aria-hidden />
             <div className="relative">
-              <div className="relative overflow-hidden rounded-2 border border-line bg-gradient-to-br from-surface to-violet/10 text-center">
+              <div className="relative overflow-hidden hand-radius border border-line bg-gradient-to-br from-surface to-violet/10 text-center">
                 <div className="relative h-60 sm:h-72">
                   <Image
                     src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=900&auto=format&fit=crop"
@@ -113,8 +113,8 @@ export default function ServicesPage() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/10 to-transparent" />
-                  <div className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-2 border border-line bg-background/70 px-3 py-1.5 text-[11px] font-semibold backdrop-blur">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-2 bg-accent" />
+                  <div className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-line bg-background/70 px-3 py-1.5 text-[11px] font-semibold backdrop-blur">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
                     Est. 2021
                   </div>
                 </div>

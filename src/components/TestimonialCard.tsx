@@ -22,7 +22,7 @@ export default function TestimonialCard({
   const seed = name.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
   const shapePos = ["-right-8 -top-8 rotate-12", "-left-10 -bottom-10 rotate-12", "-right-6 -bottom-6"][seed % 3];
   return (
-    <figure className="relative flex h-full flex-col justify-between overflow-hidden rounded-md rounded-tl-none rounded-br-none border border-line bg-surface/60 p-8">
+    <figure className="relative flex h-full flex-col justify-between overflow-hidden hand-radius border border-line bg-surface/60 p-8">
       <CardShape seed={seed} className={`text-accent/10 ${shapePos}`} />
       <div className="relative z-10">
         <div
@@ -43,7 +43,7 @@ export default function TestimonialCard({
         </blockquote>
       </div>
       <figcaption className="mt-8 flex items-center gap-4">
-        <span className="relative h-12 w-12 overflow-hidden rounded-2 border border-line">
+        <span className="relative h-12 w-12 overflow-hidden rounded-full border border-line">
           <Image src={img} alt={name} fill sizes="48px" className="object-cover" />
         </span>
         <div>

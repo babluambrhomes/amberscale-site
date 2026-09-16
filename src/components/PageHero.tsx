@@ -61,9 +61,10 @@ export default function PageHero({
           transition={{ duration: 0.6 }}
           className="flex items-center gap-3"
         >
-          <span className="font-mono text-sm text-accent">{index}</span>
-          <span className="h-px w-10 bg-accent" />
-          <span className="text-xs font-medium uppercase tracking-[0.28em] text-white ">
+          <span className="hand-radius -rotate-3 border border-accent/40 bg-accent/10 px-3 py-1 font-mono text-xs text-accent">
+            {index}
+          </span>
+          <span className="font-hand text-2xl text-white -rotate-1">
             {eyebrow}
           </span>
         </motion.div>
@@ -78,7 +79,7 @@ export default function PageHero({
           {highlight && (
             <>
               <br />
-              <span className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">
+              <span className="hand-underline inline-block text-accent">
                 {highlight}
               </span>
             </>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type ReactNode, type Ref } from "react";
-import { gsap, prefersReducedMotion } from "@/lib/gsap";
+import { motion, useReducedMotion, useSpring } from "framer-motion";
 
 type TiltCardProps = {
   children: ReactNode;
@@ -17,46 +17,46 @@ export default function TiltCard({
   className,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = Boolean(useReducedMotion());
+  const rotateX = useSpring(0, { stiffness: 150, damping: 15 });
+  const rotateY = useSpring(0, { stiffness: 150, damping: 15 });
+  const y = useSpring(0, { stiffness: 150, damping: 15 });
 
   const onMouseMove = (e: React.MouseEvent) => {
-    if (prefersReducedMotion()) return;
+    if (reduceMotion) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
     const px = (e.clientX - rect.left) / rect.width - 0.5;
     const py = (e.clientY - rect.top) / rect.height - 0.5;
-    gsap.to(el, {
-      rotateY: px * maxRotate * 2,
-      rotateX: -py * maxRotate * 2,
-      y: -lift,
-      transformPerspective: 800,
-      duration: 0.5,
-      ease: "power2.out",
-    });
+    rotateX.set(-py * maxRotate * 2);
+    rotateY.set(px * maxRotate * 2);
+    y.set(-lift);
   };
 
   const onMouseLeave = () => {
-    if (prefersReducedMotion()) return;
-    const el = ref.current;
-    if (!el) return;
-    gsap.to(el, {
-      rotateX: 0,
-      rotateY: 0,
-      y: 0,
-      duration: 0.7,
-      ease: "elastic.out(1, 0.5)",
-    });
+    if (reduceMotion) return;
+    rotateX.set(0);
+    rotateY.set(0);
+    y.set(0);
   };
 
   return (
-    <div
+    <motion.div
       ref={ref as Ref<HTMLDivElement>}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       className={className}
-      style={{ transformStyle: "preserve-3d", willChange: "transform" }}
+      style={{
+        rotateX,
+        rotateY,
+        y,
+        transformPerspective: 800,
+        transformStyle: "preserve-3d",
+        willChange: "transform",
+      }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

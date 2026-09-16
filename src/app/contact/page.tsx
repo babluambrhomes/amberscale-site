@@ -78,7 +78,7 @@ const faqs = [
 ];
 
 const inputClass =
-  "w-full rounded-2 border border-line bg-background/60 px-5 py-2.5 text-sm text-foreground placeholder:text-muted/70 focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors";
+  "w-full rounded-full border border-line bg-background/60 px-5 py-2.5 text-sm text-foreground placeholder:text-muted/70 focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors";
 
 export default function ContactPage() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -100,7 +100,7 @@ export default function ContactPage() {
 <div className="px-8 mx-auto max-w-7xl">
 
  <div className="border-y border-line bg-surface/40 py-10 ">
-        <div className=" grid  grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {[
             { label: "Apna product launch", value: "We built it", accent: true },
             { label: "Brand ya team", value: "We power it", accent: true },
@@ -138,7 +138,7 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.22}>
-              <div className="mt-8 grid grid-cols-2 overflow-hidden border border-line bg-line">
+              <div className="mt-8 grid grid-cols-2 overflow-hidden rounded-[1.5rem] border border-line bg-line">
                 <div className="bg-background p-6">
                   <div className="font-mono text-3xl font-black text-accent sm:text-4xl">48h</div>
                   <div className="mt-1 text-xs uppercase tracking-widest text-muted">
@@ -155,7 +155,7 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.3}>
-              <figure className="mt-8 rounded-md border-l-2 border-accent bg-surface/60 p-6">
+              <figure className="mt-8 rounded-2xl border-l-2 border-accent bg-surface/60 p-6">
                 <blockquote className="text-sm leading-relaxed text-foreground/90">
                   &ldquo;The more context you give us, the sharper the first build. Product, budget, timeline — everything helps us hit the ground running.&rdquo;
                 </blockquote>
@@ -168,7 +168,7 @@ export default function ContactPage() {
 
           <div className="relative hidden h-[420px] sm:block md:h-[520px]">
             <Reveal className="absolute left-0 top-0 z-30 w-[60%] -rotate-2 transition-all duration-300 hover:-translate-y-4 hover:scale-105 hover:z-50 hover:shadow-2xl">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+              <div className="relative aspect-[4/3] overflow-hidden hand-radius border border-line">
                 <Image
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=700&auto=format&fit=crop"
                   alt="The AmbrScale team collaborating"
@@ -179,7 +179,7 @@ export default function ContactPage() {
               </div>
             </Reveal>
             <Reveal delay={0.12} className="absolute bottom-0 right-0 z-20 w-[55%] rotate-3 transition-all duration-300 hover:-translate-y-6 hover:scale-105 hover:z-50 hover:shadow-2xl">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-line">
+              <div className="relative aspect-[4/3] overflow-hidden hand-radius border border-line">
                 <Image
                   src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=700&auto=format&fit=crop"
                   alt="Planning a build"
@@ -197,7 +197,7 @@ export default function ContactPage() {
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="grid gap-6 grid-cols-3">
           <Reveal className="col-span-1">
-            <div className="flex h-full flex-col overflow-hidden rounded-md border border-line bg-surface/70">
+            <div className="flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-line bg-surface/70">
               <div className="relative min-h-[320px] flex-1">
                 <iframe
                   title="AmbrScale location map"
@@ -214,7 +214,7 @@ export default function ContactPage() {
           <Reveal delay={0.15} className="col-span-2">
             <form
               onSubmit={handleSubmit}
-              className="rounded-md border border-line bg-surface/70 p-8 sm:p-10"
+              className="rounded-[1.5rem] border border-line bg-surface/70 p-8 sm:p-10"
             >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
@@ -238,7 +238,7 @@ export default function ContactPage() {
                   {["Launch a product", "Partner with us", "Sponsorship / idea"].map((opt) => (
                     <label key={opt} className="cursor-pointer rounded-2xl">
                       <input type="radio" name="intent" className="peer sr-only" defaultChecked={opt === "Launch a product"} />
-                      <span className="inline-block  border border-line px-5 py-2 text-sm text-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent">
+                      <span className="inline-block rounded-full border border-line px-5 py-2 text-sm text-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent">
                         {opt}
                       </span>
                     </label>
@@ -259,10 +259,10 @@ export default function ContactPage() {
               </div>
               <button
                 type="submit"
-                className="group mt-7 inline-flex items-center gap-2 rounded-2 bg-accent py-2.5 pl-7 pr-3 text-sm font-semibold text-white transition-all hover:shadow-[0_0_36px_-6px_var(--accent)]"
+                className="group mt-7 inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.05] py-2.5 pl-7 pr-3 text-sm font-semibold text-foreground backdrop-blur-md transition-all duration-300 hover:border-foreground/30 hover:bg-foreground/[0.1] hover:shadow-[0_10px_30px_-18px_rgba(0,0,0,0.35)]"
               >
                 Submit pitch
-                <span className="flex h-9 w-9 items-center justify-center rounded-2 transition-colors ">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full transition-colors ">
                   <FiSend className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </button>
@@ -296,7 +296,7 @@ export default function ContactPage() {
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
           {faqs.map((f, i) => (
             <Reveal key={i} delay={i * 0.06}>
-              <div className="flex h-full flex-col rounded-md border border-line bg-surface/70 p-7 transition-colors hover:border-accent/40">
+              <div className="flex h-full flex-col rounded-2xl border border-line bg-surface/70 p-7 transition-colors hover:border-accent/40">
                 <h3 className="text-sm font-semibold">{f.q}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{f.a}</p>
               </div>
@@ -328,7 +328,7 @@ export default function ContactPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-        <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {channels.map((c, i) => (
             <Reveal key={c.label} delay={i * 0.08} className="bg-background">
               <a

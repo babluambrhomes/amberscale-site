@@ -54,7 +54,7 @@ export default function ProductsPage() {
               </Link>
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:shadow-[0_0_28px_-6px_var(--accent)]"
+                className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.05] px-6 py-3 text-sm font-semibold text-foreground backdrop-blur-md transition-all duration-300 hover:border-foreground/30 hover:bg-foreground/[0.1] hover:shadow-[0_10px_30px_-18px_rgba(0,0,0,0.35)]"
               >
                 Pitch your own
                 <FiArrowUpRight className="transition-transform group-hover:rotate-45" />

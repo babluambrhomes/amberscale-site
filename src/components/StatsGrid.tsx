@@ -49,7 +49,7 @@ function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }
 export default function StatsGrid({ items, className }: StatsGridProps) {
   return (
     <div
-      className={`grid grid-cols-2 gap-px overflow-hidden border border-line bg-line sm:grid-cols-4 max-w-7xl ${className ?? ""}`}
+      className={`grid grid-cols-2 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-4 max-w-7xl ${className ?? ""}`}
     >
       {items.map((s, i) => (
         <Reveal
