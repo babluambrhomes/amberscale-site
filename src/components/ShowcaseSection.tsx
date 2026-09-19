@@ -79,25 +79,29 @@ export default function ShowcaseSection({
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-accent/10 to-transparent" />
 
       <div className="relative mx-auto grid min-h-[70vh] max-w-7xl items-center gap-10 px-4 sm:px-6 lg:px-8 lg:grid-cols-[1fr_1.1fr]">
-        <motion.div style={{ y: yText }} className="relative z-10">
-          <span className="flex items-center gap-[13px] text-[0.8125rem] font-semibold uppercase tracking-[0.06em] text-accent after:h-px after:w-12 after:shrink-0 after:bg-accent/60 after:content-['']">
-            {eyebrow}
-          </span>
-          <h2 className="mt-4 bg-gradient-to-br from-white to-white/40 bg-clip-text text-7xl font-semibold leading-[0.9] tracking-[-0.03em] text-transparent">
+        <motion.div style={{ y: yText }} className="relative z-10 py-10">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs text-accent">06</span>
+            <span className="h-px w-10 bg-accent" />
+            <span className="font-hand text-2xl text-accent-2 -rotate-1">
+              {eyebrow}
+            </span>
+          </div>
+          <h2 className="mt-4 text-4xl font-black leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
             {title}
           </h2>
           {description && (
-            <p className="mt-6 max-w-md text-lg leading-relaxed text-white/70">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-white/75 sm:text-lg">
               {description}
             </p>
           )}
           {link && (
             <Link
               href={link}
-              className="mt-7 inline-flex items-center gap-2 text-white underline-offset-8 transition-colors hover:text-accent"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white hover:text-black"
             >
               {linkLabel}
-              <FiArrowUpRight className="text-lg" />
+              <FiArrowUpRight className="text-base transition-transform group-hover:rotate-45" />
             </Link>
           )}
         </motion.div>

@@ -13,19 +13,19 @@ type StatsGridProps = {
 
 function parseValue(raw: string) {
   const match = raw.match(/^(\d+)(.*)/);
-  if (!match) return { target: 0, suffix: raw, padZero: false };
+  if (!match) return { target: 0, suffix: raw, isTextOnly: true, padZero: false };
   const padZero = raw.startsWith("0") && match[1].length > 1;
-  return { target: parseInt(match[1], 10), suffix: match[2], padZero };
+  return { target: parseInt(match[1], 10), suffix: match[2], isTextOnly: false, padZero };
 }
 
 function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const { target, suffix, padZero } = parseValue(value);
+  const { target, suffix, isTextOnly, padZero } = parseValue(value);
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || isTextOnly) return;
     const startTime = performance.now();
 
     function tick(now: number) {
@@ -38,7 +38,15 @@ function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }
     }
 
     requestAnimationFrame(tick);
-  }, [inView, target, duration]);
+  }, [inView, target, duration, isTextOnly]);
+
+  if (isTextOnly) {
+    return (
+      <span ref={ref} className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
+        {value}
+      </span>
+    );
+  }
 
   return (
     <span ref={ref} className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
