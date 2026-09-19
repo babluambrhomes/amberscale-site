@@ -17,13 +17,13 @@ const workSteps = [
     step: "02",
     title: "Design",
     desc: "We shape strategy into an experience and visual language that is unmistakably yours.",
-    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=600&auto=format&fit=crop",
   },
   {
     step: "03",
     title: "Build",
     desc: "We engineer with obsessive detail — fast, secure and ready to grow.",
-    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=600&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop",
   },
   {
     step: "04",

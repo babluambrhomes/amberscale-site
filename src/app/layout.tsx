@@ -20,9 +20,9 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "AmbrScale — Digital Services & Team",
+  title: "AmbrScale — A Technology & Product Company",
   description:
-    "AmbrScale delivers premium digital services — web development, design, branding and strategy for modern brands.",
+    "AmbrScale is a technology company focused on turning real-world problems into useful, durable products. Problems first. Products second. Progress always.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -7,11 +7,11 @@ export const projects = [
     year: "2026",
     client: "Nova Retail",
     backed: true,
-    img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop",
     gallery: [
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
     ],
     desc: "A headless e-commerce platform built for speed, conversion and scale — serving 50k+ daily visitors with sub-second load times.",
     challenge:
@@ -40,10 +40,10 @@ export const projects = [
     year: "2026",
     client: "Pulse Data Co.",
     backed: true,
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&auto=format&fit=crop",
     ],
     desc: "Real-time analytics dashboard processing millions of events daily with a clean, intuitive interface that makes complex data simple.",
@@ -105,11 +105,11 @@ export const projects = [
     category: "SaaS",
     year: "2025",
     client: "Vertex Labs",
-    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
     gallery: [
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
     ],
     desc: "End-to-end product build for a developer tools startup — from MVP to Series A, serving 2,000+ teams.",
     challenge:
@@ -140,8 +140,8 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=1200&auto=format&fit=crop",
     ],
     desc: "A wellness app that makes mental health support accessible — 100k+ downloads in the first quarter with a 4.9 App Store rating.",
     challenge:
@@ -170,11 +170,11 @@ export const projects = [
     year: "2024",
     client: "Contour & Partners",
     backed: true,
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
     gallery: [
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop",
     ],
     desc: "Full-funnel digital marketing for a corporate law firm — from brand awareness to client acquisition, generating 3x ROI.",
     challenge:
@@ -201,29 +201,29 @@ export const products = [
   {
     slug: "fluxboard",
     name: "Fluxboard",
-    tagline: "Real-time analytics for product teams",
-    status: "LIVE",
-    stat: { value: "2M+", label: "events / day" },
-    desc: "A live analytics dashboard that turns raw product events into decisions your whole team can act on.",
+    tagline: "See what your product is doing. Decide what to do next.",
+    status: "IN DEV",
+    stat: { value: "2M+", label: "events / day (simulated)" },
+    desc: "Product analytics that helps teams see what changed, understand the signal and decide what to do next.",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=900&auto=format&fit=crop",
   },
   {
     slug: "payreach",
     name: "PayReach",
-    tagline: "Borderless billing & payouts",
-    status: "LIVE",
-    stat: { value: "$12M+", label: "processed" },
-    desc: "Subscription billing, invoicing and payouts engineered for startups that sell across borders.",
+    tagline: "Billing and payouts for businesses growing beyond manual workflows.",
+    status: "IN DEV",
+    stat: { value: "Ledger", label: "accuracy & control" },
+    desc: "Manage recurring billing, invoicing, payment tracking and supported payouts from one operational layer.",
     img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=900&auto=format&fit=crop",
   },
   {
     slug: "mailflow",
     name: "Mailflow",
-    tagline: "Email the way product teams want it",
+    tagline: "Email that follows the product, not the campaign calendar.",
     status: "BETA",
-    stat: { value: "18k", label: "activations" },
-    desc: "Timed, triggered and transactional email sequences that actually look like your brand.",
-    img: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=900&auto=format&fit=crop",
+    stat: { value: "BETA", label: "active product testing" },
+    desc: "Turn product events into timely, on-brand transactional and lifecycle communication.",
+    img: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=900&auto=format&fit=crop",
   },
   {
     slug: "orbit-cms",
@@ -323,7 +323,7 @@ export const blog = [
     cat: "Strategy",
     date: "Aug 2026",
     read: "6 min",
-    img: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=800&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=800&auto=format&fit=crop",
     content: [
       {
         heading: "Nobody buys from a category",
@@ -386,7 +386,7 @@ export const blog = [
     cat: "Design",
     date: "Jun 2026",
     read: "8 min",
-    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=800&auto=format&fit=crop",
     content: [
       {
         heading: "A design system dies the day it's perfect",
@@ -452,7 +452,7 @@ export const services = [
       { q: "Do you work with existing codebases?", a: "Yes. We can audit, refactor, or extend your existing code. We'll start with a technical assessment before suggesting any changes." },
       { q: "What happens after launch?", a: "Every project includes 30 days of post-launch support. After that, we offer ongoing maintenance and feature development plans." },
     ],
-    img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=900&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
   },
   {
     slug: "ui-ux-design",
@@ -492,7 +492,7 @@ export const services = [
       { q: "Can you work with our existing design system?", a: "Absolutely. We can audit your existing system, identify gaps, and extend it — or build a new one from scratch if needed." },
       { q: "How do you handle design-to-dev handoff?", a: "We provide annotated Figma files, component specs, and token documentation. Our designs are built with developers in mind." },
     ],
-    img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=900&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1200&auto=format&fit=crop",
   },
   {
     slug: "digital-marketing",
@@ -532,7 +532,7 @@ export const services = [
       { q: "Do you create the content or just manage distribution?", a: "Both. We handle strategy, creation, and distribution. Content is created by our in-house team and reviewed before publishing." },
       { q: "What's the minimum ad budget you work with?", a: "We recommend a minimum of $1,500/month for paid ads to generate meaningful data. We'll help you allocate it for maximum impact." },
     ],
-    img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=900&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
   },
   {
     slug: "brand-strategy",
@@ -572,7 +572,7 @@ export const services = [
       { q: "Can you rebrand an existing company?", a: "Yes. We start with a brand audit to understand what's working, what's not, and what needs to change. Then we evolve the brand strategically." },
       { q: "Do you provide ongoing brand support?", a: "Absolutely. We offer retainer packages for brand management, campaign creative, and design system evolution." },
     ],
-    img: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=900&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=1200&auto=format&fit=crop",
   },
   {
     slug: "seo-performance",
@@ -612,7 +612,7 @@ export const services = [
       { q: "Do you guarantee rankings?", a: "No one can guarantee rankings — and anyone who does is lying. We guarantee a transparent process, proven strategies, and measurable progress." },
       { q: "What's included in monthly SEO reports?", a: "Rankings, traffic, conversions, technical health, and actionable recommendations. No vanity metrics — just what matters for your business." },
     ],
-    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=900&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
   },
   {
     slug: "support-care",
@@ -652,7 +652,7 @@ export const services = [
       { q: "Do you support platforms we didn't build?", a: "Yes. We can support and maintain sites built on any modern stack. We'll start with an audit to understand the codebase." },
       { q: "What's your uptime guarantee?", a: "We offer a 99.99% uptime SLA for managed hosting clients. If we miss it, you get credits — that's how confident we are." },
     ],
-    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=900&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
   },
 ];
 

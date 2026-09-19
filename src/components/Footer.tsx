@@ -9,22 +9,34 @@ import {
   FiLinkedin,
   FiTwitter,
 } from "react-icons/fi";
-import { products, services } from "@/lib/site";
 import Magnetic from "@/components/interactions/Magnetic";
 
-const company = [
-  { href: "/about", label: "About us" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
-  { href: "/faq", label: "FAQ" },
-];
+const navColumns = {
+  architecture: [
+    { href: "/about", label: "Our Story" },
+    { href: "/#approach", label: "Approach" },
+    { href: "/#how-we-work", label: "How We Work" },
+    { href: "/about#people", label: "People" },
+  ],
+  products: [
+    { href: "/products", label: "What We’re Building" },
+    { href: "/products#pipeline", label: "Current Focus" },
+    { href: "/about#principles", label: "Decision Principles" },
+    { href: "/blog", label: "Insights" },
+  ],
+  company: [
+    { href: "/about", label: "About AmbrScale" },
+    { href: "/blog", label: "Product Journal" },
+    { href: "/contact", label: "Contact" },
+    { href: "/faq", label: "FAQ" },
+  ],
+};
 
 const socials = [
-  { href: "#", icon: FiTwitter, label: "Twitter" },
-  { href: "#", icon: FiInstagram, label: "Instagram" },
-  { href: "#", icon: FiLinkedin, label: "LinkedIn" },
-  { href: "#", icon: FiGithub, label: "GitHub" },
+  { href: "https://twitter.com", icon: FiTwitter, label: "Twitter" },
+  { href: "https://instagram.com", icon: FiInstagram, label: "Instagram" },
+  { href: "https://linkedin.com", icon: FiLinkedin, label: "LinkedIn" },
+  { href: "https://github.com", icon: FiGithub, label: "GitHub" },
 ];
 
 export default function Footer() {
@@ -66,12 +78,11 @@ export default function Footer() {
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <div>
               <span className="font-hand text-xl text-foreground/80 -rotate-1">
-                Newsletter
+                Inside the Build
               </span>
               <h3 className="mt-2 text-2xl font-bold tracking-tight">
-                Notes <span className="hand-underline text-accent">worth opening.</span>
+                Notes on <span className="hand-underline text-accent">what we&apos;re learning.</span>
               </h3>
-
             </div>
             <form onSubmit={onSubscribe} className="flex w-full items-center gap-3 sm:w-auto">
               <input
@@ -100,7 +111,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12">
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <Link href="/" className="inline-flex items-center gap-2.5">
               <span className="text-lg font-semibold tracking-tight text-logo-gradient">
                 AmbrScale
@@ -117,8 +128,7 @@ export default function Footer() {
               </svg>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
-              A product company from Bengaluru. We ship our own products, power
-              brands we believe in, and build the things nobody else will.
+              AmbrScale is a technology company building products around problems worth solving. We study the problem, test the opportunity, build the product and learn from what happens next.
             </p>
             <div className="mt-6 flex items-center gap-3">
               {socials.map((s, i) => (
@@ -135,18 +145,18 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 lg:col-start-6">
             <h4 className="font-hand text-xl text-foreground/90 -rotate-1">
-              Products
+              Structure
             </h4>
             <ul className="mt-5 space-y-3">
-              {products.map((p) => (
-                <li key={p.slug}>
+              {navColumns.architecture.map((item) => (
+                <li key={item.label}>
                   <Link
-                    href={`/products/${p.slug}`}
+                    href={item.href}
                     className="text-sm text-foreground/90 transition-colors hover:text-accent"
                   >
-                    {p.name}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -155,69 +165,45 @@ export default function Footer() {
 
           <div className="lg:col-span-2">
             <h4 className="font-hand text-xl text-foreground/90 -rotate-1">
-              Services
+              Building
             </h4>
             <ul className="mt-5 space-y-3">
-              {services.map((s) => (
-                <li key={s.slug}>
+              {navColumns.products.map((item) => (
+                <li key={item.label}>
                   <Link
-                    href={`/services/${s.slug}`}
+                    href={item.href}
                     className="text-sm text-foreground/90 transition-colors hover:text-accent"
                   >
-                    {s.title}
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-
-          <div className="lg:col-span-2">
-            <h4 className="font-hand text-xl text-foreground/90 -rotate-1">
-              Company
-            </h4>
-            <ul className="mt-5 space-y-3">
-              {company.map((n) => (
-                <li key={n.href}>
-                  <Link
-                    href={n.href}
-                    className="text-sm text-foreground/90 transition-colors hover:text-accent"
-                  >
-                    {n.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
 
           <div className="lg:col-span-3">
             <h4 className="font-hand text-xl text-foreground/90 -rotate-1">
-              Conect
+              Conversations
             </h4>
             <ul className="mt-5 space-y-3 text-sm text-foreground/90">
-              <li className="leading-relaxed">
-                221B Creative District,
-                <br />
-                Indiranagar, Bengaluru 560038,
-                <br />
-                India
+              <li className="leading-relaxed text-muted">
+                Have a problem worth exploring or solving?
               </li>
               <li>
-                <a href="mailto:hello@ambrscale.com" className="transition-colors hover:text-accent">
+                <a href="mailto:hello@ambrscale.com" className="font-semibold transition-colors hover:text-accent">
                   hello@ambrscale.com
                 </a>
               </li>
             </ul>
             <Magnetic strength={0.1}>
-            <Link
-              href="/contact"
-              className="mt-6 inline-flex items-center gap-1.5 rounded-full border border-foreground/15 bg-foreground/[0.05] px-5 py-2.5 text-sm font-semibold text-foreground backdrop-blur-md transition-all duration-300 hover:border-foreground/30 hover:bg-foreground/[0.1]"
-            >
-              Start a pitch <FiArrowUpRight />
-            </Link>
+              <Link
+                href="/contact"
+                className="mt-6 inline-flex items-center gap-1.5 rounded-full border border-foreground/15 bg-foreground/[0.05] px-5 py-2.5 text-sm font-semibold text-foreground backdrop-blur-md transition-all duration-300 hover:border-foreground/30 hover:bg-foreground/[0.1]"
+              >
+                Start a conversation <FiArrowUpRight />
+              </Link>
             </Magnetic>
           </div>
-
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-line pt-6 sm:flex-row">
@@ -236,7 +222,7 @@ export default function Footer() {
             </Link>
           </div>
           <p className="font-hand text-base text-muted/80 -rotate-1">
-            Designed &amp; built with obsession.
+            Problems first. Products second. Progress always.
           </p>
         </div>
       </div>

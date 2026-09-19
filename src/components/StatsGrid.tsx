@@ -13,14 +13,15 @@ type StatsGridProps = {
 
 function parseValue(raw: string) {
   const match = raw.match(/^(\d+)(.*)/);
-  if (!match) return { target: 0, suffix: raw };
-  return { target: parseInt(match[1], 10), suffix: match[2] };
+  if (!match) return { target: 0, suffix: raw, padZero: false };
+  const padZero = raw.startsWith("0") && match[1].length > 1;
+  return { target: parseInt(match[1], 10), suffix: match[2], padZero };
 }
 
 function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const { target, suffix } = parseValue(value);
+  const { target, suffix, padZero } = parseValue(value);
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
@@ -41,7 +42,7 @@ function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }
 
   return (
     <span ref={ref} className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
-      {display}{suffix}
+      {padZero ? String(display).padStart(2, "0") : display}{suffix}
     </span>
   );
 }

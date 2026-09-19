@@ -21,7 +21,7 @@ type ShowcaseSectionProps = {
 function ParallaxFrame({ img, rotate }: { img: string; rotate: string }) {
   return (
     <div className={`relative overflow-hidden hand-radius border border-line shadow-xl ${rotate}`}>
-      <div className="relative aspect-[4/3] w-72 max-w-full">
+      <div className="relative aspect-[4/3] w-full">
         <Image
           src={img}
           alt=""
