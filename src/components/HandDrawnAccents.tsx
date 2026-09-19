@@ -12,7 +12,7 @@ interface HandCircleProps {
 export function HandCircle({
   children,
   className = "",
-  color = "#ff5c46",
+  color = "#4f46e5",
 }: HandCircleProps) {
   return (
     <span className={`relative inline-block ${className}`}>
@@ -48,7 +48,7 @@ export function HandArrow({
   label,
   direction = "down-left",
   className = "",
-  color = "#ff5c46",
+  color = "#4f46e5",
 }: HandArrowProps) {
   return (
     <div
@@ -86,7 +86,7 @@ export function HandArrow({
 
 export function HandSparkle({
   className = "",
-  color = "#ff5c46",
+  color = "#4f46e5",
   size = 20,
 }: {
   className?: string;
@@ -114,7 +114,7 @@ export function HandSparkle({
 export function HandBadge({
   text,
   className = "",
-  color = "text-accent-2 border-accent-2/40 bg-accent-2/10",
+  color = "text-accent border-accent/30 bg-accent/10",
   rotation = "-rotate-2",
 }: {
   text: string;
@@ -145,21 +145,21 @@ export function HandStickyNote({
 }) {
   return (
     <div
-      className={`relative rounded-2xl border border-amber-300/40 bg-gradient-to-br from-amber-500/10 via-amber-400/5 to-transparent p-5 backdrop-blur-md shadow-lg shadow-amber-500/5 hand-radius -rotate-1 ${className}`}
+      className={`relative rounded-2xl border border-line bg-surface/95 p-6 backdrop-blur-md shadow-xl shadow-black/5 ring-1 ring-accent/10 hand-radius -rotate-1 ${className}`}
     >
-      {/* Tape strip at top */}
-      <div className="absolute -top-3 left-1/2 h-5 w-16 -translate-x-1/2 -rotate-2 rounded-sm bg-white/20 border border-white/30 backdrop-blur-md shadow-sm" />
+      {/* Translucent tape strip at top */}
+      <div className="absolute -top-3 left-1/2 h-5 w-20 -translate-x-1/2 -rotate-2 rounded-sm bg-surface-2/90 border border-line backdrop-blur-md shadow-sm" />
 
       {title && (
-        <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-amber-500/90">
+        <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-accent">
           {title}
         </span>
       )}
-      <p className="mt-1 font-hand text-lg sm:text-xl leading-snug text-foreground/90 font-medium">
+      <p className="mt-2 font-hand text-lg sm:text-xl leading-relaxed text-foreground font-medium">
         &ldquo;{text}&rdquo;
       </p>
       {author && (
-        <p className="mt-2 text-right font-hand text-sm text-muted">
+        <p className="mt-3 text-right font-hand text-sm text-muted">
           — {author}
         </p>
       )}
@@ -178,7 +178,7 @@ export function HandStamp({
 }) {
   return (
     <span
-      className={`inline-block select-none border-2 border-dashed border-accent px-2.5 py-0.5 font-mono text-[10px] font-black uppercase tracking-widest text-accent hand-radius ${rotation} ${className}`}
+      className={`inline-block select-none border-2 border-dashed border-accent/70 px-3 py-1 font-mono text-[10px] font-black uppercase tracking-widest text-accent bg-accent/5 hand-radius ${rotation} ${className}`}
     >
       {text}
     </span>

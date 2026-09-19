@@ -83,7 +83,7 @@ export default function ShowcaseSection({
           <div className="flex items-center gap-3">
             <span className="font-mono text-xs text-accent">06</span>
             <span className="h-px w-10 bg-accent" />
-            <span className="font-hand text-2xl text-accent-2 -rotate-1">
+            <span className="font-hand text-2xl text-accent -rotate-1">
               {eyebrow}
             </span>
           </div>

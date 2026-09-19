@@ -32,7 +32,7 @@ export default function FinalCTA({
                 <span className="flex items-center gap-3">
                   <span className="font-mono text-xs text-accent">07</span>
                   <span className="h-px w-10 bg-accent" />
-                  <span className="font-hand text-xl text-accent-2 -rotate-1">
+                  <span className="font-hand text-xl text-accent -rotate-1">
                     Let&apos;s Build Together
                   </span>
                 </span>
@@ -73,7 +73,7 @@ export default function FinalCTA({
                   )}
                 </div>
 
-                <div className="mt-4 flex items-center gap-2 font-hand text-sm text-accent-2 -rotate-1">
+                <div className="mt-4 flex items-center gap-2 font-hand text-sm text-accent -rotate-1">
                   <span>✦ direct conversation, zero sales fluff</span>
                 </div>
               </div>

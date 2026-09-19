@@ -292,7 +292,7 @@ export default function AboutPage() {
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs text-accent">03</span>
               <span className="h-px w-8 bg-accent" />
-              <span className="font-hand text-xl text-accent-2 -rotate-1">
+              <span className="font-hand text-xl text-accent -rotate-1">
                 The Product Model
               </span>
             </div>
@@ -334,7 +334,7 @@ export default function AboutPage() {
               description="Over time, AmbrScale will build across markets where we believe better technology can create meaningful value. Each product has its own identity while sharing our core product discipline."
             />
             <Reveal delay={0.2}>
-              <div className="inline-flex items-center gap-2 hand-radius border border-accent-2/30 bg-accent-2/10 px-4 py-2 text-accent-2 font-hand text-base -rotate-2 shadow-sm">
+              <div className="inline-flex items-center gap-2 hand-radius border border-accent/30 bg-accent/10 px-4 py-2 text-accent font-hand text-base -rotate-2 shadow-sm">
                 <span>✦ one company, multiple problems</span>
               </div>
             </Reveal>
@@ -412,7 +412,7 @@ export default function AboutPage() {
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-xs font-bold text-accent">05</span>
                   <span className="h-px w-8 bg-accent" />
-                  <span className="font-hand text-2xl text-accent-2 -rotate-1">
+                  <span className="font-hand text-2xl text-accent -rotate-1">
                     Our Beliefs
                   </span>
                 </div>
@@ -432,7 +432,7 @@ export default function AboutPage() {
 
             <Reveal delay={0.25}>
               <div className="inline-flex items-center gap-2 hand-radius border border-white/20 bg-white/5 px-5 py-3 backdrop-blur-md text-white/90 font-hand text-lg rotate-1 shadow-lg">
-                <span className="text-amber-400">✦</span>
+                <span className="text-cyan">✦</span>
                 <span>evidence before certainty</span>
               </div>
             </Reveal>
@@ -447,7 +447,7 @@ export default function AboutPage() {
                     <span className="hand-radius border border-white/15 bg-white/10 px-3.5 py-1 font-mono text-xs font-semibold text-white/90">
                       {v.tag}
                     </span>
-                    <span className="font-hand text-2xl text-white/40 transition-transform duration-300 group-hover:scale-125 group-hover:text-accent-2">
+                    <span className="font-hand text-2xl text-white/40 transition-transform duration-300 group-hover:scale-125 group-hover:text-accent">
                       {v.doodle}
                     </span>
                   </div>
@@ -466,7 +466,7 @@ export default function AboutPage() {
 
                   <div className="mt-8 border-t border-white/10 pt-4 flex items-center justify-between text-xs text-white/40">
                     <span>AmbrScale Conviction</span>
-                    <span className="font-mono text-accent-2 font-semibold">0{i + 1} / 05</span>
+                    <span className="font-mono text-accent font-semibold">0{i + 1} / 05</span>
                   </div>
                 </div>
               </Reveal>
@@ -499,7 +499,7 @@ export default function AboutPage() {
             description="AmbrScale is built by people working across product, design, technology, growth and business. We bring different disciplines into the same conversation."
           />
           <Reveal delay={0.2}>
-            <span className="hidden -rotate-2 font-hand text-base text-accent-2 md:inline-block">
+            <span className="hidden -rotate-2 font-hand text-base text-accent md:inline-block">
               ✦ context, not assumptions
             </span>
           </Reveal>
@@ -563,7 +563,7 @@ export default function AboutPage() {
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs text-accent">07.1</span>
                 <span className="h-px w-8 bg-accent" />
-                <span className="font-hand text-xl text-accent-2 -rotate-1">
+                <span className="font-hand text-xl text-accent -rotate-1">
                   Team Culture
                 </span>
               </div>
@@ -598,7 +598,7 @@ export default function AboutPage() {
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs text-accent">07.2</span>
                 <span className="h-px w-8 bg-accent" />
-                <span className="font-hand text-xl text-accent-2 -rotate-1">
+                <span className="font-hand text-xl text-accent -rotate-1">
                   Institutional Commitments
                 </span>
               </div>
@@ -624,7 +624,7 @@ export default function AboutPage() {
                           {cp.detail}
                         </p>
                       </div>
-                      <div className="mt-4 border-t border-line/40 pt-2 text-[10px] font-mono text-accent-2">
+                      <div className="mt-4 border-t border-line/40 pt-2 text-[10px] font-mono text-accent">
                         AmbrScale Standard
                       </div>
                     </div>

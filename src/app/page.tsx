@@ -208,7 +208,7 @@ export default function Home() {
             />
             <path
               d="M119 25 C136 20 151 23 169 27"
-              className="stroke-accent-2"
+              className="stroke-accent/40"
               strokeWidth="1.5"
               strokeLinecap="round"
             />
@@ -228,7 +228,7 @@ export default function Home() {
 
           <Reveal delay={0.2}>
             <div className="flex items-center gap-4">
-              <span className="hidden -rotate-2 font-hand text-sm text-accent-2 sm:inline-block">
+              <span className="hidden -rotate-2 font-hand text-sm text-accent/80 sm:inline-block">
                 room for a better answer ✦
               </span>
               <Link
@@ -253,7 +253,7 @@ export default function Home() {
             {problemPrinciples.map((p, i) => (
               <div key={p.slug} className="group/card relative">
                 <svg
-                  className="pointer-events-none absolute -right-2 -top-2 z-20 hidden h-8 w-8 text-accent-2/75 transition-transform duration-500 group-hover/card:rotate-6 sm:block"
+                  className="pointer-events-none absolute -right-2 -top-2 z-20 hidden h-8 w-8 text-accent/35 transition-transform duration-500 group-hover/card:rotate-6 sm:block"
                   viewBox="0 0 32 32"
                   fill="none"
                   aria-hidden
@@ -280,7 +280,7 @@ export default function Home() {
                     <h3 className="mt-4 text-xl font-bold tracking-tight text-foreground">
                       {p.name}
                     </h3>
-                    <p className="mt-2 text-sm font-semibold text-accent-2">
+                    <p className="mt-2 text-sm font-semibold text-accent leading-snug">
                       {p.tagline}
                     </p>
                     <p className="mt-3 text-xs leading-relaxed text-muted">
@@ -313,7 +313,7 @@ export default function Home() {
               </div>
               <div className="md:col-span-4 flex flex-col items-start gap-3 pl-2">
                 <HandStamp text="REALITY FIRST" rotation="-rotate-2" />
-                <span className="font-hand text-sm text-accent-2">
+                <span className="font-hand text-sm text-accent">
                   ✦ de-risked before heavy capital
                 </span>
               </div>
@@ -359,7 +359,7 @@ export default function Home() {
                   <span
                     aria-hidden
                     className={`h-2 w-2 shrink-0 rounded-full ${
-                      i % 2 === 0 ? "bg-accent-2" : "bg-accent"
+                      i % 2 === 0 ? "bg-cyan" : "bg-accent"
                     }`}
                   />
                 </div>
@@ -382,7 +382,7 @@ export default function Home() {
                 ["VALIDATE", "text-[#4f46e5]"],
                 ["BUILD", "text-[#10b4af]"],
                 ["LEARN", "text-[#7c3aed]"],
-                ["COMPOUND", "text-[#ff5c46]"],
+                ["COMPOUND", "text-[#4f46e5]"],
                 ["ONE PROBLEM AT A TIME", "text-[#0ea5e9]"],
                 ["EVIDENCE BEFORE ASSUMPTIONS", "text-[#23cb6b]"],
               ].map(([name, color], i) => (
@@ -395,7 +395,7 @@ export default function Home() {
                   <span
                     aria-hidden
                     className={`h-2 w-2 shrink-0 rounded-full ${
-                      i % 2 === 0 ? "bg-accent" : "bg-accent-2"
+                      i % 2 === 0 ? "bg-accent" : "bg-cyan"
                     }`}
                   />
                 </div>
@@ -423,7 +423,7 @@ export default function Home() {
           />
           <Reveal delay={0.2}>
             <div className="flex items-center gap-3">
-              <span className="hidden -rotate-2 font-hand text-sm text-accent-2 md:inline-block">
+              <span className="hidden -rotate-2 font-hand text-sm text-accent md:inline-block">
                 repeatable decision system ✦
               </span>
               <Link
@@ -432,7 +432,7 @@ export default function Home() {
               >
                 How we work{" "}
                 <FiArrowUpRight className="transition-transform duration-300 group-hover:rotate-45" />
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent-2 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
               </Link>
             </div>
           </Reveal>
@@ -559,7 +559,7 @@ export default function Home() {
               description="We keep teams close to the problem and close to the product. Design, technology, product and business decisions should inform one another — not wait in separate queues."
             />
             <Reveal delay={0.2}>
-              <span className="hidden -rotate-2 font-hand text-base text-accent-2 md:inline-block">
+              <span className="hidden -rotate-2 font-hand text-base text-accent md:inline-block">
                 ✦ close to the problem &amp; product
               </span>
             </Reveal>
@@ -603,8 +603,8 @@ export default function Home() {
                 {/* Right Interactive Text Area */}
                 <div className="relative flex flex-col justify-between p-8 text-white sm:p-12 lg:p-14">
                   <div>
-                    <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-accent-2">
-                      <span className="h-px w-8 bg-accent-2" />
+                    <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-accent">
+                      <span className="h-px w-8 bg-accent" />
                       {steps[processIndex].title}
                     </div>
 
@@ -641,7 +641,7 @@ export default function Home() {
                           onClick={() => setProcessIndex(idx)}
                           className={`h-2 rounded-full transition-all duration-300 ${
                             idx === processIndex
-                              ? "w-8 bg-accent-2"
+                              ? "w-8 bg-accent"
                               : "w-2 bg-white/20 hover:bg-white/50"
                           }`}
                           aria-label={`Go to ${step.title}`}
@@ -665,7 +665,7 @@ export default function Home() {
                           setProcessIndex((i) => Math.min(steps.length - 1, i + 1))
                         }
                         disabled={processIndex === steps.length - 1}
-                        className="grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-white/5 text-white transition-all hover:border-accent-2 hover:bg-accent-2/20 disabled:opacity-30"
+                        className="grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-white/5 text-white transition-all hover:border-accent hover:bg-accent/20 disabled:opacity-30"
                         aria-label="Next principle"
                       >
                         →
@@ -701,7 +701,7 @@ export default function Home() {
                   <div>
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-sm font-bold text-accent">{p.num}</span>
-                      <span className="font-hand text-xl text-accent-2">{p.doodle}</span>
+                      <span className="font-hand text-xl text-accent">{p.doodle}</span>
                     </div>
                     <h3 className="mt-4 text-lg font-bold tracking-tight text-foreground">
                       {p.title}
@@ -943,7 +943,7 @@ function Hero() {
                       0{stackStep}
                     </motion.div>
                   </AnimatePresence>
-                  <span className="font-hand text-sm text-accent-2 -rotate-3">
+                  <span className="font-hand text-sm text-accent -rotate-3">
                     hover to cycle ⚡
                   </span>
                 </div>
@@ -991,7 +991,7 @@ function Hero() {
               <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent" />
               <div className="relative z-10 flex h-full items-end justify-between gap-4 p-6 text-white">
                 <div>
-                  <span className="font-mono text-xs text-accent-2">DECISION SYSTEM</span>
+                  <span className="font-mono text-xs text-accent">DECISION SYSTEM</span>
                   <h3 className="text-base font-bold text-white sm:text-lg">
                     Evidence before assumptions · Thoughtful, durable engineering
                   </h3>

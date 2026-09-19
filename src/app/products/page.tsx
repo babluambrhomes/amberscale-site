@@ -118,7 +118,7 @@ export default function ProductsPage() {
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-xs font-bold text-accent">01.2</span>
                   <span className="h-px w-8 bg-accent" />
-                  <span className="font-hand text-2xl text-accent-2 -rotate-1">
+                  <span className="font-hand text-2xl text-accent -rotate-1">
                     In the pipeline
                   </span>
                 </div>
@@ -165,7 +165,7 @@ export default function ProductsPage() {
               {/* Progress & Specs (5 cols) */}
               <div className="p-8 sm:p-10 lg:col-span-5 flex flex-col justify-between h-full">
                 <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-accent-2 font-bold">
+                  <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold">
                     CONFIDENTIAL ROADMAP
                   </span>
                   <h3 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
@@ -183,7 +183,7 @@ export default function ProductsPage() {
                     </div>
                     <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/10">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-accent via-cyan to-accent-2 transition-all duration-1000"
+                        className="h-full rounded-full bg-gradient-to-r from-accent via-cyan to-indigo-400 transition-all duration-1000"
                         style={{ width: `${flagship.progress}%` }}
                       />
                     </div>

@@ -260,7 +260,7 @@ export default function ContactPage() {
                     <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">
                       START A CONVERSATION
                     </span>
-                    <span className="font-hand text-sm text-accent-2">
+                    <span className="font-hand text-sm text-accent">
                       no pitch deck required ✎
                     </span>
                   </div>
@@ -697,7 +697,7 @@ export default function ContactPage() {
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-xs font-bold text-accent">04.1</span>
                   <span className="h-px w-8 bg-accent" />
-                  <span className="font-hand text-2xl text-accent-2 -rotate-1">
+                  <span className="font-hand text-2xl text-accent -rotate-1">
                     The AmbrScale Standard
                   </span>
                 </div>
@@ -711,7 +711,7 @@ export default function ContactPage() {
             </div>
 
             <Reveal delay={0.2}>
-              <div className="inline-flex items-center gap-2 hand-radius border border-white/20 bg-white/5 px-4 py-2 font-hand text-base text-accent-2 -rotate-2">
+              <div className="inline-flex items-center gap-2 hand-radius border border-white/20 bg-white/5 px-4 py-2 font-hand text-base text-accent -rotate-2">
                 <span>✦ built with pride, zero shortcuts</span>
               </div>
             </Reveal>
@@ -724,7 +724,7 @@ export default function ContactPage() {
                   <div>
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-xs font-bold text-accent">{p.num}</span>
-                      <span className="font-hand text-xl text-accent-2">{p.doodle}</span>
+                      <span className="font-hand text-xl text-accent">{p.doodle}</span>
                     </div>
                     <h3 className="mt-5 text-xl font-bold tracking-tight text-white group-hover:text-accent transition-colors">
                       {p.title}
@@ -735,7 +735,7 @@ export default function ContactPage() {
                   </div>
                   <div className="mt-8 border-t border-white/10 pt-4 flex items-center justify-between text-xs text-white/40">
                     <span>Operating Principle</span>
-                    <span className="font-mono text-accent-2">Guaranteed ✓</span>
+                    <span className="font-mono text-accent">Guaranteed ✓</span>
                   </div>
                 </div>
               </Reveal>
