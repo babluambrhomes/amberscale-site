@@ -1,9 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { use, useState } from "react";
 import {
   FiArrowUpRight,
   FiCheck,
@@ -20,7 +17,6 @@ import {
   FiCrosshair,
   FiSearch,
   FiUsers,
-  FiChevronDown,
   FiTrendingUp,
   FiCompass,
   FiFileText,
@@ -31,6 +27,7 @@ import {
 import DetailHero from "@/components/DetailHero";
 import FinalCTA from "@/components/FinalCTA";
 import ProductCard from "@/components/ProductCard";
+import ProductFaqs from "@/components/ProductFaqs";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import StatusChip from "@/components/StatusChip";
@@ -39,9 +36,23 @@ import SplitWords from "@/components/interactions/SplitWords";
 import { btnPrimary, circleArrow } from "@/lib/constants";
 import { products } from "@/lib/site";
 
+export function generateStaticParams() {
+  return products.map((p) => ({ slug: p.slug }));
+}
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const product = products.find((p) => p.slug === slug);
+  if (!product) return {};
+  return {
+    title: `${product.name} — Products — AmbrScale`,
+    description: product.desc,
+  };
+}
 
 interface ProductConfig {
   eyebrow: string;
@@ -227,7 +238,7 @@ const productConfigs: Record<string, ProductConfig> = {
   },
   payreach: {
     eyebrow: "✦ BILLING & PAYOUTS",
-    heroHeadline: "Billing that keeps the business moving.",
+    heroHeadline: "Billing and payouts for businesses growing beyond manual workflows.",
     heroDescription:
       "PayReach helps growing companies manage recurring billing, invoicing and payouts from one place — so finance operations stay organised as customers, transactions and teams grow.",
     statusLine: "Built by AmbrScale · In development",
@@ -563,8 +574,8 @@ const productConfigs: Record<string, ProductConfig> = {
     ],
     stack: ["TypeScript", "GraphQL", "Next.js", "Edge Caching", "PostgreSQL"],
     highlightTag: "Edge Content Engine",
-    whoItIsForHeading: "For modern editorial",
-    whoItIsForHighlight: "and engineering teams",
+    whoItIsForHeading: "For modern editorial and engineering",
+    whoItIsForHighlight: "teams",
     whoItIsForDescription:
       "Publishers, web product teams, and creators who need instantaneous global speed.",
     whoItIsFor: [
@@ -604,12 +615,11 @@ const productConfigs: Record<string, ProductConfig> = {
   },
 };
 
-export default function ProductDetailPage({ params }: Props) {
-  const { slug } = use(params);
+export default async function ProductDetailPage({ params }: Props) {
+  const { slug } = await params;
   const product = products.find((p) => p.slug === slug);
   if (!product) notFound();
 
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const position = products.findIndex((p) => p.slug === slug);
   const others = products.filter((p) => p.slug !== slug);
   const config = productConfigs[slug] || productConfigs["fluxboard"];
@@ -619,9 +629,12 @@ export default function ProductDetailPage({ params }: Props) {
       {/* Hero Header */}
       <DetailHero
         image={product.img}
+        productNumber={`/0${position + 1}`}
+        productName={product.name}
+        badge={product.status}
         eyebrow={config.eyebrow}
         title={config.heroHeadline}
-        description={config.heroDescription}
+        titleClassName="max-w-3xl text-2xl font-extrabold leading-snug tracking-tight text-white sm:text-3xl lg:text-4xl"
         breadcrumbs={[
           { label: "Products", href: "/products" },
           { label: product.name },
@@ -1008,55 +1021,7 @@ export default function ProductDetailPage({ params }: Props) {
       {/* =========================================================================
           06 · FREQUENTLY ASKED QUESTIONS ACCORDION
           ========================================================================= */}
-      <section className="relative mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
-        <div className="text-center">
-          <Reveal>
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">
-              QUESTIONS &amp; ANSWERS
-            </span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-              Frequently Asked Questions
-            </h2>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <p className="mt-3 text-sm text-muted">
-              Everything you need to know about {product.name} and early access.
-            </p>
-          </Reveal>
-        </div>
-
-        <div className="mt-12 space-y-4">
-          {config.faqs.map((faq, idx) => (
-            <Reveal key={idx} delay={idx * 0.08}>
-              <div className="overflow-hidden rounded-2xl border border-line bg-surface/80 transition-colors hover:border-accent/40">
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="flex w-full items-center justify-between p-6 text-left"
-                >
-                  <span className="text-base font-bold text-foreground">
-                    {faq.q}
-                  </span>
-                  <FiChevronDown
-                    className={`h-5 w-5 shrink-0 text-muted transition-transform duration-300 ${
-                      openFaq === idx ? "rotate-180 text-accent" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === idx && (
-                  <div className="border-t border-line/60 px-6 pb-6 pt-3">
-                    <p className="text-sm leading-relaxed text-muted">
-                      {faq.a}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <ProductFaqs faqs={config.faqs} productName={product.name} />
 
       {/* =========================================================================
           07 · OTHER PRODUCTS FLEET

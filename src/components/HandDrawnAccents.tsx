@@ -147,9 +147,6 @@ export function HandStickyNote({
     <div
       className={`relative rounded-2xl border border-line bg-surface/95 p-6 backdrop-blur-md shadow-xl shadow-black/5 ring-1 ring-accent/10 hand-radius -rotate-1 ${className}`}
     >
-      {/* Translucent tape strip at top */}
-      <div className="absolute -top-3 left-1/2 h-5 w-20 -translate-x-1/2 -rotate-2 rounded-sm bg-surface-2/90 border border-line backdrop-blur-md shadow-sm" />
-
       {title && (
         <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-accent">
           {title}
@@ -159,7 +156,7 @@ export function HandStickyNote({
         &ldquo;{text}&rdquo;
       </p>
       {author && (
-        <p className="mt-3 text-right font-hand text-sm text-muted">
+        <p className="mt-3 text-right font-hand text-base sm:text-lg text-gray-500">
           — {author}
         </p>
       )}

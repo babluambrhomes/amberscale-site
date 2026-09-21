@@ -87,7 +87,7 @@ export default function ProductsPage() {
             description="Active software products serving real companies, processing millions in transactions with zero external debt."
           />
           <Reveal delay={0.2}>
-            <div className="inline-flex items-center gap-2 hand-radius border border-accent/30 bg-accent/10 px-4 py-2 font-hand text-base text-accent -rotate-2 shadow-sm">
+            <div className="inline-flex items-center gap-2 hand-radius border border-accent/30 bg-accent/10 px-5 py-2.5 font-hand text-lg sm:text-xl text-accent -rotate-2 shadow-sm font-medium">
               <span>✦ zero pitch decks, real revenue</span>
             </div>
           </Reveal>

@@ -221,7 +221,7 @@ export default function Footer() {
               Sitemap
             </Link>
           </div>
-          <p className="font-hand text-base text-muted/80 -rotate-1">
+          <p className="font-hand text-base text-muted/100 -rotate-1">
             Problems first. Products second. Progress always.
           </p>
         </div>

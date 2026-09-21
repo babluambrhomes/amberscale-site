@@ -1,9 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { use } from "react";
 import {
   FiArrowUpRight,
   FiCheck,
@@ -27,9 +24,23 @@ import SplitWords from "@/components/interactions/SplitWords";
 import { btnPrimary, circleArrow } from "@/lib/constants";
 import { services } from "@/lib/site";
 
+export function generateStaticParams() {
+  return services.map((s) => ({ slug: s.slug }));
+}
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const service = services.find((s) => s.slug === slug);
+  if (!service) return {};
+  return {
+    title: `${service.title} — Services — AmbrScale`,
+    description: service.desc,
+  };
+}
 
 const featureIcons = [FiZap, FiTarget, FiSearch, FiLayers];
 
@@ -64,8 +75,8 @@ const deliveryProcess = [
   },
 ];
 
-export default function ServiceDetailPage({ params }: Props) {
-  const { slug } = use(params);
+export default async function ServiceDetailPage({ params }: Props) {
+  const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
 

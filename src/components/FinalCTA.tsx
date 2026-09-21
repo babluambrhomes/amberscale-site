@@ -7,6 +7,7 @@ import Magnetic from "@/components/interactions/Magnetic";
 
 export default function FinalCTA({
   heading = "Have a problem",
+  highlightPrefix,
   highlight = "worth solving?",
   description = "If you are building something meaningful, working on a difficult problem or see an opportunity worth exploring, we would like to hear it.",
   buttonText = "Start a conversation",
@@ -15,6 +16,7 @@ export default function FinalCTA({
   secondaryHref = "/about",
 }: {
   heading?: string;
+  highlightPrefix?: string;
   highlight?: string;
   description?: string;
   buttonText?: string;
@@ -37,9 +39,12 @@ export default function FinalCTA({
                   </span>
                 </span>
 
-                <h2 className="mt-6 text-4xl font-black leading-[0.95] tracking-tighter text-foreground sm:text-5xl lg:text-7xl">
+                <h2 className="mt-6 text-3xl font-black leading-[1.04] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                   {heading}
                   <br />
+                  {highlightPrefix && (
+                    <span className="text-accent">{highlightPrefix} </span>
+                  )}
                   <span className="hand-underline inline-block text-accent">
                     {highlight}
                   </span>
@@ -73,7 +78,7 @@ export default function FinalCTA({
                   )}
                 </div>
 
-                <div className="mt-4 flex items-center gap-2 font-hand text-sm text-accent -rotate-1">
+                <div className="mt-4 flex items-center gap-2 font-hand text-base sm:text-lg text-accent -rotate-1">
                   <span>✦ direct conversation, zero sales fluff</span>
                 </div>
               </div>

@@ -8,6 +8,7 @@ type SectionHeadingProps = {
   eyebrow: string;
   title: string;
   highlight?: string;
+  highlightPrefix?: string;
   description?: string;
   align?: "left" | "center";
   br?: boolean;
@@ -19,6 +20,7 @@ export default function SectionHeading({
   eyebrow,
   title,
   highlight,
+  highlightPrefix,
   description,
   align = "left",
   br = false,
@@ -42,8 +44,13 @@ export default function SectionHeading({
         }`}
       >
         <SplitWords text={title} y={20} />
-        {br && highlight && <br />}
-        {!br && highlight && " "}
+        {br && (highlight || highlightPrefix) && <br />}
+        {!br && (highlight || highlightPrefix) && " "}
+        {highlightPrefix && (
+          <span className="text-accent">
+            <SplitWords text={highlightPrefix} y={20} className="text-[1.15em]" />{" "}
+          </span>
+        )}
         {highlight && (
           <span className="hand-underline inline-block text-accent">
             <SplitWords text={highlight} y={20} className="text-[1.15em]" />

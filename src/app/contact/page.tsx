@@ -249,8 +249,8 @@ export default function ContactPage() {
       <section id="contact-form-section" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
           
-          {/* LEFT: PRODUCT CONVERSATION FORM (7 COLS) */}
-          <div className="lg:col-span-7">
+          {/* LEFT: PRODUCT CONVERSATION FORM & PARTNERSHIPS (7 COLS) */}
+          <div className="space-y-6 lg:col-span-7">
             <Reveal>
               <div className="relative overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-8 sm:p-10 shadow-2xl backdrop-blur-sm">
                 
@@ -260,20 +260,20 @@ export default function ContactPage() {
                     <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">
                       START A CONVERSATION
                     </span>
-                    <span className="font-hand text-sm text-accent">
-                      no pitch deck required ✎
+                    <span className="font-hand text-sm text-accent font-medium">
+                      we reply within 24 hours ✎
                     </span>
                   </div>
-                  <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                    Give us enough context to have a useful first conversation.
+                  <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                    Get in touch with us.
                   </h2>
-                  <p className="mt-1 text-sm text-muted">
-                    You do not need to have everything figured out. A clear problem, an early idea or a strong observation is enough to begin.
+                  <p className="mt-2 text-sm text-muted">
+                    Have an idea, project, or question? Share the details below and we will get back to you promptly.
                   </p>
                 </div>
 
                 {submitted ? (
-                  <div className="py-16 text-center">
+                  <div className="py-20 text-center">
                     <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600">
                       <FiCheckCircle className="h-8 w-8" />
                     </div>
@@ -281,163 +281,103 @@ export default function ContactPage() {
                       MESSAGE RECEIVED
                     </span>
                     <h3 className="mt-2 text-2xl font-bold text-foreground">
-                      Good problems are worth a conversation.
+                      Thanks for reaching out!
                     </h3>
                     <p className="mx-auto mt-2 max-w-md text-sm text-muted">
-                      Thanks for taking the time to tell us about it. We have your message and will review the context before getting back to you. If there is a useful next step, we will come back with one.
+                      We have received your message and will review it before getting back to you shortly.
                     </p>
                     <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
                       <button
                         type="button"
                         onClick={() => setSubmitted(false)}
-                        className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-6 py-2.5 text-xs font-semibold text-foreground transition-all hover:border-accent hover:bg-surface-2"
+                        className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-6 py-2.5 text-sm font-semibold text-foreground transition-all hover:border-accent hover:bg-surface-2"
                       >
                         Send another note
                       </button>
                       <Link
                         href="/"
-                        className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-xs font-semibold text-white transition-all hover:bg-accent/90"
+                        className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent/90"
                       >
                         Back to AmbrScale →
                       </Link>
                     </div>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="mt-8 space-y-7">
-                    
-                    {/* 01: What are you reaching out about? Dropdown */}
-                    <div>
-                      <label className="mb-3 block font-mono text-xs font-bold uppercase tracking-wider text-muted">
-                        01 / What are you reaching out about? *
-                      </label>
-                      <div className="flex flex-wrap gap-2.5">
-                        {reachOutOptions.map((opt) => {
-                          const active = selectedCategory === opt;
-                          return (
-                            <button
-                              key={opt}
-                              type="button"
-                              onClick={() => setSelectedCategory(opt)}
-                              className={`hand-radius border px-4 py-2 text-xs font-semibold transition-all duration-200 ${
-                                active
-                                  ? "border-accent bg-accent text-white shadow-md shadow-accent/20"
-                                  : "border-line bg-surface text-muted hover:border-accent/50 hover:text-foreground"
-                              }`}
-                            >
-                              {opt}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* 02: What stage are you at? */}
-                    <div>
-                      <div className="mb-3 flex items-center justify-between">
-                        <label className="block font-mono text-xs font-bold uppercase tracking-wider text-muted">
-                          02 / What stage is the problem / idea at? (Optional)
-                        </label>
-                        <span className="text-[11px] text-muted">Context helper</span>
-                      </div>
-                      <div className="flex flex-wrap gap-2.5">
-                        {stageOptions.map((stage) => {
-                          const active = selectedStage === stage;
-                          return (
-                            <button
-                              key={stage}
-                              type="button"
-                              onClick={() => setSelectedStage(stage)}
-                              className={`hand-radius border px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 ${
-                                active
-                                  ? "border-accent bg-accent/10 text-accent font-bold"
-                                  : "border-line bg-surface text-muted hover:border-accent/50 hover:text-foreground"
-                              }`}
-                            >
-                              {stage}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* 03: Contact Information */}
+                  <form onSubmit={handleSubmit} className="mt-7 space-y-6">
+                    {/* Name & Email Row */}
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                       <div>
-                        <label className="mb-2 block font-mono text-[11px] font-bold uppercase tracking-wider text-muted">
+                        <label className="mb-2 block font-mono text-xs font-bold uppercase tracking-wider text-foreground/80">
                           Your Name *
                         </label>
                         <input
                           type="text"
                           required
-                          placeholder="What should we call you?"
+                          placeholder="e.g. John Doe"
                           className="w-full hand-radius border border-line bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all"
                         />
                       </div>
 
                       <div>
-                        <label className="mb-2 block font-mono text-[11px] font-bold uppercase tracking-wider text-muted">
-                          Work Email *
+                        <label className="mb-2 block font-mono text-xs font-bold uppercase tracking-wider text-foreground/80">
+                          Email Address *
                         </label>
                         <input
                           type="email"
                           required
-                          placeholder="Where can we reach you?"
+                          placeholder="e.g. john@example.com"
                           className="w-full hand-radius border border-line bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all"
                         />
                       </div>
                     </div>
 
+                    {/* Company & Subject Row */}
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                       <div>
-                        <label className="mb-2 block font-mono text-[11px] font-bold uppercase tracking-wider text-muted">
-                          Company / Organisation (Optional)
+                        <label className="mb-2 block font-mono text-xs font-bold uppercase tracking-wider text-foreground/80">
+                          Company / Project (Optional)
                         </label>
                         <input
                           type="text"
-                          placeholder="Tell us where you are building from"
+                          placeholder="Your company or project name"
                           className="w-full hand-radius border border-line bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all"
                         />
                       </div>
 
                       <div>
-                        <label className="mb-2 block font-mono text-[11px] font-bold uppercase tracking-wider text-muted">
-                          Relevant Link (Optional)
+                        <label className="mb-2 block font-mono text-xs font-bold uppercase tracking-wider text-foreground/80">
+                          Subject (Optional)
                         </label>
                         <input
-                          type="url"
-                          placeholder="Website, product, deck, document link..."
+                          type="text"
+                          placeholder="e.g. Product Inquiry / General"
                           className="w-full hand-radius border border-line bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all"
                         />
                       </div>
                     </div>
 
-                    {/* 04: What are you trying to solve? Textarea */}
+                    {/* Message Textarea */}
                     <div>
-                      <label className="mb-2 block font-mono text-[11px] font-bold uppercase tracking-wider text-muted">
-                        What are you trying to solve? *
+                      <label className="mb-2 block font-mono text-xs font-bold uppercase tracking-wider text-foreground/80">
+                        Your Message *
                       </label>
                       <textarea
-                        rows={4}
+                        rows={6}
                         required
-                        placeholder="Start with the problem. What is happening today, who experiences it, and why do you think it is worth solving?"
+                        placeholder="Tell us what you have in mind, your project details, or any questions..."
                         className="w-full hand-radius border border-line bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all resize-none"
                       />
                     </div>
 
                     {/* Submit Row */}
-                    <div className="flex flex-col items-start justify-between gap-4 pt-3 sm:flex-row sm:items-center">
+                    <div className="flex flex-col items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
                       <button
                         type="submit"
-                        className="group inline-flex items-center gap-3 rounded-full border border-accent bg-accent px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent/90 hover:scale-[1.02] active:scale-98"
+                        className="group inline-flex items-center gap-3 rounded-full border border-accent bg-accent px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent/90 hover:scale-[1.02] active:scale-98 cursor-pointer"
                       >
-                        <span>Send the idea →</span>
+                        <span>Send Message</span>
                         <FiSend className="transition-transform group-hover:translate-x-1" />
                       </button>
-
-                      <div className="flex items-center gap-2 text-xs text-muted">
-                        <FiShield className="h-4 w-4 text-emerald-500" />
-                        <span>We do not sell or trade your information.</span>
-                      </div>
                     </div>
                   </form>
                 )}
@@ -445,7 +385,7 @@ export default function ContactPage() {
             </Reveal>
           </div>
 
-          {/* RIGHT: DIRECT CONTACT, CAREERS & PARTNERSHIPS (5 COLS) */}
+          {/* RIGHT: DIRECT CONTACT & COMMUNICATION PROMISE (5 COLS) */}
           <div className="space-y-6 lg:col-span-5">
             
             {/* Direct Contact Card (08 Direct Contact) */}
@@ -463,31 +403,31 @@ export default function ContactPage() {
                     </h3>
                   </div>
                   {currentTime && (
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1 font-mono text-[11px] text-muted">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1 font-mono text-xs text-muted">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
                       {currentTime} IST
                     </span>
                   )}
                 </div>
 
-                <p className="mt-4 text-xs leading-relaxed text-muted">
+                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-muted">
                   If a form is not your thing, you can reach the team directly. Tell us what you are thinking about and we will take it from there.
                 </p>
 
-                <div className="mt-5 space-y-4">
+                <div className="mt-5 space-y-3.5">
                   {/* Direct Email */}
-                  <div className="flex items-center justify-between rounded-2xl border border-line bg-surface-2/60 p-4 transition-all hover:border-accent/40">
-                    <div className="flex items-center gap-3.5">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                        <FiMail className="h-5 w-5" />
+                  <div className="flex items-center justify-between rounded-2xl border border-line bg-surface-2/60 p-3.5 transition-all hover:border-accent/40">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                        <FiMail className="h-4 w-4" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-muted">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-muted">
                           General Enquiries
                         </span>
                         <a
                           href="mailto:hello@ambrscale.com"
-                          className="block text-sm font-bold text-foreground hover:text-accent transition-colors"
+                          className="block text-sm font-semibold text-foreground hover:text-accent transition-colors"
                         >
                           hello@ambrscale.com
                         </a>
@@ -499,82 +439,71 @@ export default function ContactPage() {
                       className="rounded-lg border border-line bg-surface p-2 text-muted transition-colors hover:border-accent hover:text-accent"
                       title="Copy email"
                     >
-                      {copied ? (
-                        <FiCheck className="h-4 w-4 text-emerald-500" />
-                      ) : (
-                        <FiCopy className="h-4 w-4" />
-                      )}
+                      {copied ? <FiCheck className="h-4 w-4 text-emerald-500" /> : <FiCopy className="h-4 w-4" />}
                     </button>
                   </div>
 
-                  {/* Operational Note */}
-                  <div className="flex items-center gap-3.5 rounded-2xl border border-line bg-surface-2/60 p-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600">
-                      <FiZap className="h-5 w-5" />
+                  {/* Careers Email */}
+                  <div className="flex items-center justify-between rounded-2xl border border-line bg-surface-2/60 p-3.5 transition-all hover:border-accent/40">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                        <FiUsers className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-muted">
+                          Join the Team
+                        </span>
+                        <a
+                          href="mailto:careers@ambrscale.com"
+                          className="block text-sm font-semibold text-foreground hover:text-accent transition-colors"
+                        >
+                          careers@ambrscale.com
+                        </a>
+                      </div>
                     </div>
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-muted">
-                        Response Note
-                      </span>
-                      <p className="text-xs font-semibold text-foreground">
-                        For product, partnership and company enquiries. Direct review within 24 hours.
-                      </p>
-                    </div>
+                    <Link
+                      href="mailto:careers@ambrscale.com"
+                      className="rounded-lg border border-line bg-surface p-2 text-muted transition-colors hover:border-accent hover:text-accent"
+                      title="Send email"
+                    >
+                      <FiArrowUpRight className="h-4 w-4" />
+                    </Link>
                   </div>
                 </div>
 
-                {/* Social Links */}
-                <div className="mt-6 border-t border-line pt-4">
-                  <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-muted">
-                    Connect &amp; Follow:
-                  </span>
-                  <div className="mt-2.5 flex items-center gap-2.5">
-                    {[
-                      { icon: FiTwitter, label: "Twitter", href: "https://twitter.com" },
-                      { icon: FiGithub, label: "GitHub", href: "https://github.com" },
-                      { icon: FiLinkedin, label: "LinkedIn", href: "https://linkedin.com" },
-                      { icon: FiInstagram, label: "Instagram", href: "https://instagram.com" },
-                    ].map((s) => (
-                      <a
-                        key={s.label}
-                        href={s.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex h-9 w-9 items-center justify-center rounded-xl border border-line bg-surface text-muted transition-all hover:border-accent hover:text-accent hover:scale-105"
-                        aria-label={s.label}
-                      >
-                        <s.icon className="h-3.5 w-3.5" />
-                      </a>
-                    ))}
+                {/* Live Coordinates / Availability Indicator */}
+                <div className="mt-5 flex items-center justify-between rounded-xl border border-line/60 bg-surface-2/40 px-3.5 py-2.5 text-xs text-muted">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                    <span>Accepting new inquiries</span>
                   </div>
+                  <span className="font-mono text-xs text-muted">24-48h avg response</span>
                 </div>
               </div>
             </Reveal>
 
-            {/* 09 Talent / Careers Card */}
-            <Reveal delay={0.15}>
-              <div className="relative overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-7 shadow-xl">
-                <div className="flex items-center gap-2.5 text-accent">
-                  <FiUsers className="h-5 w-5" />
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider">
-                    TALENT &amp; BUILDERS
-                  </span>
-                </div>
-                <h3 className="mt-2 text-lg font-bold text-foreground">
-                  Want to build what comes next?
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted">
-                  We are interested in people who care about problems, products and the details between the two. If you are unusually good at what you do and think you could contribute to AmbrScale, introduce yourself.
-                </p>
-                <div className="mt-4 rounded-xl border border-line/60 bg-surface-2/50 p-3 text-[11px] text-muted">
-                  <span className="font-semibold text-foreground">No open role that fits right now?</span> You can still send a thoughtful introduction. We keep strong conversations in mind for the right opportunity.
-                </div>
-              </div>
-            </Reveal>
-
-            {/* 10 Partnerships Card */}
+            {/* Hand-drawn note for direct response */}
             <Reveal delay={0.2}>
-              <div className="relative overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-7 shadow-xl">
+              <HandStickyNote
+                title="COMMUNICATION PROMISE"
+                text="We review every note directly with our founders and engineering leads. Expect a thoughtful reply within 24–48 hours."
+                author="AmbrScale Leadership"
+              />
+            </Reveal>
+
+          </div>
+
+        </div>
+
+        {/* =========================================================================
+            PARALLEL EQUAL CARDS: PARTNERSHIPS & CAREERS
+            ========================================================================= */}
+        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 items-stretch">
+          
+          {/* PARTNERSHIPS CARD */}
+          <Reveal delay={0.15}>
+            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-7 sm:p-8 shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-accent/40">
+              <div>
                 <div className="flex items-center gap-2.5 text-accent">
                   <FiBriefcase className="h-5 w-5" />
                   <span className="font-mono text-xs font-bold uppercase tracking-wider">
@@ -584,22 +513,57 @@ export default function ContactPage() {
                 <h3 className="mt-2 text-lg font-bold text-foreground">
                   Some opportunities are bigger when built together.
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted">
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
                   We work with people and organisations that bring a strong problem, useful capability, distribution, technology or market insight. If you see a meaningful overlap, tell us what you see.
                 </p>
               </div>
-            </Reveal>
+              <div className="mt-6 rounded-xl border border-line/60 bg-surface-2/50 p-3.5 text-xs text-muted flex items-center justify-between">
+                <div>
+                  <span className="font-semibold text-foreground">Have a proposal or idea?</span>
+                  <p className="text-[11px] text-muted">We collaborate with operators and technical teams.</p>
+                </div>
+                <a
+                  href="mailto:hello@ambrscale.com?subject=Partnership%20Proposal"
+                  className="shrink-0 font-semibold text-accent hover:underline inline-flex items-center gap-1 text-xs"
+                >
+                  Contact <FiArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          </Reveal>
 
-            {/* Hand-drawn note for direct response */}
-            <Reveal delay={0.25}>
-              <HandStickyNote
-                title="COMMUNICATION PROMISE"
-                text="We review every note directly with our founders and engineering leads. Expect a thoughtful reply within 24–48 hours."
-                author="AmbrScale Leadership"
-              />
-            </Reveal>
+          {/* CAREERS & COLLABORATIONS CARD */}
+          <Reveal delay={0.2}>
+            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-7 sm:p-8 shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-accent/40">
+              <div>
+                <div className="flex items-center gap-2.5 text-accent">
+                  <FiUsers className="h-5 w-5" />
+                  <span className="font-mono text-xs font-bold uppercase tracking-wider">
+                    CAREERS & COLLABORATIONS
+                  </span>
+                </div>
+                <h3 className="mt-2 text-lg font-bold text-foreground">
+                  Build products that compound.
+                </h3>
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
+                  We are interested in people who care about problems, products and the details between the two. If you are unusually good at what you do and think you could contribute to AmbrScale, introduce yourself.
+                </p>
+              </div>
+              <div className="mt-6 rounded-xl border border-line/60 bg-surface-2/50 p-3.5 text-xs text-muted flex items-center justify-between">
+                <div>
+                  <span className="font-semibold text-foreground">No open role that fits right now?</span>
+                  <p className="text-[11px] text-muted">Send a thoughtful intro for future roles.</p>
+                </div>
+                <a
+                  href="mailto:careers@ambrscale.com?subject=Career%20Introduction"
+                  className="shrink-0 font-semibold text-accent hover:underline inline-flex items-center gap-1 text-xs"
+                >
+                  Introduce <FiArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          </Reveal>
 
-          </div>
         </div>
       </section>
 
@@ -635,7 +599,7 @@ export default function ContactPage() {
         {/* Full-width Map Container */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <div className="overflow-hidden rounded-[2.5rem] border border-line bg-surface shadow-2xl">
+            <div className="overflow-hidden rounded-[1rem] border border-line bg-surface shadow-2xl">
               {/* macOS Window Header Bar */}
               <div className="flex items-center justify-between border-b border-line bg-surface-2/80 px-6 py-3.5 backdrop-blur-md">
                 <div className="flex items-center gap-2.5">
@@ -802,7 +766,8 @@ export default function ContactPage() {
           ========================================================================= */}
       <FinalCTA
         heading="The future belongs to the"
-        highlight="people willing to build it."
+        highlightPrefix="people willing to"
+        highlight="build it."
         description="We believe the most interesting opportunities are often hidden inside ordinary problems. We are here to find them, understand them and build something better."
         buttonText="See something worth building? Let's talk →"
         href="#contact-form-section"

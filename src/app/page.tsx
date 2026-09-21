@@ -220,15 +220,16 @@ export default function Home() {
             <SectionHeading
               index="01"
               eyebrow="Why AmbrScale"
-              title="Not every problem needs an app."
-              highlight="The right problems need better products."
+              title="Not more apps."
+              highlightPrefix="Just"
+              highlight="better products."
               description="Technology makes it easier to build than ever. That does not make every idea worth building. We look for problems that are real, recurring and meaningful — then work backwards from the people experiencing them."
             />
           </div>
 
           <Reveal delay={0.2}>
             <div className="flex items-center gap-4">
-              <span className="hidden -rotate-2 font-hand text-sm text-accent/80 sm:inline-block">
+              <span className="hidden -rotate-2 font-hand text-base sm:text-lg text-accent sm:inline-block font-medium">
                 room for a better answer ✦
               </span>
               <Link
@@ -245,27 +246,13 @@ export default function Home() {
 
         {/* What makes a problem worth building for - Cards Grid */}
         <div className="relative mt-12 sm:mt-16">
-          <span className="pointer-events-none absolute -top-8 right-4 hidden -rotate-3 font-hand text-sm text-muted/70 lg:block">
+          {/* <span className="pointer-events-none absolute -top-8 right-4 hidden -rotate-3 font-hand text-base text-muted/80 lg:block font-medium">
             five decision principles ✎
-          </span>
+          </span> */}
 
           <StaggerReveal className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {problemPrinciples.map((p, i) => (
+            {problemPrinciples.map((p) => (
               <div key={p.slug} className="group/card relative">
-                <svg
-                  className="pointer-events-none absolute -right-2 -top-2 z-20 hidden h-8 w-8 text-accent/35 transition-transform duration-500 group-hover/card:rotate-6 sm:block"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  aria-hidden
-                >
-                  <path
-                    d="M5 24 C10 18 12 20 16 15 C20 10 23 12 27 6"
-                    className="stroke-current"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                  />
-                </svg>
-
                 <div className="relative flex h-full flex-col justify-between rounded-[1.75rem] border border-line bg-surface/70 p-6 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl">
                   <div>
                     <div className="flex items-center justify-between">
@@ -293,10 +280,6 @@ export default function Home() {
                     <span className="font-bold text-foreground">AmbrScale Filter</span>
                   </div>
                 </div>
-
-                <span className="pointer-events-none absolute -left-2 top-5 hidden -rotate-6 font-hand text-xs text-muted/40 xl:block">
-                  #{String(i + 1).padStart(2, "0")}
-                </span>
               </div>
             ))}
           </StaggerReveal>
@@ -304,16 +287,16 @@ export default function Home() {
           {/* Hand-drawn editorial callout note */}
           <Reveal delay={0.25}>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-              <div className="md:col-span-8">
+              <div className="md:col-span-9">
                 <HandStickyNote
                   title="CORE THESIS ON PROBLEMS"
                   text="If a problem isn't felt in the real world every single week, no amount of engineering polish or marketing spend will turn it into a durable product."
                   author="AmbrScale Product Stewardship"
                 />
               </div>
-              <div className="md:col-span-4 flex flex-col items-start gap-3 pl-2">
+              <div className="md:col-span-3 flex flex-col items-start gap-3 pl-1 sm:pl-2">
                 <HandStamp text="REALITY FIRST" rotation="-rotate-2" />
-                <span className="font-hand text-sm text-accent">
+                <span className="font-hand text-base sm:text-lg text-accent font-medium leading-snug">
                   ✦ de-risked before heavy capital
                 </span>
               </div>
@@ -423,7 +406,7 @@ export default function Home() {
           />
           <Reveal delay={0.2}>
             <div className="flex items-center gap-3">
-              <span className="hidden -rotate-2 font-hand text-sm text-accent md:inline-block">
+              <span className="hidden -rotate-2 font-hand text-base sm:text-lg text-accent md:inline-block font-medium">
                 repeatable decision system ✦
               </span>
               <Link
@@ -555,11 +538,12 @@ export default function Home() {
               index="04"
               eyebrow="How we work"
               title="Small teams. Clear ownership."
-              highlight="Shorter distance to reality."
+              highlightPrefix="Shorter distance to"
+              highlight="reality."
               description="We keep teams close to the problem and close to the product. Design, technology, product and business decisions should inform one another — not wait in separate queues."
             />
             <Reveal delay={0.2}>
-              <span className="hidden -rotate-2 font-hand text-base text-accent md:inline-block">
+              <span className="hidden -rotate-2 font-hand text-base sm:text-lg md:text-xl text-accent md:inline-block font-medium">
                 ✦ close to the problem &amp; product
               </span>
             </Reveal>
@@ -683,34 +667,45 @@ export default function Home() {
           05 · FUTURE (Building for the Next Decade, Not the Next Launch)
           ========================================================================= */}
       <section className="relative overflow-hidden bg-background py-20 sm:py-28 border-b border-line">
-        <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-5 lg:gap-16 lg:px-8">
-          <div className="col-span-2">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Top Heading */}
+          <div className="max-w-3xl">
             <SectionHeading
               index="05"
               eyebrow="Long-Term Horizon"
               title="Building for the next decade,"
               highlight="not the next launch."
-              description="AmbrScale is being built as a long-term product company. We expect our products, markets and ideas to change. What should remain constant is how we approach problems: understand deeply, build carefully, learn quickly and keep improving."
             />
           </div>
 
-          <div className="col-span-3 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {impacts.map((p, i) => (
-              <Reveal key={p.num} delay={i * 0.1}>
-                <div className="group relative flex h-full flex-col justify-between hand-radius border border-line bg-surface/80 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/50 hover:shadow-lg">
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-sm font-bold text-accent">{p.num}</span>
-                      <span className="font-hand text-xl text-accent">{p.doodle}</span>
-                    </div>
-                    <h3 className="mt-4 text-lg font-bold tracking-tight text-foreground">
-                      {p.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
-                  </div>
-                </div>
+          {/* Grid: Left = Description, Right = Cards */}
+          <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-16 items-start">
+            <div className="lg:col-span-2">
+              <Reveal delay={0.1}>
+                <p className="text-base leading-relaxed text-muted sm:text-lg">
+                  AmbrScale is being built as a long-term product company. We expect our products, markets and ideas to change. What should remain constant is how we approach problems: understand deeply, build carefully, learn quickly and keep improving.
+                </p>
               </Reveal>
-            ))}
+            </div>
+
+            <div className="lg:col-span-3 grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {impacts.map((p, i) => (
+                <Reveal key={p.num} delay={i * 0.1}>
+                  <div className="group relative flex h-full flex-col justify-between hand-radius border border-line bg-surface/80 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/50 hover:shadow-lg">
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-sm font-bold text-accent">{p.num}</span>
+                        <span className="font-hand text-xl text-accent">{p.doodle}</span>
+                      </div>
+                      <h3 className="mt-4 text-lg font-bold tracking-tight text-foreground">
+                        {p.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -775,7 +770,7 @@ export default function Home() {
     ========================================================================= */}
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
-  const [stackHovered, setStackHovered] = useState(false);
+  const [isThesisPaused, setIsThesisPaused] = useState(false);
   const [stackStep, setStackStep] = useState(1);
 
   const { scrollYProgress } = useScroll({
@@ -786,18 +781,16 @@ function Hero() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 45]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0]);
 
+  // Auto-slide for Product Thesis card (pauses when user hovers)
   useEffect(() => {
-    if (!stackHovered) {
-      setStackStep(1);
-      return;
-    }
+    if (isThesisPaused) return;
 
     const timer = window.setInterval(() => {
       setStackStep((value) => (value >= 3 ? 1 : value + 1));
-    }, 1800);
+    }, 2800);
 
     return () => window.clearInterval(timer);
-  }, [stackHovered]);
+  }, [isThesisPaused]);
 
   const centerCopy = [
     "Not every problem needs another app.",
@@ -840,16 +833,19 @@ function Hero() {
           transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="w-full max-w-4xl text-center mt-6"
         >
-          <h1 className="mx-auto max-w-[950px] text-[clamp(2.55rem,5.8vw,4.6rem)] font-extrabold leading-[0.95] tracking-[-0.05em] text-foreground">
-            We build products around
-            
-           <span className="hand-underline inline-block text-accent">
+          <h1 className="mx-auto max-w-[850px] text-[clamp(2rem,4.2vw,3.75rem)] font-extrabold leading-[1.08] tracking-[-0.04em] text-foreground">
+            We build products{" "}
+            <span className="block mt-1">
+              around{" "}
+              <span className="hand-underline inline-block text-accent">
                 problems worth solving.
               </span>
+            </span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-[640px] text-base leading-relaxed text-muted sm:text-lg">
-            AmbrScale is a technology company focused on turning real-world problems into useful products. We study the problem, test the opportunity.
+          <p className="mx-auto mt-6 max-w-[680px] text-base leading-relaxed text-muted sm:text-lg">
+            AmbrScale turns real-world problems into useful, durable products.
+            <span className="block mt-1">We study the problem, test the opportunity, and build what lasts.</span>
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -870,7 +866,7 @@ function Hero() {
 
           <div className="mt-5 flex items-center justify-center gap-6">
             <HandArrow label="real problems, zero hype ✎" direction="down-left" />
-            <span className="hidden sm:inline-block font-hand text-sm text-gray-600">
+            <span className="hidden sm:inline-block font-hand text-base text-gray-500 font-medium">
               Problems first. Products second. Progress always.
             </span>
           </div>
@@ -883,12 +879,12 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
           className="relative mt-14 w-full max-w-[1140px] sm:mt-16"
         >
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:grid-rows-[290px_180px]">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:grid-rows-[280px_175px]">
             {/* 01 — Currently Building: Focus Card */}
             <motion.div
               whileHover={{ y: -5, scale: 1.008 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative h-full min-h-[290px] overflow-hidden rounded-[20px] border border-line bg-surface shadow-xl shadow-black/5"
+              className="group relative h-full min-h-[270px] overflow-hidden rounded-[20px] border border-line bg-surface shadow-xl shadow-black/5"
             >
               <Link href="#why-ambrscale" aria-label="Explore Currently Building" className="relative block h-full w-full">
                 <Image
@@ -903,20 +899,17 @@ function Hero() {
                     <span className="font-mono text-xs text-cyan-300">CURRENT WORK · IN DEV</span>
                     <h3 className="text-base font-bold text-white">Real-Estate Ecosystem Focus</h3>
                   </div>
-                  <span className="rounded-full border border-white/20 bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md transition-colors group-hover:bg-white group-hover:text-black">
-                    Follow build →
-                  </span>
                 </div>
               </Link>
             </motion.div>
 
-            {/* 02 — Product Thesis: Interactive Step Switcher */}
+            {/* 02 — Product Thesis: Auto-Sliding Step Switcher */}
             <motion.div
-              onHoverStart={() => setStackHovered(true)}
-              onHoverEnd={() => setStackHovered(false)}
+              onHoverStart={() => setIsThesisPaused(true)}
+              onHoverEnd={() => setIsThesisPaused(false)}
               whileHover={{ y: -5, scale: 1.008 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative h-full min-h-[290px] overflow-hidden rounded-[20px] border border-line bg-[#0c0e17] text-white shadow-xl shadow-black/5"
+              className="group relative h-full min-h-[270px] overflow-hidden rounded-[20px] border border-line bg-[#0c0e17] text-white shadow-xl shadow-black/5"
             >
               <Image
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=90&w=1500&auto=format&fit=crop"
@@ -941,13 +934,10 @@ function Hero() {
                       0{stackStep}
                     </motion.div>
                   </AnimatePresence>
-                  <span className="font-hand text-sm text-accent -rotate-3">
-                    hover to cycle ⚡
-                  </span>
                 </div>
 
                 <div>
-                  <div className="text-[10px] font-semibold uppercase tracking-widest text-white/60">
+                  <div className="text-xs font-bold uppercase tracking-widest text-white/70">
                     Product Thesis
                   </div>
                   <AnimatePresence mode="wait">
@@ -957,7 +947,7 @@ function Hero() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
                       transition={{ duration: 0.22 }}
-                      className="mt-2 text-sm font-semibold text-white leading-snug"
+                      className="mt-2 text-base sm:text-lg font-semibold text-white leading-snug"
                     >
                       {centerCopy[stackStep - 1]}
                     </motion.p>
@@ -965,10 +955,16 @@ function Hero() {
 
                   <div className="mt-4 flex items-center gap-1.5">
                     {[1, 2, 3].map((n) => (
-                      <span
+                      <button
                         key={n}
-                        className={`h-1.5 rounded-full transition-all duration-500 ${
-                          n === stackStep ? "w-7 bg-accent" : "w-1.5 bg-white/30"
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setStackStep(n);
+                        }}
+                        aria-label={`Go to thesis ${n}`}
+                        className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
+                          n === stackStep ? "w-7 bg-accent" : "w-1.5 bg-white/30 hover:bg-white/60"
                         }`}
                       />
                     ))}
@@ -978,7 +974,7 @@ function Hero() {
             </motion.div>
 
             {/* 03 — Decision System Banner (Col span 2) */}
-            <div className="relative h-full min-h-[180px] overflow-hidden rounded-[20px] border border-line bg-surface shadow-xl shadow-black/5 lg:col-span-2">
+            <div className="relative h-full min-h-[175px] overflow-hidden rounded-[20px] border border-line bg-surface shadow-xl shadow-black/5 lg:col-span-2">
               <Image
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=90&w=1500&auto=format&fit=crop"
                 alt="AmbrScale engineering & product studio"

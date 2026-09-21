@@ -57,8 +57,8 @@ export default function Navbar() {
         <div
           className={`relative z-50 mt-4 flex items-center justify-between rounded-full px-4 sm:px-6 h-14 backdrop-blur-xl transition-all duration-300 ${
             scrolled
-              ? "border border-line bg-surface/80 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.15)]"
-              : "border border-transparent bg-surface/40"
+              ? "border border-line bg-white/95 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]"
+              : "border border-line/80 bg-white/90 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)]"
           }`}
         >
           <Link href="/" className="flex items-center gap-2.5 group">
@@ -192,7 +192,7 @@ export default function Navbar() {
           <motion.nav
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-2 overflow-hidden rounded-3xl border border-line bg-surface/95 p-3 backdrop-blur-xl md:hidden"
+            className="mt-2 overflow-hidden rounded-3xl border border-line bg-white/98 p-3 backdrop-blur-xl md:hidden shadow-lg"
           >
             {links.map((link) => {
               const active = pathname === link.href;
@@ -242,7 +242,7 @@ export default function Navbar() {
               animate={{ y: 0 }}
               exit={{ y: -12 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative border-b border-line bg-background/95 backdrop-blur-xl"
+              className="relative border-b border-line bg-white/98 backdrop-blur-xl"
             >
               <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
                 <div className="mb-8 flex items-center justify-between">
@@ -332,7 +332,7 @@ export default function Navbar() {
               animate={{ y: 0 }}
               exit={{ y: -12 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative border-b border-line bg-background/95 backdrop-blur-xl"
+              className="relative border-b border-line bg-white/98 backdrop-blur-xl"
             >
               <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
                 <div className="mb-8 flex items-center justify-between">
@@ -402,7 +402,7 @@ export default function Navbar() {
               animate={{ y: 0 }}
               exit={{ y: -12 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative border-b border-line bg-background/95 backdrop-blur-xl"
+              className="relative border-b border-line bg-white/98 backdrop-blur-xl"
             >
               <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
                 <div className="mb-8 flex items-center justify-between">

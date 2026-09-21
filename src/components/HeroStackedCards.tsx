@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { FiArrowUpRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { motion } from "framer-motion";
+import { FiArrowUpRight } from "react-icons/fi";
 
 type StackItem = {
   name: string;
@@ -77,18 +77,17 @@ export default function HeroStackedCards() {
   };
 
   return (
-    <div className="relative flex h-full min-h-[470px] sm:min-h-[480px] w-full flex-col justify-end lg:col-start-3 lg:row-start-1 lg:row-span-2 select-none pt-6">
-    
-
-      {/* Stacked Cards Area */}
-      <div className="relative h-[410px] sm:h-[420px] w-full">
+    <div
+      className="relative flex h-full min-h-[440px] sm:min-h-[460px] lg:min-h-0 w-full flex-col justify-end lg:col-start-3 lg:row-start-1 lg:row-span-2 select-none"
+    >
+      {/* Right-Peeking Straight Slider Cards Area */}
+      <div className="relative h-full min-h-[430px] sm:min-h-[450px] lg:min-h-0 w-full">
         {cards.map((item, index) => {
-          // index 0 is front, index 1 is behind, index 2 is further behind, etc.
+          // Cards are equal height and align vertically; cards behind only peek from the right side
           const isFront = index === 0;
-          const offsetY = -index * 20;
-          const scale = 1 - index * 0.055;
+          const offsetX = index === 0 ? 0 : index === 1 ? 22 : index === 2 ? 42 : 55;
           const zIndex = cards.length - index;
-          const rotate = index === 0 ? 0 : index === 1 ? 4 : index === 2 ? -4 : 2;
+          const opacity = index > 2 ? 0 : index === 0 ? 1 : index === 1 ? 0.95 : 0.8;
 
           return (
             <motion.div
@@ -96,22 +95,23 @@ export default function HeroStackedCards() {
               layout
               initial={false}
               animate={{
-                top: offsetY,
-                scale,
-                rotate,
+                x: offsetX,
+                scale: 1,
+                rotate: 0,
                 zIndex,
-                opacity: index > 3 ? 0 : 1 - index * 0.1,
+                opacity,
               }}
               transition={{
                 type: "spring",
-                stiffness: 280,
-                damping: 24,
+                stiffness: 320,
+                damping: 28,
+                mass: 0.8,
               }}
               drag={isFront ? "x" : false}
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.4}
+              dragElastic={0.35}
               onDragEnd={(_, info) => {
-                if (Math.abs(info.offset.x) > 50 || Math.abs(info.velocity.x) > 250) {
+                if (Math.abs(info.offset.x) > 35 || Math.abs(info.velocity.x) > 200) {
                   if (info.offset.x > 0) {
                     handlePrev();
                   } else {
@@ -124,10 +124,12 @@ export default function HeroStackedCards() {
                   handleNext();
                 }
               }}
-              className={`absolute inset-x-0 bottom-0 h-[370px] sm:h-[380px] overflow-hidden rounded-[26px] border-2 border-white/90 bg-surface shadow-[0_24px_50px_-20px_rgba(0,0,0,0.35)] transition-shadow ${
+              className={`absolute inset-y-0 left-0 w-[calc(100%-44px)] sm:w-[calc(100%-48px)] overflow-hidden rounded-[24px] border-2 border-white/90 bg-surface shadow-[0_20px_45px_-18px_rgba(0,0,0,0.4)] transition-shadow ${
                 isFront
-                  ? "cursor-grab active:cursor-grabbing hover:shadow-[0_30px_60px_-15px_rgba(79,70,229,0.35)]"
-                  : "cursor-pointer hover:brightness-105"
+                  ? "cursor-grab active:cursor-grabbing hover:shadow-[0_28px_55px_-15px_rgba(79,70,229,0.35)]"
+                  : index <= 2
+                  ? "cursor-pointer hover:brightness-110"
+                  : "pointer-events-none"
               }`}
             >
               {/* Image Container */}
@@ -142,14 +144,14 @@ export default function HeroStackedCards() {
                 />
 
                 {/* Dark Vignette Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
 
                 {/* Top Status & Index Badge */}
-                <div className="absolute left-4 top-4 right-4 flex items-center justify-between">
-                  <span className="rounded-full border border-white/20 bg-black/40 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur-md">
+                <div className="absolute left-4 top-4 right-4 flex items-center justify-between sm:left-5 sm:top-5 sm:right-5">
+                  <span className="rounded-full border border-white/20 bg-black/50 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
                     {item.status}
                   </span>
-                  <span className="rounded-full border border-white/20 bg-black/40 px-2.5 py-1 font-mono text-[11px] font-semibold text-white/90 backdrop-blur-md">
+                  <span className="rounded-full border border-white/20 bg-black/50 px-2.5 py-1 font-mono text-xs font-semibold text-white/90 backdrop-blur-md">
                     {productItems.findIndex((p) => p.name === item.name) + 1} / {productItems.length}
                   </span>
                 </div>
@@ -161,7 +163,7 @@ export default function HeroStackedCards() {
                       <h3 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl drop-shadow-sm">
                         {item.name}
                       </h3>
-                      <p className="mt-1 text-xs text-white/80 line-clamp-2 leading-relaxed">
+                      <p className="mt-1 text-sm text-white/90 line-clamp-2 leading-relaxed">
                         {item.tagline}
                       </p>
                     </div>
@@ -181,56 +183,7 @@ export default function HeroStackedCards() {
           );
         })}
       </div>
-
-      {/* Bottom Floating Navigation Controls */}
-      <div className="relative z-40 mt-4 flex items-center justify-between px-1">
-        {/* Step Dots */}
-        <div className="flex items-center gap-1.5">
-          {productItems.map((prod, idx) => {
-            const isActive = cards[0]?.name === prod.name;
-            return (
-              <button
-                key={prod.name}
-                type="button"
-                onClick={() => {
-                  const targetIdx = cards.findIndex((c) => c.name === prod.name);
-                  if (targetIdx > 0) {
-                    setCards((prev) => {
-                      const copy = [...prev];
-                      const moved = copy.splice(0, targetIdx);
-                      return [...copy, ...moved];
-                    });
-                  }
-                }}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  isActive ? "w-7 bg-accent" : "w-2 bg-foreground/20 hover:bg-foreground/40"
-                }`}
-                aria-label={`Jump to ${prod.name}`}
-              />
-            );
-          })}
-        </div>
-
-        {/* Slide Controls Buttons */}
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={handlePrev}
-            className="grid h-9 w-9 place-items-center rounded-full border border-line bg-surface/90 text-foreground shadow-sm transition-all hover:bg-surface hover:scale-105 active:scale-95"
-            aria-label="Previous card"
-          >
-            <FiChevronLeft className="h-4 w-4" />
-          </button>
-          <button
-            type="button"
-            onClick={handleNext}
-            className="grid h-9 w-9 place-items-center rounded-full border border-accent bg-accent text-white shadow-sm transition-all hover:bg-accent/90 hover:scale-105 active:scale-95"
-            aria-label="Next card"
-          >
-            <FiChevronRight className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
     </div>
   );
 }
+

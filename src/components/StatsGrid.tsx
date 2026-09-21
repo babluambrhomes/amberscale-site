@@ -42,14 +42,14 @@ function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }
 
   if (isTextOnly) {
     return (
-      <span ref={ref} className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
+      <span ref={ref} className="text-3xl font-black text-white sm:text-4xl drop-shadow-sm tracking-tight">
         {value}
       </span>
     );
   }
 
   return (
-    <span ref={ref} className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
+    <span ref={ref} className="text-3xl font-black text-white sm:text-4xl drop-shadow-sm tracking-tight">
       {padZero ? String(display).padStart(2, "0") : display}{suffix}
     </span>
   );
@@ -58,20 +58,22 @@ function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }
 export default function StatsGrid({ items, className }: StatsGridProps) {
   return (
     <div
-      className={`grid grid-cols-2 gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-4 max-w-7xl ${className ?? ""}`}
+      className={`relative overflow-hidden rounded-[1.75rem] border border-white/20 bg-gradient-to-r from-[#23cb6b] via-[#10b4af] to-[#1378ef] shadow-xl shadow-cyan-500/20 max-w-7xl mx-auto ${className ?? ""}`}
     >
-      {items.map((s, i) => (
-        <Reveal
-          key={i}
-          delay={i * 0.07}
-          className="bg-background px-6 py-12 text-center"
-        >
-          <CountUp value={s.value} />
-          <span className="mt-2 block text-[11px] font-medium uppercase tracking-[0.2em] text-muted">
-            {s.label}
-          </span>
-        </Reveal>
-      ))}
+      <div className="grid grid-cols-2 gap-px bg-white/25 sm:grid-cols-4">
+        {items.map((s, i) => (
+          <Reveal
+            key={i}
+            delay={i * 0.07}
+            className="bg-transparent px-6 py-10 sm:py-12 text-center transition-colors duration-300 hover:bg-white/10"
+          >
+            <CountUp value={s.value} />
+            <span className="mt-2.5 block text-[11px] font-bold uppercase tracking-[0.2em] text-white/95 drop-shadow-sm">
+              {s.label}
+            </span>
+          </Reveal>
+        ))}
+      </div>
     </div>
   );
 }

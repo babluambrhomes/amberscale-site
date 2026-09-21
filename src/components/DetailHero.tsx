@@ -13,20 +13,28 @@ type Breadcrumb = {
 
 type DetailHeroProps = {
   image: string;
-  eyebrow: string;
+  eyebrow?: string;
+  badge?: string;
+  productNumber?: string;
+  productName?: string;
   title: string;
   description?: string;
   breadcrumbs?: Breadcrumb[];
   meta?: { label: string; value: string }[];
+  titleClassName?: string;
 };
 
 export default function DetailHero({
   image,
   eyebrow,
+  badge,
+  productNumber,
+  productName,
   title,
   description,
   breadcrumbs,
   meta,
+  titleClassName,
 }: DetailHeroProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -88,19 +96,42 @@ export default function DetailHero({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-4 flex items-center gap-3"
+            className="mb-4 flex flex-wrap items-center gap-3"
           >
-            <span className="h-px w-8 bg-accent" />
-            <span className="font-hand text-2xl text-white -rotate-1">
-              {eyebrow}
-            </span>
+            {productNumber && (
+              <span className="font-mono text-sm font-bold text-accent">
+                {productNumber}
+              </span>
+            )}
+            {productName && (
+              <span className="text-base font-bold tracking-tight text-white sm:text-lg">
+                {productName}
+              </span>
+            )}
+            {badge && (
+              <span className="rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white/90">
+                {badge}
+              </span>
+            )}
+            {eyebrow && (
+              <>
+                {(productNumber || productName || badge) ? (
+                  <span className="h-3 w-px bg-white/30" />
+                ) : (
+                  <span className="h-px w-8 bg-accent" />
+                )}
+                <span className="font-hand text-xl sm:text-2xl text-white -rotate-1">
+                  {eyebrow}
+                </span>
+              </>
+            )}
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-4xl text-4xl font-black leading-[1.02] tracking-tighter text-white sm:text-6xl lg:text-7xl"
+            className={titleClassName || "max-w-4xl text-3xl font-black leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl"}
           >
             {title}
           </motion.h1>
