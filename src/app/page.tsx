@@ -808,7 +808,7 @@ function Hero() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-gradient-to-b from-surface/80 via-background to-background text-foreground"
+      className="relative overflow-hidden bg-gradient-to-b from-surface/80 via-background to-background pt-10 text-foreground"
     >
       {/* Ambient Radial Glows */}
       <div
@@ -840,18 +840,16 @@ function Hero() {
           transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="w-full max-w-4xl text-center mt-6"
         >
-          <h1 className="mx-auto max-w-[950px] text-[clamp(2.55rem,5.8vw,5.2rem)] font-extrabold leading-[0.95] tracking-[-0.05em] text-foreground">
-            We build products{" "}
-            <span className="block mt-1">
-              around{" "}
-              <span className="hand-underline inline-block text-accent">
+          <h1 className="mx-auto max-w-[950px] text-[clamp(2.55rem,5.8vw,4.6rem)] font-extrabold leading-[0.95] tracking-[-0.05em] text-foreground">
+            We build products around
+            
+           <span className="hand-underline inline-block text-accent">
                 problems worth solving.
               </span>
-            </span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-[640px] text-base leading-relaxed text-muted sm:text-lg">
-            AmbrScale is a technology company focused on turning real-world problems into useful, durable products. We study the problem, test the opportunity, build the product and learn from what happens next.
+            AmbrScale is a technology company focused on turning real-world problems into useful products. We study the problem, test the opportunity.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -872,7 +870,7 @@ function Hero() {
 
           <div className="mt-5 flex items-center justify-center gap-6">
             <HandArrow label="real problems, zero hype ✎" direction="down-left" />
-            <span className="hidden sm:inline-block font-hand text-xs text-muted/60">
+            <span className="hidden sm:inline-block font-hand text-sm text-gray-600">
               Problems first. Products second. Progress always.
             </span>
           </div>

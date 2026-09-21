@@ -78,12 +78,7 @@ export default function HeroStackedCards() {
 
   return (
     <div className="relative flex h-full min-h-[470px] sm:min-h-[480px] w-full flex-col justify-end lg:col-start-3 lg:row-start-1 lg:row-span-2 select-none pt-6">
-      {/* Top Floating Hand-drawn hint */}
-      <div className="absolute -top-2 right-2 z-30 flex items-center gap-2">
-        <span className="font-hand text-sm text-accent -rotate-3">
-          slide or drag cards ✦
-        </span>
-      </div>
+    
 
       {/* Stacked Cards Area */}
       <div className="relative h-[410px] sm:h-[420px] w-full">
