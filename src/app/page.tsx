@@ -14,6 +14,24 @@ import {
   FiCheck,
   FiArrowRight,
 } from "react-icons/fi";
+import {
+  Target,
+  Package,
+  TrendingUp,
+  FlaskConical,
+  CheckCircle2,
+  Layers,
+  Clock,
+  Wrench,
+  Search,
+  Frame,
+  ClipboardCheck,
+  Hammer,
+  GraduationCap,
+  Repeat,
+  Focus,
+  Microscope,
+} from "lucide-react";
 import StatsGrid from "@/components/StatsGrid";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -193,32 +211,11 @@ export default function Home() {
         id="why-ambrscale"
         className="group/products relative mx-auto max-w-7xl overflow-hidden px-4 pb-16 pt-12 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8"
       >
-        {/* Ambient subtle glow & hand-drawn doodle accent */}
-        <div
-          className="pointer-events-none absolute -left-20 top-20 h-80 w-80 rounded-full bg-accent/5 blur-[120px]"
-          aria-hidden
-        />
-        <div className="pointer-events-none absolute right-4 top-16 hidden h-32 w-44 text-muted/20 md:block lg:right-6">
-          <svg viewBox="0 0 180 130" fill="none" className="h-full w-full rotate-[-3deg]" aria-hidden>
-            <path
-              d="M8 94 C34 79 45 99 69 82 C91 66 105 82 126 62 C145 44 156 50 174 28"
-              className="stroke-current transition-all duration-700 group-hover/products:translate-x-1"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-            />
-            <path
-              d="M119 25 C136 20 151 23 169 27"
-              className="stroke-accent/40"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
+      
 
         <div className="relative z-10 flex flex-wrap items-end justify-between gap-8">
           <div className="relative max-w-2xl">
             <SectionHeading
-              index="01"
               eyebrow="Why AmbrScale"
               title="Not more apps."
               highlightPrefix="Just"
@@ -324,26 +321,23 @@ export default function Home() {
           {[0, 1].map((set) => (
             <div key={`top-${set}`} className="flex items-center gap-8 sm:gap-12">
               {[
-                ["PROBLEMS FIRST", "text-[#4f46e5]"],
-                ["PRODUCTS SECOND", "text-[#10b4af]"],
-                ["PROGRESS ALWAYS", "text-[#7c3aed]"],
-                ["EVIDENCE OVER ASSUMPTIONS", "text-[#ff5c46]"],
-                ["REAL & MEANINGFUL", "text-[#0ea5e9]"],
-                ["COMPOUNDING VALUE", "text-[#23cb6b]"],
-                ["BUILT FOR THE LONG TERM", "text-[#d946ef]"],
-                ["THOUGHTFUL ENGINEERING", "text-[#10b4af]"],
-              ].map(([name, color], i) => (
+                { name: "PROBLEMS FIRST", Icon: Target },
+                { name: "PRODUCTS SECOND", Icon: Package },
+                { name: "PROGRESS ALWAYS", Icon: TrendingUp },
+                { name: "EVIDENCE OVER ASSUMPTIONS", Icon: FlaskConical },
+                { name: "REAL & MEANINGFUL", Icon: CheckCircle2 },
+                { name: "COMPOUNDING VALUE", Icon: Layers },
+                { name: "BUILT FOR THE LONG TERM", Icon: Clock },
+                { name: "THOUGHTFUL ENGINEERING", Icon: Wrench },
+              ].map(({ name, Icon }) => (
                 <div key={`top-${set}-${name}`} className="flex items-center gap-8 sm:gap-12">
-                  <span
-                    className={`text-base font-extrabold tracking-tight opacity-80 transition-opacity duration-300 hover:opacity-100 sm:text-lg ${color}`}
-                  >
+                  <span className="flex items-center gap-2.5 text-base font-extrabold tracking-tight text-foreground opacity-80 transition-opacity duration-300 hover:opacity-100 sm:text-lg">
+                    <Icon className="h-5 w-5 shrink-0" aria-hidden />
                     {name}
                   </span>
                   <span
                     aria-hidden
-                    className={`h-2 w-2 shrink-0 rounded-full ${
-                      i % 2 === 0 ? "bg-cyan" : "bg-accent"
-                    }`}
+                    className="h-2 w-2 shrink-0 rounded-full bg-accent"
                   />
                 </div>
               ))}
@@ -360,26 +354,23 @@ export default function Home() {
           {[0, 1].map((set) => (
             <div key={`bottom-${set}`} className="flex items-center gap-8 sm:gap-12">
               {[
-                ["UNDERSTAND", "text-[#d946ef]"],
-                ["FRAME", "text-[#10b4af]"],
-                ["VALIDATE", "text-[#4f46e5]"],
-                ["BUILD", "text-[#10b4af]"],
-                ["LEARN", "text-[#7c3aed]"],
-                ["COMPOUND", "text-[#4f46e5]"],
-                ["ONE PROBLEM AT A TIME", "text-[#0ea5e9]"],
-                ["EVIDENCE BEFORE ASSUMPTIONS", "text-[#23cb6b]"],
-              ].map(([name, color], i) => (
+                { name: "UNDERSTAND", Icon: Search },
+                { name: "FRAME", Icon: Frame },
+                { name: "VALIDATE", Icon: ClipboardCheck },
+                { name: "BUILD", Icon: Hammer },
+                { name: "LEARN", Icon: GraduationCap },
+                { name: "COMPOUND", Icon: Repeat },
+                { name: "ONE PROBLEM AT A TIME", Icon: Focus },
+                { name: "EVIDENCE BEFORE ASSUMPTIONS", Icon: Microscope },
+              ].map(({ name, Icon }) => (
                 <div key={`bottom-${set}-${name}`} className="flex items-center gap-8 sm:gap-12">
-                  <span
-                    className={`text-base font-extrabold tracking-tight opacity-80 transition-opacity duration-300 hover:opacity-100 sm:text-lg ${color}`}
-                  >
+                  <span className="flex items-center gap-2.5 text-base font-extrabold tracking-tight text-foreground opacity-80 transition-opacity duration-300 hover:opacity-100 sm:text-lg">
+                    <Icon className="h-5 w-5 shrink-0" aria-hidden />
                     {name}
                   </span>
                   <span
                     aria-hidden
-                    className={`h-2 w-2 shrink-0 rounded-full ${
-                      i % 2 === 0 ? "bg-accent" : "bg-cyan"
-                    }`}
+                    className="h-2 w-2 shrink-0 rounded-full bg-accent"
                   />
                 </div>
               ))}
@@ -387,9 +378,7 @@ export default function Home() {
           ))}
         </motion.div>
 
-        <div className="pointer-events-none absolute bottom-1 left-1/2 hidden -translate-x-1/2 font-hand text-xs text-muted/40 sm:block">
-          building for the next decade →
-        </div>
+     
       </section>
 
       {/* =========================================================================
@@ -398,7 +387,6 @@ export default function Home() {
       <section id="approach" className="mx-auto max-w-7xl px-4 pb-20 pt-24 sm:px-6 sm:pb-28 sm:pt-32 lg:px-8">
         <div className="relative flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
-            index="02"
             eyebrow="Our Approach"
             title="Evidence before"
             highlight="assumptions."
@@ -492,7 +480,6 @@ export default function Home() {
 
             <div className="order-1 lg:order-2">
               <SectionHeading
-                index="03"
                 eyebrow="The People Behind AmbrScale"
                 title="Built by people who have"
                 highlight="built before."
@@ -535,7 +522,6 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-end justify-between gap-8">
             <SectionHeading
-              index="04"
               eyebrow="How we work"
               title="Small teams. Clear ownership."
               highlightPrefix="Shorter distance to"
@@ -579,9 +565,7 @@ export default function Home() {
                     {steps[processIndex].tag}
                   </div>
 
-                  <div className="pointer-events-none absolute bottom-5 left-6 hidden font-hand text-sm text-white/80 sm:block">
-                    deliberate choices →
-                  </div>
+                 
                 </div>
 
                 {/* Right Interactive Text Area */}
@@ -671,7 +655,6 @@ export default function Home() {
           {/* Top Heading */}
           <div className="max-w-3xl">
             <SectionHeading
-              index="05"
               eyebrow="Long-Term Horizon"
               title="Building for the next decade,"
               highlight="not the next launch."
@@ -738,7 +721,6 @@ export default function Home() {
       <section id="insights" className="border-y border-line bg-surface/40 py-20 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            index="06"
             eyebrow="Inside the Build"
             title="What we're learning"
             highlight="while building."
@@ -877,7 +859,7 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.94, y: 36 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mt-14 w-full max-w-[1140px] sm:mt-16"
+          className="relative mt-14 w-full max-w-7xl sm:mt-16"
         >
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:grid-rows-[280px_175px]">
             {/* 01 — Currently Building: Focus Card */}

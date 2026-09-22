@@ -649,30 +649,47 @@ export default async function ProductDetailPage({ params }: Props) {
           01 · THE PROBLEM & VALUE PROPOSITION (Section 01 & 02 Bento)
           ========================================================================= */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className=" ">
           {/* Left Column: Problem & Product Identity (5 cols) */}
           <div className="lg:col-span-5 lg:sticky lg:top-28">
             <SectionHeading
-              index="01"
               eyebrow="The Problem"
               title={config.problemTitle}
               highlight={config.problemHighlight}
               description={config.problemDescription}
             />
 
-            <Reveal delay={0.15}>
-              <div className="mt-6 rounded-2xl border border-line bg-surface/90 p-5 backdrop-blur-sm">
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-accent">
-                  {config.principleLabel}
-                </span>
-                <p className="mt-2 text-sm font-semibold text-foreground">
-                  {config.principleTitle}
-                </p>
-                <p className="mt-1 text-xs text-muted">
-                  {config.principleSubtitle}
-                </p>
-              </div>
-            </Reveal>
+            <div className=" grid grid-cols-1 pt-20 gap-4 sm:grid-cols-2">
+              {config.stats.map((s, i) => (
+                <Reveal key={s.label} delay={i * 0.08}>
+                  <div
+                    className={`group relative flex h-full flex-col justify-between overflow-hidden hand-radius border p-8 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl ${s.highlight
+                        ? "border-accent/40 bg-gradient-to-br from-accent/10 via-surface to-surface shadow-md shadow-accent/5 ring-1 ring-accent/20"
+                        : "border-line bg-surface/90 hover:border-accent/40"
+                      }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs text-muted">0{i + 1}</span>
+                      <span className="font-hand text-sm text-accent-2">
+                        {s.highlight ? "Core Indicator ✦" : "Standard ✓"}
+                      </span>
+                    </div>
+                    <div className="mt-6">
+                      <span className="text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+                        {s.value}
+                      </span>
+                      <p className="mt-2 text-sm font-medium text-muted">{s.label}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            <div>
+
+            </div>
+
+
 
             <Reveal delay={0.2}>
               <div className="mt-8 flex flex-wrap gap-4">
@@ -694,32 +711,7 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
 
           {/* Right Column: 4 Metrics Bento Grid (7 cols) */}
-          <div className="lg:col-span-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {config.stats.map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.08}>
-                <div
-                  className={`group relative flex h-full flex-col justify-between overflow-hidden hand-radius border p-8 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl ${
-                    s.highlight
-                      ? "border-accent/40 bg-gradient-to-br from-accent/10 via-surface to-surface shadow-md shadow-accent/5 ring-1 ring-accent/20"
-                      : "border-line bg-surface/90 hover:border-accent/40"
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs text-muted">0{i + 1}</span>
-                    <span className="font-hand text-sm text-accent-2">
-                      {s.highlight ? "Core Indicator ✦" : "Standard ✓"}
-                    </span>
-                  </div>
-                  <div className="mt-6">
-                    <span className="text-4xl font-black tracking-tight text-foreground sm:text-5xl">
-                      {s.value}
-                    </span>
-                    <p className="mt-2 text-sm font-medium text-muted">{s.label}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+
         </div>
       </section>
 
@@ -800,7 +792,6 @@ export default async function ProductDetailPage({ params }: Props) {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-14">
             <SectionHeading
-              index="02"
               eyebrow="Core Capabilities"
               title={config.capabilitiesHeading}
               highlight={config.capabilitiesHighlight}
@@ -860,11 +851,10 @@ export default async function ProductDetailPage({ params }: Props) {
           ========================================================================= */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
-          
+
           {/* Left: Audience */}
           <div className="lg:col-span-5">
             <SectionHeading
-              index="03"
               eyebrow="Target Audience"
               title={config.whoItIsForHeading}
               highlight={config.whoItIsForHighlight}
@@ -891,7 +881,6 @@ export default async function ProductDetailPage({ params }: Props) {
           {/* Right: Workflow */}
           <div className="lg:col-span-7">
             <SectionHeading
-              index="04"
               eyebrow="Workflow"
               title={config.workflowHeading}
               highlight={config.workflowHighlight}
@@ -1030,7 +1019,6 @@ export default async function ProductDetailPage({ params }: Props) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
             <SectionHeading
-              index="06"
               eyebrow="Fleet"
               title="More products"
               highlight="we are building"

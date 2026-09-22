@@ -18,7 +18,7 @@ function parseValue(raw: string) {
   return { target: parseInt(match[1], 10), suffix: match[2], isTextOnly: false, padZero };
 }
 
-function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }) {
+function CountUp({ value, duration = 1.6, className = "" }: { value: string; duration?: number; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const { target, suffix, isTextOnly, padZero } = parseValue(value);
@@ -40,17 +40,12 @@ function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }
     requestAnimationFrame(tick);
   }, [inView, target, duration, isTextOnly]);
 
-  if (isTextOnly) {
-    return (
-      <span ref={ref} className="text-3xl font-black text-white sm:text-4xl drop-shadow-sm tracking-tight">
-        {value}
-      </span>
-    );
-  }
-
   return (
-    <span ref={ref} className="text-3xl font-black text-white sm:text-4xl drop-shadow-sm tracking-tight">
-      {padZero ? String(display).padStart(2, "0") : display}{suffix}
+    <span
+      ref={ref}
+      className={`text-3xl font-black tracking-tight sm:text-4xl ${className}`}
+    >
+      {isTextOnly ? value : `${padZero ? String(display).padStart(2, "0") : display}${suffix}`}
     </span>
   );
 }
@@ -58,17 +53,17 @@ function CountUp({ value, duration = 1.6 }: { value: string; duration?: number }
 export default function StatsGrid({ items, className }: StatsGridProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-[1.75rem] border border-white/20 bg-gradient-to-r from-[#23cb6b] via-[#10b4af] to-[#1378ef] shadow-xl shadow-cyan-500/20 max-w-7xl mx-auto ${className ?? ""}`}
+      className={`relative mx-auto max-w-7xl overflow-hidden rounded-[1.75rem]  bg-gradient-to-b from-surface to-surface-2/60 shadow-[0_1px_2px_rgba(15,17,23,0.05)] ${className ?? ""}`}
     >
-      <div className="grid grid-cols-2 gap-px bg-white/25 sm:grid-cols-4">
+      <div className="grid grid-cols-2 divide-x divide-y divide-line/70 sm:grid-cols-4 sm:divide-y-0">
         {items.map((s, i) => (
           <Reveal
             key={i}
             delay={i * 0.07}
-            className="bg-transparent px-6 py-10 sm:py-12 text-center transition-colors duration-300 hover:bg-white/10"
+            className="px-6 py-10 text-center transition-colors duration-300 hover:bg-accent/[0.04] sm:py-12"
           >
-            <CountUp value={s.value} />
-            <span className="mt-2.5 block text-[11px] font-bold uppercase tracking-[0.2em] text-white/95 drop-shadow-sm">
+            <CountUp value={s.value} className="text-logo-gradient" />
+            <span className="mt-2.5 block text-[11px] font-bold uppercase tracking-[0.2em] text-muted">
               {s.label}
             </span>
           </Reveal>

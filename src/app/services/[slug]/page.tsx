@@ -110,7 +110,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <Reveal key={s.label} delay={i * 0.08}>
               <div className="group relative flex h-full flex-col justify-between overflow-hidden hand-radius border border-line bg-surface/90 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-xl">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-muted">0{i + 1}</span>
+                  <span className="font-mono text-xs text-muted">{String(i).padStart(2, "0")}</span>
                   <span className="font-hand text-xs text-accent-2">benchmark ✦</span>
                 </div>
                 <div className="mt-4">
@@ -133,7 +133,6 @@ export default async function ServiceDetailPage({ params }: Props) {
           {/* Left: Overview Story & CTAs (5 cols) */}
           <div className="lg:col-span-5 lg:sticky lg:top-28">
             <SectionHeading
-              index="01"
               eyebrow="Service overview"
               title={service.title}
               description={service.longDesc}
@@ -234,9 +233,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
                   ACTIVE CAPABILITY
                 </span>
-                <div className="rounded-lg bg-surface p-1.5 text-muted shadow-sm group-hover:text-accent">
-                  <FiMaximize2 className="h-4 w-4" />
-                </div>
+              
               </div>
             </div>
 
@@ -282,7 +279,6 @@ export default async function ServiceDetailPage({ params }: Props) {
           {/* Left: Deliverables Checklist */}
           <div>
             <SectionHeading
-              index="02"
               eyebrow="What's included"
               title="Transparent scope."
               highlight="Guaranteed output."
@@ -305,7 +301,6 @@ export default async function ServiceDetailPage({ params }: Props) {
           {/* Right: Technology Stack */}
           <div>
             <SectionHeading
-              index="03"
               eyebrow="Under the hood"
               title="Tools &"
               highlight="frameworks"
@@ -356,15 +351,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-16">
             <div>
-              <Reveal>
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs font-bold text-accent">04</span>
-                  <span className="h-px w-8 bg-accent" />
-                  <span className="font-hand text-2xl text-accent-2 -rotate-1">
-                    How we deliver
-                  </span>
-                </div>
-              </Reveal>
+             
               <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl text-white">
                 <SplitWords text="A disciplined process" y={20} />{" "}
                 <span className="hand-underline inline-block text-accent">
@@ -433,7 +420,6 @@ export default async function ServiceDetailPage({ params }: Props) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
             <SectionHeading
-              index="06"
               eyebrow="Keep exploring"
               title="Other services"
               highlight="we offer"

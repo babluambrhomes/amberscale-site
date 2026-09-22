@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 type PageHeroProps = {
-  index: string;
   eyebrow: string;
   title: string;
   highlight?: string;
@@ -14,7 +13,6 @@ type PageHeroProps = {
 };
 
 export default function PageHero({
-  index,
   eyebrow,
   title,
   highlight,
@@ -29,7 +27,7 @@ export default function PageHero({
   const yImg = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const yContent = useTransform(scrollYProgress, [0, 1], [0, 180]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.6], [0.75, 0.95]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.6], [0.82, 0.98]);
 
   return (
     <section
@@ -49,7 +47,7 @@ export default function PageHero({
 
       <motion.div
         style={{ opacity: overlayOpacity }}
-        className="absolute inset-0 z-10 bg-gradient-to-t from-black via-black/60 to-transparent"
+        className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/70 to-black"
       />
 
       <div className="relative z-20 flex h-full flex-col justify-end px-4 pb-14 sm:px-6 lg:px-8">
@@ -61,9 +59,6 @@ export default function PageHero({
           transition={{ duration: 0.6 }}
           className="flex items-center gap-3"
         >
-          <span className="hand-radius -rotate-3 border border-accent/40 bg-accent/10 px-3 py-1 font-mono text-xs text-accent">
-            {index}
-          </span>
           <span className="font-hand text-2xl text-white -rotate-1">
             {eyebrow}
           </span>
@@ -79,7 +74,7 @@ export default function PageHero({
           {highlight && (
             <>
               <br />
-              <span className="hand-underline inline-block text-accent">
+              <span className="hand-underline inline-block text-gray-300">
                 {highlight}
               </span>
             </>
@@ -91,7 +86,7 @@ export default function PageHero({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.25 }}
-            className="mt-7 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg"
+            className="mt-7 max-w-5xl text-base leading-relaxed text-white/90 sm:text-lg"
           >
             {description}
           </motion.p>

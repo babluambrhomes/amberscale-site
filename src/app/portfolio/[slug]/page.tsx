@@ -411,7 +411,6 @@ export default async function ProjectDetailPage({ params }: Props) {
       <section id="challenge-solution" className="border-t border-line bg-surface-2/40 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            index="02"
             eyebrow="Architecture &amp; Strategy"
             title="The Challenge &amp;"
             highlight="Engineering Solution"
@@ -555,7 +554,6 @@ export default async function ProjectDetailPage({ params }: Props) {
       <section className="border-t border-line bg-surface py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            index="03"
             eyebrow="Tech Stack &amp; Primitives"
             title="Tools &amp; Infrastructure"
             highlight="deployed"
@@ -707,7 +705,6 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
-              index="05"
               eyebrow="Portfolio Fleet"
               title="Explore More"
               highlight="Case Studies"

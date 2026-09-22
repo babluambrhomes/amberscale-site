@@ -88,7 +88,6 @@ export default function ServicesPage() {
     <div className="overflow-x-hidden">
       {/* Hero Header */}
       <PageHero
-        index="01"
         eyebrow="Full-Stack Capabilities"
         title="What we can"
         highlight="engineer for you"
@@ -107,7 +106,6 @@ export default function ServicesPage() {
       <section id="services" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-12">
           <SectionHeading
-            index="01.1"
             eyebrow="Our disciplines"
             title="Full-cycle"
             highlight="capabilities"
@@ -226,11 +224,9 @@ export default function ServicesPage() {
           {/* Left: Proposition & Checklist */}
           <div>
             <SectionHeading
-              index="01.3"
               eyebrow="The studio advantage"
               title="One team."
               highlight="Zero hand-offs."
-              br
             />
             <Reveal delay={0.16}>
               <p className="mt-6 max-w-lg leading-relaxed text-muted text-base">

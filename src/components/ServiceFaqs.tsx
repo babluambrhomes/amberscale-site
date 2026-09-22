@@ -14,7 +14,6 @@ export default function ServiceFaqs({ faqs }: { faqs: Faq[] }) {
   return (
     <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28">
       <SectionHeading
-        index="05"
         eyebrow="Got questions"
         title="Frequently asked"
         highlight="questions"

@@ -35,7 +35,6 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="overflow-x-hidden">
       <PageHero
-        index="06"
         eyebrow="Legal"
         title="Privacy"
         highlight="Policy"

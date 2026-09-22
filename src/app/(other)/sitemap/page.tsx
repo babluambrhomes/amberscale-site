@@ -27,7 +27,6 @@ export default function SitemapPage() {
   return (
     <div className="overflow-x-hidden">
       <PageHero
-        index="08"
         eyebrow="Navigate"
         title="Every page,"
         highlight="one place"

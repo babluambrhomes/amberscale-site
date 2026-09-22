@@ -43,22 +43,9 @@ import {
 } from "@/components/HandDrawnAccents";
 import { btnPrimary, circleArrow } from "@/lib/constants";
 
-const reachOutOptions = [
-  "Product idea / opportunity",
-  "Build with AmbrScale",
-  "Partnership",
-  "Media / speaking",
-  "Careers",
-  "Other",
-];
 
-const stageOptions = [
-  "Exploring",
-  "Validating",
-  "Building",
-  "Live",
-  "Scaling",
-];
+
+
 
 const conversationPaths = [
   {
@@ -180,7 +167,6 @@ export default function ContactPage() {
           PAGE HERO (Signature Full-Width Visual Hero)
           ========================================================================= */}
       <PageHero
-        index="04"
         eyebrow="✦ LET'S TALK"
         title="Have a problem"
         highlight="worth solving?"
@@ -252,7 +238,7 @@ export default function ContactPage() {
           {/* LEFT: PRODUCT CONVERSATION FORM & PARTNERSHIPS (7 COLS) */}
           <div className="space-y-6 lg:col-span-7">
             <Reveal>
-              <div className="relative overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-8 sm:p-10 shadow-2xl backdrop-blur-sm">
+              <div className="relative overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-8 sm:p-10  backdrop-blur-sm">
                 
                 {/* Form header */}
                 <div className="border-b border-line pb-6">
@@ -390,7 +376,7 @@ export default function ContactPage() {
             
             {/* Direct Contact Card (08 Direct Contact) */}
             <Reveal delay={0.1}>
-              <div className="relative overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-7 sm:p-8 shadow-xl backdrop-blur-sm">
+              <div className="relative overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-7 sm:p-8  backdrop-blur-sm">
                 
                 {/* Header with Live IST Time */}
                 <div className="flex items-center justify-between border-b border-line pb-4">
@@ -502,7 +488,7 @@ export default function ContactPage() {
           
           {/* PARTNERSHIPS CARD */}
           <Reveal delay={0.15}>
-            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-7 sm:p-8 shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-accent/40">
+            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-7 sm:p-8  backdrop-blur-sm transition-all duration-300 hover:border-accent/40">
               <div>
                 <div className="flex items-center gap-2.5 text-accent">
                   <FiBriefcase className="h-5 w-5" />
@@ -534,7 +520,7 @@ export default function ContactPage() {
 
           {/* CAREERS & COLLABORATIONS CARD */}
           <Reveal delay={0.2}>
-            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-7 sm:p-8 shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-accent/40">
+            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-line bg-surface/90 p-7 sm:p-8  backdrop-blur-sm transition-all duration-300 hover:border-accent/40">
               <div>
                 <div className="flex items-center gap-2.5 text-accent">
                   <FiUsers className="h-5 w-5" />
@@ -581,7 +567,7 @@ export default function ContactPage() {
                 </span>
               </div>
               <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-4xl">
-                AmbrScale · Mumbai, India
+                AmbrScale · Noida, India
               </h2>
             </div>
             <a
@@ -607,7 +593,7 @@ export default function ContactPage() {
                   <span className="h-3 w-3 rounded-full bg-amber-400/90" />
                   <span className="h-3 w-3 rounded-full bg-emerald-400/90" />
                   <span className="ml-3 font-mono text-xs text-muted">
-                    maps.ambrscale.studio · 19.0760° N, 72.8777° E (IST / GMT+5:30)
+                    maps.ambrscale.studio · (IST / GMT+5:30)
                   </span>
                 </div>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/20 bg-accent/10 px-3 py-1 font-mono text-[11px] font-bold text-accent">
@@ -620,7 +606,7 @@ export default function ContactPage() {
               <div className="relative h-[420px] w-full bg-surface-2 sm:h-[480px]">
                 <iframe
                   title="AmbrScale Studio Map"
-                  src="https://maps.google.com/maps?q=Mumbai,%20Maharashtra,%20India&z=12&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224408.21865806595!2d77.35118478539344!3d28.498260405148766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cea64b8f89aef%3A0xec0ccabb5317962e!2sGreater%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1790068355456!5m2!1sen!2sin"
                   className="absolute inset-0 h-full w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -711,53 +697,83 @@ export default function ContactPage() {
       {/* =========================================================================
           FREQUENTLY ASKED QUESTIONS ACCORDION
           ========================================================================= */}
-      <section className="relative mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
-        <div className="text-center">
-          <Reveal>
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">
-              COMMON QUESTIONS
-            </span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-              Frequently Asked Questions
-            </h2>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <p className="mt-3 text-sm text-muted">
-              Everything you need to know about reaching out to AmbrScale.
-            </p>
-          </Reveal>
-        </div>
+      <section className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+         <div className="text-center">
+              <Reveal>
+                <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">
+                  COMMON QUESTIONS
+                </span>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+                  Frequently Asked Questions
+                </h2>
+              </Reveal>
+              <Reveal delay={0.16}>
+                <p className="mt-3 text-sm text-muted">
+                  Everything you need to know about reaching out to AmbrScale.
+                </p>
+              </Reveal>
+            </div>
+        <div className="grid mt-12 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Left: Heading + FAQ Accordion (7 cols) */}
+          <div className="lg:col-span-7">
+           
 
-        <div className="mt-12 space-y-4">
-          {faqs.map((faq, idx) => (
-            <Reveal key={idx} delay={idx * 0.08}>
-              <div className="overflow-hidden rounded-2xl border border-line bg-surface/80 transition-colors hover:border-accent/40">
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="flex w-full items-center justify-between p-6 text-left"
-                >
-                  <span className="text-base font-bold text-foreground">
-                    {faq.q}
-                  </span>
-                  <FiChevronDown
-                    className={`h-5 w-5 shrink-0 text-muted transition-transform duration-300 ${
-                      openFaq === idx ? "rotate-180 text-accent" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === idx && (
-                  <div className="border-t border-line/60 px-6 pb-6 pt-3">
-                    <p className="text-sm leading-relaxed text-muted">
-                      {faq.a}
-                    </p>
+            <div className=" space-y-4">
+              {faqs.map((faq, idx) => (
+                <Reveal key={idx} delay={idx * 0.08}>
+                  <div className="overflow-hidden rounded-2xl border border-line bg-surface/80 transition-colors hover:border-accent/40">
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                      className="flex w-full items-center justify-between p-6 text-left"
+                    >
+                      <span className="text-base font-bold text-foreground">
+                        {faq.q}
+                      </span>
+                      <FiChevronDown
+                        className={`h-5 w-5 shrink-0 text-muted transition-transform duration-300 ${
+                          openFaq === idx ? "rotate-180 text-accent" : ""
+                        }`}
+                      />
+                    </button>
+                    {openFaq === idx && (
+                      <div className="border-t border-line/60 px-6 pb-6 pt-3">
+                        <p className="text-sm leading-relaxed text-muted">
+                          {faq.a}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                )}
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Sticky FAQ Image (5 cols) */}
+          <div className="lg:col-span-5">
+            <Reveal delay={0.2}>
+              <div className="lg:sticky lg:top-28">
+                <div className="relative overflow-hidden rounded-3xl border border-line bg-surface/80 backdrop-blur-sm">
+                  <Image
+                    src="https://images.unsplash.com/photo-1558403194-611308249627?q=80&w=1200&auto=format&fit=crop"
+                    alt="AmbrScale support team answering questions"
+                    width={1200}
+                    height={1000}
+                    className="h-[320px] w-full object-cover sm:h-[420px]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <span className="font-hand text-2xl text-white -rotate-1">
+                      Straight answers, fast replies ✦
+                    </span>
+                   
+                  </div>
+                </div>
               </div>
             </Reveal>
-          ))}
+          </div>
         </div>
       </section>
 

@@ -149,7 +149,6 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap items-end justify-between gap-6">
               <SectionHeading
-                index="02"
                 eyebrow="Keep reading"
                 title="More from"
                 highlight="the journal"

@@ -61,7 +61,6 @@ export default function ProductsPage() {
     <div className="overflow-x-hidden">
       {/* Page Hero */}
       <PageHero
-        index="01"
         eyebrow="Products fleet"
         title="Owned & operated,"
         highlight="built for the world"
@@ -80,7 +79,6 @@ export default function ProductsPage() {
       <section id="products" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-12">
           <SectionHeading
-            index="01.1"
             eyebrow="The live fleet"
             title="Products we"
             highlight="own & operate"
@@ -227,7 +225,6 @@ export default function ProductsPage() {
       <section className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-14">
           <SectionHeading
-            index="01.3"
             eyebrow="Under the hood"
             title="How we architect"
             highlight="our software"
@@ -282,7 +279,6 @@ export default function ProductsPage() {
           <div className="flex flex-wrap items-center justify-between gap-8">
             <div className="max-w-2xl">
               <SectionHeading
-                index="01.4"
                 eyebrow="Collaborative Craft"
                 title="Have a problem"
                 highlight="worth solving?"

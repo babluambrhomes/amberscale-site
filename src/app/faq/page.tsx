@@ -69,7 +69,6 @@ export default function FaqPage() {
   return (
     <div className="overflow-x-hidden">
       <PageHero
-        index="09"
         eyebrow="Support"
         title="Frequently asked"
         highlight="questions"
@@ -184,7 +183,6 @@ export default function FaqPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl">
             <SectionHeading
-              index="10"
               eyebrow="Still stuck"
               title="Can't find"
               highlight="your answer?"

@@ -39,7 +39,6 @@ export default function TermsPage() {
   return (
     <div className="overflow-x-hidden">
       <PageHero
-        index="07"
         eyebrow="Legal"
         title="Terms &"
         highlight="Conditions"

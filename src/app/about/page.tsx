@@ -203,7 +203,6 @@ export default function AboutPage() {
     <div className="overflow-x-hidden">
       {/* 01 About Hero */}
       <PageHero
-        index="01"
         eyebrow="About AmbrScale"
         title="We are building a company around"
         highlight="problems worth solving."
@@ -216,11 +215,9 @@ export default function AboutPage() {
         <div className="grid items-center gap-14 lg:grid-cols-2">
           <div>
             <SectionHeading
-              index="02"
               eyebrow="Why We Exist"
               title="Technology is changing faster"
-              highlight="than the systems around us."
-              br
+              // highlight="than the systems around us."
             />
             <Reveal delay={0.16}>
               <p className="mt-6 leading-relaxed text-muted text-base sm:text-lg">
@@ -289,13 +286,7 @@ export default function AboutPage() {
       <section className="border-t border-line bg-surface/30 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-xs text-accent">03</span>
-              <span className="h-px w-8 bg-accent" />
-              <span className="font-hand text-xl text-accent -rotate-1">
-                The Product Model
-              </span>
-            </div>
+           
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               A product company, built from the problem outward.
             </h2>
@@ -327,7 +318,6 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading
-              index="04"
               eyebrow="The Company We Are Building"
               title="Different problems."
               highlight="One way of building."
@@ -408,15 +398,7 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-2xl">
-              <Reveal>
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs font-bold text-accent">05</span>
-                  <span className="h-px w-8 bg-accent" />
-                  <span className="font-hand text-2xl text-accent -rotate-1">
-                    Our Beliefs
-                  </span>
-                </div>
-              </Reveal>
+             
               <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl text-white">
                 <SplitWords text="A few things we" y={20} />{" "}
                 <span className="hand-underline inline-block text-accent">
@@ -492,10 +474,9 @@ export default function AboutPage() {
       <section id="people" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <SectionHeading
-            index="06"
             eyebrow="The People Behind AmbrScale"
             title="Small team. Different strengths."
-            highlight="Shared ownership."
+            // highlight="Shared ownership."
             description="AmbrScale is built by people working across product, design, technology, growth and business. We bring different disciplines into the same conversation."
           />
           <Reveal delay={0.2}>
@@ -513,9 +494,8 @@ export default function AboutPage() {
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {teamMembers.map((m, i) => (
             <Reveal key={m.name} delay={i * 0.1}>
-              <div className="group flex h-full flex-col justify-between rounded-3xl border border-line bg-surface/70 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-xl">
-                <div>
-                  <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-line">
+              <div className="group flex h-full flex-col justify-between rounded-3xl  bg-surface/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 ">
+               <div className="relative aspect-[5/4] w-full overflow-hidden rounded-2xl border border-line">
                     <Image
                       src={m.img}
                       alt={m.name}
@@ -524,7 +504,9 @@ export default function AboutPage() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="mt-5">
+                <div className="p-4">
+                 
+                  <div className="">
                     <h3 className="text-xl font-bold tracking-tight text-foreground">
                       {m.name}
                     </h3>
@@ -541,7 +523,7 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="mt-5 border-t border-line/60 pt-3">
+                <div className=" border-t border-line/60 p-4">
                   <p className="text-[11px] leading-relaxed text-muted italic">
                     &ldquo;{m.perspective}&rdquo;
                   </p>
@@ -552,104 +534,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =========================================================================
-          07: CULTURE & WHAT YOU CAN EXPECT (Operating Behaviour)
-          ========================================================================= */}
-      <section className="border-t border-line bg-surface/40 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-16 lg:grid-cols-2">
-            {/* Culture / How it feels to build here */}
-            <div>
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-accent">07.1</span>
-                <span className="h-px w-8 bg-accent" />
-                <span className="font-hand text-xl text-accent -rotate-1">
-                  Team Culture
-                </span>
-              </div>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                How we want it to feel to build here.
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-                We replace generic workplace slogans with clear operating behaviour:
-              </p>
-
-              <div className="mt-8 space-y-4">
-                {cultureValues.map((cv, idx) => (
-                  <Reveal key={cv.name} delay={idx * 0.08}>
-                    <div className="flex items-start gap-4 rounded-2xl border border-line bg-background/80 p-4 backdrop-blur-sm">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/15 font-hand text-base text-accent">
-                        {cv.doodle}
-                      </span>
-                      <div>
-                        <h4 className="text-base font-bold text-foreground">{cv.name}</h4>
-                        <p className="mt-1 text-xs sm:text-sm leading-relaxed text-muted">
-                          {cv.behaviour}
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-
-            {/* Credibility Promises / What you can expect from us */}
-            <div>
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-accent">07.2</span>
-                <span className="h-px w-8 bg-accent" />
-                <span className="font-hand text-xl text-accent -rotate-1">
-                  Institutional Commitments
-                </span>
-              </div>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                What you can expect from us.
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-                Signals of credibility without inflated claims:
-              </p>
-
-              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {credibilityPromises.map((cp, idx) => (
-                  <Reveal key={cp.title} delay={idx * 0.08}>
-                    <div className="flex h-full flex-col justify-between rounded-2xl border border-line bg-background/80 p-5 backdrop-blur-sm">
-                      <div>
-                        <span className="font-mono text-xs font-bold text-accent">
-                          #{cp.num}
-                        </span>
-                        <h4 className="mt-3 text-base font-bold text-foreground">
-                          {cp.title}
-                        </h4>
-                        <p className="mt-2 text-xs leading-relaxed text-muted">
-                          {cp.detail}
-                        </p>
-                      </div>
-                      <div className="mt-4 border-t border-line/40 pt-2 text-[10px] font-mono text-accent">
-                        AmbrScale Standard
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-
-              {/* What comes next note */}
-              <div className="mt-8 rounded-2xl border border-accent/20 bg-accent/5 p-6">
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-accent">
-                  WHAT COMES NEXT
-                </span>
-                <h4 className="mt-2 text-lg font-bold text-foreground">
-                  The future is not a slogan. It is a product we have not built yet.
-                </h4>
-                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
-                  We believe the next generation of companies will be built closer to users, closer to technology and closer to the problems that matter. We are early. We are building deliberately. We intend to go far.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 08 Closing Final CTA */}
+  
       <FinalCTA
         heading="There are still problems"
         highlight="worth solving."

@@ -27,7 +27,6 @@ export default function PortfolioPage() {
   return (
     <div className="overflow-x-hidden">
       <PageHero
-        index="03"
         eyebrow="Portfolio"
         title="What we"
         highlight="back"
@@ -111,11 +110,9 @@ export default function PortfolioPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SectionHeading
-                index="03.1"
                 eyebrow="Our approach"
                 title="Built for"
                 highlight="measurable results"
-                br
               />
               <Reveal delay={0.16}>
                 <p className="mt-6 max-w-md leading-relaxed text-muted">

@@ -10,7 +10,6 @@ export default function BlogPage() {
   return (
     <div className="overflow-x-hidden">
       <PageHero
-        index="05"
         eyebrow="Journal"
         title="Notes from"
         highlight="the studio"
