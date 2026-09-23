@@ -117,10 +117,7 @@ export default function ProjectGallery({
               Interface &amp; Product Breakdown
             </h3>
           </div>
-          <div className="flex items-center gap-2 text-xs font-medium text-muted">
-            <FiLayers className="text-accent text-sm" />
-            <span>Click any image to inspect high-resolution details</span>
-          </div>
+          
         </div>
       </Reveal>
 

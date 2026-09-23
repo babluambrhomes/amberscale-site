@@ -10,6 +10,7 @@ import {
   FiTwitter,
 } from "react-icons/fi";
 import Magnetic from "@/components/interactions/Magnetic";
+import Image from "next/image";
 
 const navColumns = {
   architecture: [
@@ -41,11 +42,23 @@ const socials = [
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const onSubscribe = (e: React.FormEvent) => {
+  const onSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) setSubmitted(true);
+    if (!email.trim()) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "footer" }),
+      });
+      if (!res.ok) throw new Error("failed");
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -94,16 +107,21 @@ export default function Footer() {
                 placeholder="you@company.com"
                 className="flex-1 rounded-full border border-line bg-background/60 px-5 py-3 text-sm text-foreground placeholder:text-muted/70 focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors sm:w-72"
               />
-              {submitted ? (
+              {status === "success" ? (
                 <p className="text-sm font-semibold text-accent whitespace-nowrap">
                   ✓ On the list.
+                </p>
+              ) : status === "error" ? (
+                <p className="text-sm font-semibold text-accent-2 whitespace-nowrap">
+                  ✕ Try again.
                 </p>
               ) : (
                 <button
                   type="submit"
-                  className="inline-flex shrink-0 items-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.05] px-5 py-3 text-sm font-semibold text-foreground backdrop-blur-md transition-all duration-300 hover:border-foreground/30 hover:bg-foreground/[0.1] hover:shadow-[0_8px_24px_-14px_rgba(0,0,0,0.35)]"
+                  disabled={status === "loading"}
+                  className="inline-flex shrink-0 items-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.05] px-5 py-3 text-sm font-semibold text-foreground backdrop-blur-md transition-all duration-300 hover:border-foreground/30 hover:bg-foreground/[0.1] hover:shadow-[0_8px_24px_-14px_rgba(0,0,0,0.35)] disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Subscribe
+                  {status === "loading" ? "Subscribing…" : "Subscribe"}
                 </button>
               )}
             </form>
@@ -113,19 +131,11 @@ export default function Footer() {
         <div className="mt-8 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Link href="/" className="inline-flex items-center gap-2.5">
-              <span className="text-lg font-semibold tracking-tight text-logo-gradient">
+              {/* <span className="text-lg font-semibold tracking-tight text-logo-gradient">
                 AmbrScale
-              </span>
-              <svg
-                className="h-3.5 w-3.5 -rotate-6 text-accent-2"
-                viewBox="0 0 24 24"
-                aria-hidden
-              >
-                <path
-                  d="M12 1c1 5 2.5 8 11 11-8.5 3-10 6-11 11-1-5-2.5-8-11-11 8.5-3 10-6 11-11z"
-                  className="fill-current"
-                />
-              </svg>
+              </span> */}
+              <Image src='/logo.png' height={20} width={70} alt='site logo' className="w-full h-14" />
+           
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
               AmbrScale is a technology company building products around problems worth solving. We study the problem, test the opportunity, build the product and learn from what happens next.
@@ -216,10 +226,8 @@ export default function Footer() {
             <Link href="/terms" className="transition-colors hover:text-accent">
               Terms
             </Link>
-            <span className="h-1 w-1 bg-muted" />
-            <Link href="/sitemap" className="transition-colors hover:text-accent">
-              Sitemap
-            </Link>
+           
+           
           </div>
           <p className="font-hand text-base text-muted/100 -rotate-1">
             Problems first. Products second. Progress always.

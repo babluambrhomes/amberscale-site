@@ -8,6 +8,7 @@ import { FiArrowUpRight, FiChevronDown, FiMenu, FiX } from "react-icons/fi";
 import { services, projects, products } from "@/lib/site";
 
 import Magnetic from "@/components/interactions/Magnetic";
+import Image from "next/image";
 
 const links = [
   { href: "/products", label: "Products" },
@@ -63,9 +64,10 @@ export default function Navbar() {
         >
           <Link href="/" className="flex items-center gap-2.5 group">
             
-            <span className="font-semibold tracking-tight text-sm sm:text-base text-logo-gradient">
+            {/* <span className="font-semibold tracking-tight text-sm sm:text-base text-logo-gradient">
               AmbrScale<span className="text-red-600 text-md">.</span>
-            </span>
+            </span> */}
+            <Image src='/logoh.png' height={20} width={70} alt='site logo' className="w-full" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
+import type { LucideIcon } from "lucide-react";
 
 
 type ServiceCardProps = {
@@ -11,6 +12,7 @@ type ServiceCardProps = {
   index: number;
   href?: string;
   showIndex?: boolean;
+  icon?: LucideIcon;
 };
 
 export default function ServiceCard({
@@ -20,6 +22,7 @@ export default function ServiceCard({
   index,
   href,
   showIndex = true,
+  icon: Icon,
 }: ServiceCardProps) {
   const content = (
     <>
@@ -63,12 +66,16 @@ export default function ServiceCard({
 
   return href ? (
     <Link href={href} className={cardClass}>
-     
+      {Icon && (
+        <Icon className="pointer-events-none absolute -bottom-5 -right-5 h-32 w-32 rotate-12 text-gray-400 opacity-10 transition-opacity duration-300 group-hover:opacity-20" />
+      )}
       <div className="relative z-10">{content}</div>
     </Link>
   ) : (
     <div className={cardClass}>
-      
+      {Icon && (
+        <Icon className="pointer-events-none absolute -bottom-5 -right-5 h-32 w-32 rotate-12 text-gray-400 opacity-10 transition-opacity duration-300 group-hover:opacity-20" />
+      )}
       <div className="relative z-10">{content}</div>
     </div>
   );

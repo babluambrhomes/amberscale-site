@@ -120,9 +120,10 @@ const faqs = [
 
 export default function ContactPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Product idea / opportunity");
-  const [selectedStage, setSelectedStage] = useState<string>("Exploring");
   const [copied, setCopied] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [submitError, setSubmitError] = useState<boolean>(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [currentTime, setCurrentTime] = useState<string>("");
 
@@ -148,9 +149,30 @@ export default function ContactPage() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError(false);
+    const form = new FormData(e.currentTarget);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.get("name"),
+          email: form.get("email"),
+          company: form.get("company"),
+          subject: form.get("subject"),
+          message: form.get("message"),
+        }),
+      });
+      if (!res.ok) throw new Error("failed");
+      setSubmitted(true);
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleSelectPath = (category: string) => {
@@ -299,6 +321,7 @@ export default function ContactPage() {
                         <input
                           type="text"
                           required
+                          name="name"
                           placeholder="e.g. John Doe"
                           className="w-full hand-radius border border-line bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all"
                         />
@@ -311,6 +334,7 @@ export default function ContactPage() {
                         <input
                           type="email"
                           required
+                          name="email"
                           placeholder="e.g. john@example.com"
                           className="w-full hand-radius border border-line bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all"
                         />
@@ -325,6 +349,7 @@ export default function ContactPage() {
                         </label>
                         <input
                           type="text"
+                          name="company"
                           placeholder="Your company or project name"
                           className="w-full hand-radius border border-line bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all"
                         />
@@ -336,6 +361,7 @@ export default function ContactPage() {
                         </label>
                         <input
                           type="text"
+                          name="subject"
                           placeholder="e.g. Product Inquiry / General"
                           className="w-full hand-radius border border-line bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all"
                         />
@@ -350,6 +376,7 @@ export default function ContactPage() {
                       <textarea
                         rows={6}
                         required
+                        name="message"
                         placeholder="Tell us what you have in mind, your project details, or any questions..."
                         className="w-full hand-radius border border-line bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15 transition-all resize-none"
                       />
@@ -357,11 +384,17 @@ export default function ContactPage() {
 
                     {/* Submit Row */}
                     <div className="flex flex-col items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
+                      {submitError && (
+                        <p className="text-sm font-semibold text-accent-2">
+                          Something went wrong. Please try again.
+                        </p>
+                      )}
                       <button
                         type="submit"
-                        className="group inline-flex items-center gap-3 rounded-full border border-accent bg-accent px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent/90 hover:scale-[1.02] active:scale-98 cursor-pointer"
+                        disabled={submitting}
+                        className="group inline-flex items-center gap-3 rounded-full border border-accent bg-accent px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent/90 hover:scale-[1.02] active:scale-98 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
                       >
-                        <span>Send Message</span>
+                        <span>{submitting ? "Sending…" : "Send Message"}</span>
                         <FiSend className="transition-transform group-hover:translate-x-1" />
                       </button>
                     </div>

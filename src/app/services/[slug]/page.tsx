@@ -14,6 +14,7 @@ import {
   FiCheckCircle,
 } from "react-icons/fi";
 import DetailHero from "@/components/DetailHero";
+import DeliveryProcess from "@/components/DeliveryProcess";
 import FinalCTA from "@/components/FinalCTA";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -110,7 +111,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <Reveal key={s.label} delay={i * 0.08}>
               <div className="group relative flex h-full flex-col justify-between overflow-hidden hand-radius border border-line bg-surface/90 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-xl">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-muted">{String(i).padStart(2, "0")}</span>
+                  <span className="font-mono text-xs text-muted"></span>
                   <span className="font-hand text-xs text-accent-2">benchmark ✦</span>
                 </div>
                 <div className="mt-4">
@@ -178,14 +179,14 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <Reveal key={f.title} delay={i * 0.08}>
                   <div className="group relative flex h-full flex-col justify-between overflow-hidden hand-radius border border-line bg-surface/90 p-7 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/50 hover:shadow-xl">
                     <div>
-                      <div className="flex items-center justify-between">
+                      {/* <div className="flex items-center justify-between">
                         <span className="font-mono text-xs font-bold text-accent">0{i + 1}</span>
                         <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent transition-transform group-hover:scale-110">
                           <Icon className="text-base" />
                         </div>
-                      </div>
+                      </div> */}
 
-                      <h3 className="mt-5 text-lg font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
+                      <h3 className=" text-lg font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
                         {f.title}
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-muted">{f.desc}</p>
@@ -373,38 +374,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {deliveryProcess.map((p, i) => (
-              <Reveal key={p.step} delay={i * 0.1}>
-                <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-accent/60 hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-accent/20">
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <span className="hand-radius border border-white/15 bg-white/10 px-3 py-1 font-mono text-xs font-semibold text-white/90">
-                        {p.phase}
-                      </span>
-                      <span className="font-mono text-2xl font-black text-accent">
-                        {p.step}
-                      </span>
-                    </div>
-
-                    <div className="mt-6">
-                      <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-accent transition-colors">
-                        {p.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-relaxed text-white/70">
-                        {p.desc}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 border-t border-white/10 pt-4 flex items-center justify-between text-xs text-white/40">
-                    <span>Milestone 0{i + 1}</span>
-                    <span className="font-mono text-accent font-bold">Standard ✓</span>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <DeliveryProcess items={deliveryProcess} />
         </div>
       </section>
 

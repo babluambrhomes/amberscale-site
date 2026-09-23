@@ -121,15 +121,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               <span className="text-foreground">{project.title}</span>
             </nav>
 
-            <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-[11px] font-semibold text-accent">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                FEATURED CASE STUDY
-              </span>
-              <span className="font-mono text-xs text-muted">
-                #{String(projectIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-              </span>
-            </div>
+           
           </div>
 
           {/* Main Case Study Title & Overview */}
@@ -197,7 +189,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             {/* Right Meta Spec Card */}
             <div className="lg:col-span-4">
               <Reveal delay={0.2}>
-                <div className="relative overflow-hidden rounded-2xl border border-line bg-surface p-6 sm:p-8 shadow-sm">
+                <div className="relative overflow-hidden rounded-2xl border border-line bg-surface p-6 sm:p-8 ">
                   <div className="grid-lines pointer-events-none absolute inset-0 opacity-20" aria-hidden />
                   <div className="relative z-10">
                     <div className="flex items-center justify-between border-b border-line pb-4">
@@ -575,7 +567,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   <h4 className="mt-4 text-xl font-bold tracking-tight text-foreground">
                     {t}
                   </h4>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                  <p className="mt-2 text-sm leading-relaxed line-clamp-2 text-muted">
                     {getTechDescription(t)}
                   </p>
                 </div>
@@ -611,94 +603,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── SECTION 05: PROJECT VISION & PHILOSOPHY CARD ── */}
-      {project.testimonial && (
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-          <Reveal>
-            <figure className="relative overflow-hidden rounded-3xl border border-line bg-surface shadow-xl">
-              <div
-                className="grid-lines pointer-events-none absolute inset-0 opacity-25"
-                aria-hidden
-              />
-              <div className="relative grid lg:grid-cols-[minmax(0,1fr)_340px]">
-                <div className="p-8 sm:p-12 lg:p-16">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-bold text-accent">04 // PERSPECTIVE</span>
-                    <span className="h-px w-8 bg-accent" />
-                    <span className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">
-                      Project Vision &amp; Philosophy
-                    </span>
-                  </div>
-
-                  <blockquote className="mt-8 max-w-3xl text-2xl font-bold leading-snug tracking-tight text-foreground sm:text-3xl lg:text-4xl">
-                    <span className="mr-2 align-middle text-accent">&ldquo;</span>
-                    {project.testimonial.quote}
-                    <span className="ml-2 align-middle text-accent">&rdquo;</span>
-                  </blockquote>
-
-                  <figcaption className="mt-10 flex items-center gap-4">
-                    <span className="grid h-14 w-14 place-items-center rounded-2xl border border-line bg-accent/10 text-base font-bold text-accent shadow-xs">
-                      {project.testimonial.name
-                        .split(" ")
-                        .map((n) => n.charAt(0))
-                        .slice(0, 2)
-                        .join("")}
-                    </span>
-                    <div>
-                      <p className="text-base font-bold text-foreground">{project.testimonial.name}</p>
-                      <p className="text-sm text-muted">{project.testimonial.role}</p>
-                    </div>
-                  </figcaption>
-                </div>
-
-                <div className="flex flex-col justify-between gap-10 border-t border-line bg-surface-2/60 p-8 sm:p-12 lg:border-l lg:border-t-0 lg:p-12">
-                  <div className="flex items-center gap-2">
-                    <div className="rounded-full bg-accent/20 p-1 text-accent">
-                      <FiCompass className="h-4 w-4" />
-                    </div>
-                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-foreground">
-                      Project Architecture Spec
-                    </span>
-                  </div>
-
-                  <dl className="space-y-5">
-                    <div>
-                      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
-                        Project Concept
-                      </dt>
-                      <dd className="mt-1 text-sm font-bold text-foreground">{project.client}</dd>
-                    </div>
-                    <div>
-                      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
-                        Sector
-                      </dt>
-                      <dd className="mt-1 text-sm font-bold text-foreground">{project.category}</dd>
-                    </div>
-                    <div>
-                      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
-                        Specification Year
-                      </dt>
-                      <dd className="mt-1 text-sm font-bold text-foreground">{project.year}</dd>
-                    </div>
-                    <div>
-                      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
-                        Architecture Fidelity
-                      </dt>
-                      <dd className="mt-1 text-sm font-semibold text-accent">
-                        Production-Grade Concept
-                      </dd>
-                    </div>
-                  </dl>
-
-                  <div className="rounded-xl border border-line bg-surface p-4 text-xs font-mono text-muted">
-                    Build Standard: Modern Component System
-                  </div>
-                </div>
-              </div>
-            </figure>
-          </Reveal>
-        </section>
-      )}
+    
 
       {/* ── SECTION 06: RELATED CASE STUDIES FLEET ── */}
       <section className="border-t border-line bg-surface/40 py-20 sm:py-28">

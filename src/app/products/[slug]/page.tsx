@@ -746,9 +746,9 @@ export default async function ProductDetailPage({ params }: Props) {
                   <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
                   EARLY ACCESS
                 </span>
-                <div className="rounded-lg bg-surface p-1.5 text-muted shadow-sm group-hover:text-accent">
+                {/* <div className="rounded-lg bg-surface p-1.5 text-muted shadow-sm group-hover:text-accent">
                   <FiMaximize2 className="h-4 w-4" />
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -809,17 +809,17 @@ export default async function ProductDetailPage({ params }: Props) {
               <Reveal key={feat.title} delay={i * 0.08}>
                 <div className="group relative flex h-full flex-col justify-between overflow-hidden hand-radius border border-line bg-surface/90 p-7 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/10">
                   <div>
-                    <div className="flex items-center justify-between">
+                    {/* <div className="flex items-center justify-between">
                       <span className="hand-radius border border-line bg-surface-2 px-3 py-1 font-mono text-[11px] font-bold text-accent">
                         {feat.badge}
                       </span>
-                    </div>
+                    </div> */}
 
-                    <div className="mt-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-accent/30 bg-accent/10 text-accent text-xl transition-transform duration-300 group-hover:scale-110">
+                    {/* <div className="mt-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-accent/30 bg-accent/10 text-accent text-xl transition-transform duration-300 group-hover:scale-110">
                       <feat.icon />
-                    </div>
+                    </div> */}
 
-                    <h3 className="mt-5 text-lg font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
+                    <h3 className=" text-lg font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
                       {feat.title}
                     </h3>
                     <p className="mt-2.5 text-xs leading-relaxed text-muted">{feat.desc}</p>

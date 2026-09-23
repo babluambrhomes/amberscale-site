@@ -103,31 +103,37 @@ const approachStages = [
     slug: "understand",
     title: "01 — Understand",
     desc: "We start with the people, behaviour and context behind the problem.",
+    icon: Search,
   },
   {
     slug: "frame",
     title: "02 — Frame",
     desc: "We turn observations into a clear product opportunity and define what success should look like.",
+    icon: Frame,
   },
   {
     slug: "validate",
     title: "03 — Validate",
     desc: "We test the riskiest assumptions before investing heavily in the solution.",
+    icon: ClipboardCheck,
   },
   {
     slug: "build",
     title: "04 — Build",
     desc: "We design and engineer the smallest product capable of creating real value.",
+    icon: Hammer,
   },
   {
     slug: "learn",
     title: "05 — Learn",
     desc: "We watch what users actually do, not just what they say.",
+    icon: GraduationCap,
   },
   {
     slug: "compound",
     title: "06 — Compound",
     desc: "We use what we learn to improve the product, the business and the next decision.",
+    icon: Repeat,
   },
 ];
 
@@ -252,16 +258,16 @@ export default function Home() {
               <div key={p.slug} className="group/card relative">
                 <div className="relative flex h-full flex-col justify-between rounded-[1.75rem] border border-line bg-surface/70 p-6 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl">
                   <div>
-                    <div className="flex items-center justify-between">
+                    {/* <div className="flex items-center justify-between">
                       <span className="font-mono text-xs font-bold uppercase tracking-wider text-accent">
                         {p.status}
                       </span>
                       <span className="rounded-full border border-line bg-background/60 px-2.5 py-0.5 font-mono text-[10px] font-semibold text-muted">
                         #{p.num}
                       </span>
-                    </div>
+                    </div> */}
 
-                    <h3 className="mt-4 text-xl font-bold tracking-tight text-foreground">
+                    <h3 className=" text-xl font-bold tracking-tight text-foreground">
                       {p.name}
                     </h3>
                     <p className="mt-2 text-sm font-semibold text-accent leading-snug">
@@ -418,6 +424,7 @@ export default function Home() {
               href="#how-we-work"
               index={i}
               showIndex={false}
+              icon={s.icon}
             />
           ))}
         </StaggerReveal>
@@ -676,10 +683,10 @@ export default function Home() {
                 <Reveal key={p.num} delay={i * 0.1}>
                   <div className="group relative flex h-full flex-col justify-between hand-radius border border-line bg-surface/80 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/50 hover:shadow-lg">
                     <div>
-                      <div className="flex items-center justify-between">
+                      {/* <div className="flex items-center justify-between">
                         <span className="font-mono text-sm font-bold text-accent">{p.num}</span>
                         <span className="font-hand text-xl text-accent">{p.doodle}</span>
-                      </div>
+                      </div> */}
                       <h3 className="mt-4 text-lg font-bold tracking-tight text-foreground">
                         {p.title}
                       </h3>
