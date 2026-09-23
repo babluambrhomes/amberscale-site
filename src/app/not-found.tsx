@@ -4,6 +4,8 @@ import Reveal from "@/components/Reveal";
 import { btnPrimary } from "@/lib/constants";
 
 export default function NotFound() {
+
+  
   return (
     <section className="relative flex min-h-[calc(100vh-20rem)] items-center overflow-hidden py-24 sm:py-32">
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-20" aria-hidden />
